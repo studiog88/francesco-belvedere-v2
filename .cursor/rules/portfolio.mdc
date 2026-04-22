@@ -1,0 +1,89 @@
+---
+description: Portfolio build — CURSOR_RULES, BUILD_SPEC, tokens, scope discipline
+alwaysApply: true
+---
+
+# CURSOR RULES
+
+How to work with me on this project. Read this file first, before anything else.
+
+---
+
+## Role
+
+You are a build tool, not a creative director. I make the design decisions. You write the code. When I give you a direction, execute it — don't second-guess or redesign it. If something is technically impossible or broken, tell me. Otherwise, build what I ask for.
+
+---
+
+## Reference files
+
+- **`BUILD_SPEC.md`** — Strategic reference. Defines what sections exist, their purpose, and general direction. It is not a pixel-perfect specification.
+- **`references/style-from-moodboards.md`** — Visual guidance derived from moodboards. Inspiration and direction, not a checklist.
+- **`css/tokens/primitives.css`** — Locked color and type tokens. Use these. No arbitrary hex on components.
+- **Figma screenshots or sketches** — When I drop one in, match that over any written spec.
+
+### Priority order when things conflict
+
+1. My current prompt (highest priority — always wins)
+2. Figma comps or screenshots I provide
+3. `BUILD_SPEC.md`
+4. `references/style-from-moodboards.md`
+5. Your best judgment (lowest priority)
+
+If my prompt contradicts the spec, follow the prompt. The spec is the starting point, not the ceiling. I will iterate and change direction frequently — that's the process, not a mistake.
+
+---
+
+## How I work
+
+- I vibe code. I move fast, change my mind, and explore directions that may not stick.
+- I will often ask you to try something just to see it. That doesn't mean I'm committing to it.
+- I might toss in a quick Figma comp of a component if I want more specific guidance. When I do, match it closely.
+- I think visually. Words often fail to convey what I actually want. If you're unsure, ask me — or better yet, build a simple version and let me react to it.
+
+---
+
+## What to do
+
+- **Build only what I ask for.** Do not generate content, sections, or layout that I haven't explicitly requested.
+- **When in doubt, scaffold empty containers** and ask me what goes inside. An empty div with a comment is better than a wrong assumption.
+- **Use tokens for all solid colors.** Every fill, text color, border, and shadow must resolve to a CSS variable from `primitives.css`. Gradients may blend multiple primitives. Images are not tokenized.
+- **Keep it simple.** HTML + CSS + JS. No frameworks. No bundlers. No React. GSAP + ScrollTrigger via CDN for animation.
+- **Mobile-first CSS.** Build up from mobile, not down from desktop.
+- **Write clean, readable code.** I'm learning to code — I need to be able to read and understand what you write. Comment generously. Use clear class names.
+- **One thing at a time.** When I ask you to build a section, build that section. Don't refactor three other things while you're at it.
+
+---
+
+## What not to do
+
+- **Do not invent sections or content.** No lorem ipsum paragraphs. No placeholder "About" copy. No "Approach" or "How I Work" blocks I didn't ask for.
+- **Do not over-build.** If I ask for a card grid, give me the card grid. Don't add animations, hover states, and responsive behavior unless I ask for them.
+- **Do not refactor or reorganize files** unless I specifically ask you to.
+- **Do not add dependencies** (npm packages, external libraries) without asking me first. The only CDN dependencies are GSAP and ScrollTrigger.
+- **Do not remove or rename existing CSS tokens.** The primitives file is locked. If something needs to change there, I'll do it in Figma and re-export.
+- **Do not change things I didn't ask you to change.** If I ask you to fix the nav, don't also "improve" the footer.
+
+---
+
+## Animation rules
+
+- Engine: GSAP + ScrollTrigger via CDN. Nothing else.
+- MVP animations are simple: fade-in + move-up on scroll, subtle hover states on cards, smooth scroll behavior.
+- Anchor links should use smooth scrolling by default (`scroll-behavior: smooth`) unless I explicitly ask for instant jump behavior.
+- Do not add animation to anything unless I specifically ask for it.
+- Always respect `prefers-reduced-motion`.
+
+---
+
+## Git hygiene
+
+- Commit messages should be short and descriptive.
+- One feature or change per commit when possible.
+- Don't batch unrelated changes into a single commit.
+
+---
+
+## When you're stuck
+
+Ask me. Don't guess. A question is always better than a wrong assumption I have to undo.
