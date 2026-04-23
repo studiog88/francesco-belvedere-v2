@@ -61,7 +61,7 @@ If my prompt contradicts the spec, follow the prompt. The spec is the starting p
 - **Do not over-build.** If I ask for a card grid, give me the card grid. Don't add animations, hover states, and responsive behavior unless I ask for them.
 - **Do not refactor or reorganize files** unless I specifically ask you to.
 - **Do not add dependencies** (npm packages, external libraries) without asking me first. The only CDN dependencies are GSAP and ScrollTrigger.
-- **Do not remove or rename existing CSS tokens.** The primitives file is locked. If something needs to change there, I'll do it in Figma and re-export.
+- **Do not add to or modify css/tokens/primitives.css without asking me first.** This file is managed by me — tokens originate in Figma and are exported to CSS. If you see legacy token names in an alias block marked as temporary, do not treat those as permanent — they exist only for backward compatibility during migration and will be removed once all references are updated.
 - **Do not change things I didn't ask you to change.** If I ask you to fix the nav, don't also "improve" the footer.
 
 ---
@@ -87,3 +87,18 @@ If my prompt contradicts the spec, follow the prompt. The spec is the starting p
 ## When you're stuck
 
 Ask me. Don't guess. A question is always better than a wrong assumption I have to undo.
+
+---
+
+## Responsive token policy (required)
+
+When adding new responsive typography tokens in `css/tokens/responsive.css`:
+
+- Use naming pattern:
+  - `--Font-Body-[Name]-text-size`
+  - `--Font-Body-[Name]-line-height`
+- Put desktop/default values in the base `:root` block.
+- Put tablet overrides in `@media (max-width: 810px)` by overriding the same token name.
+- Put mobile overrides in `@media (max-width: 390px)` by overriding the same token name.
+- Never create `-tablet-` or `-mobile-` suffixed token names.
+- Component CSS must reference only one unsuffixed token name; media queries in `responsive.css` handle breakpoint changes.

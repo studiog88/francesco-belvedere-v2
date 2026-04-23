@@ -1,6 +1,12 @@
 /* Primitives - Mode 1 */
 :root {
+  /* ============================================
+     COLOR PRIMITIVES
+     ============================================ */
+
   --Foundation-White: #FFFFFFFF;
+  --Foundation-Black: #000000FF;
+
   --Lime-950: #03190FFF;
   --Lime-900: #06311FFF;
   --Lime-800: #0D633DFF;
@@ -13,6 +19,7 @@
   --Lime-200: #A6FCD6FF;
   --Lime-100: #D2FDEBFF;
   --Lime-50: #E8FEF4FF;
+
   --Lemon-950: #191606FF;
   --Lemon-900: #322D0DFF;
   --Lemon-800: #64591AFF;
@@ -25,6 +32,7 @@
   --Lemon-200: #FDF2B3FF;
   --Lemon-100: #FEF9D9FF;
   --Lemon-50: #FEFBEBFF;
+
   --Blue-950: #07151AFF;
   --Blue-900: #0E2933FF;
   --Blue-800: #1C5266FF;
@@ -37,6 +45,7 @@
   --Blue-200: #B5EBFFFF;
   --Blue-100: #DAF5FFFF;
   --Blue-50: #ECFAFFFF;
+
   --Rosso-Corsa-950: #150000FF;
   --Rosso-Corsa-900: #360000FF;
   --Rosso-Corsa-800: #550000FF;
@@ -49,6 +58,7 @@
   --Rosso-Corsa-200: #EE9999FF;
   --Rosso-Corsa-100: #F6CCCCFF;
   --Rosso-Corsa-50: #FAE5E5FF;
+
   --Rosso-Dino-950: #180702FF;
   --Rosso-Dino-900: #381005FF;
   --Rosso-Dino-800: #611C09FF;
@@ -62,6 +72,7 @@
   --Rosso-Dino-100: #FCDAD0FF;
   --Rosso-Dino-50: #FDECE7FF;
   --Rosso-Dino-25: #FEF6F3FF;
+
   --Orange-950: #190D00FF;
   --Orange-900: #321901FF;
   --Orange-800: #643202FF;
@@ -74,6 +85,7 @@
   --Orange-200: #FDCB9BFF;
   --Orange-100: #FEE5CDFF;
   --Orange-50: #FEF2E5FF;
+
   --Warm-Grey-950: #0E0D0CFF;
   --Warm-Grey-900: #1C1A19FF;
   --Warm-Grey-800: #373432FF;
@@ -85,6 +97,7 @@
   --Warm-Grey-200: #D0CDCBFF;
   --Warm-Grey-100: #E8E6E5FF;
   --Warm-Grey-50: #F3F2F1FF;
+  
   --Cool-Grey-950: #0E0F0EFF;
   --Cool-Grey-900: #1B1E1DFF;
   --Cool-Grey-800: #363B39FF;
@@ -96,12 +109,41 @@
   --Cool-Grey-200: #CFD4D2FF;
   --Cool-Grey-100: #E7EAE9FF;
   --Cool-Grey-50: #F3F4F3FF;
-  --Foundation-Black: #000000FF;
-  --Font-Family-Display: Work Sans Black;
-  --Font-Family-Headings: Work Sans;
-  --Font-Family-Body: Work Sans;
-  --Font-Weight-Regular: Regular;
-  --Font-Weight-Semibold: 600;
+
+  /* ============================================
+     FONT PRIMITIVES
+     ============================================ */
+
+  /* Font Family */
+  --font-family-primary: "Work Sans", sans-serif;
+
+  /* Font Weight — full variable font axis (100-900) */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ============================================
+     ALIAS BLOCK (TEMPORARY)
+     Remove after migrating all legacy token names.
+     Search check: rg "Font-Family-|Font-Weight-" css/
+     ============================================ */
+  --Font-Family-Display: var(--font-family-primary);
+  --Font-Family-Headings: var(--font-family-primary);
+  --Font-Family-Body: var(--font-family-primary);
+  --Font-Weight-Regular: var(--font-weight-regular);
+  --Font-Weight-Semibold: var(--font-weight-semibold);
+  --Font-Weight-Bold: var(--font-weight-bold);
+
+  /* ============================================
+     SCALE PRIMITIVES
+     ============================================ */
+
   --Scale-0: 0px;
   --Scale-25: 1px;
   --Scale-50: 2px;
@@ -124,5 +166,4 @@
   --Scale-1700: 120px;
   --Scale-1800: 256px;
   --Scale-1900: 512px;
-  --Font-Weight-Bold: Bold;
 }

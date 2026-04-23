@@ -1,7 +1,7 @@
 # PORTFOLIO BUILD SPEC
 
 Francesco Belvedere · francescobelvedere.com
-April 2026 · v2.1
+April 2026 · v2.2
 
 ---
 
@@ -38,10 +38,9 @@ Single page. Sections scroll vertically. Each section earns its space against a 
 | ORDER | SECTION | DESCRIPTION |
 | --- | --- | --- |
 | 01 | **Hero** | Full-width name (FRANCESCO BELVEDERE) as single line at top of page, downplayed so as not to compete with F mark. 'F' character mark near full-height of hero. Short descriptor beside mark. Pill-shaped anchor links right-aligned below name. 80vh height. Top of next section visible. |
-| 02 | **Work** | 3-up card grid. Image above, text below. Title + short description + link to project detail page. Reflows: 3 → 2 → 1 across breakpoints. Simple hover state. |
+| 02 | **Work** | Two blocks under one heading: **Selected projects** (3-up card grid, 4:3 image + title + description, each card links to `/work/[slug]`; reflows 3 → 2 → 1) and **Playground** (denser square image grid only, each tile links out to a live build or repo; reflows 5 → 3 → 2; tile size capped so squares stay smaller than project cards). No separate Experiments section. |
 | 03 | **About** | Large-type positioning statement (2–3 sentences). Compact credentials strip below: years, industries, origin. Not the full origin story — keep it tight. |
-| 04 | **Experiments** | Small card grid linking to live AI/vibe-coded builds. Image + link. Ships when 3+ builds are live. Omit until ready — no 'coming soon.' |
-| 05 | **Footer** | Short text blurb about working together. 'F' logo on left. Copyright and email center. Social links (LinkedIn) on right. |
+| 04 | **Footer** | Short text blurb about working together. 'F' logo on left. Copyright and email center. Social links (LinkedIn) on right. |
 
 ---
 
@@ -60,9 +59,11 @@ Single page. Sections scroll vertically. Each section earns its space against a 
 
 ---
 
-## 04 · WORK CARDS
+## 04 · WORK (SELECTED PROJECTS + PLAYGROUND)
 
 The most important section. This is the proof. A hiring manager who spends 2–3 minutes will scroll past the hero in seconds and land here.
+
+### Selected projects
 
 | Layout | 3-up grid on desktop. 2-up on tablet. 1-up stacked on mobile. |
 | --- | --- |
@@ -70,7 +71,17 @@ The most important section. This is the proof. A hiring manager who spends 2–3
 | Link | Each card links to a project detail page (separate route). |
 | Hover | Subtle scale or lift. Keep it fast. |
 | Count | 3 projects minimum. 5 maximum. Start with 3. |
-| Image ratio | Consistent aspect ratio across all cards. 4:3 or 3:2. |
+| Image ratio | 4:3 across all cards. |
+
+### Playground
+
+Purpose: same as former Experiments intent — show live AI/vibe-coded builds (Cursor, Claude Code, etc.), not slides.
+
+| Layout | 5-up on desktop, 3-up on tablet, 2-up on mobile. Tiles centered in their cells; max size capped so squares do not approach the visual weight of the 4:3 project images. |
+| --- | --- |
+| Card anatomy | Square image only (no title or description under the tile). Name the link for accessibility (`aria-label` on the anchor). |
+| Link | Each tile opens an external live build or repo (`target="_blank"`, `rel="noopener noreferrer"`). Live builds only when linked — no 'coming soon.' |
+| Cadence | Add tiles when builds are ready. |
 
 Project detail page layout is a separate workstream. Tackle after homepage ships.
 
@@ -86,21 +97,7 @@ Not a biography. A positioning statement and a proof strip. Two components:
 
 ---
 
-## 06 · EXPERIMENTS SECTION
-
-STATUS: Not included in MVP. Add when 3+ builds are live and deployed.
-
-Purpose: demonstrate active engagement with AI tools and workflows. Show hiring managers you are building with Cursor, Claude Code, and similar tools — not just talking about them.
-
-| Card format | Image/screenshot + project name + link to live build or repo. |
-| --- | --- |
-| Layout | Small card grid. Less prominent than Work section. |
-| Content | Live, working builds only. No concepts. No 'coming soon.' |
-| Cadence | Build 1–2 per week. Add to section when ready. |
-
----
-
-## 07 · NAVIGATION
+## 06 · NAVIGATION
 
 | Pattern | Right-aligned pill-shaped anchor links. No horizontal bar. No logo in nav. |
 | --- | --- |
@@ -113,7 +110,7 @@ Purpose: demonstrate active engagement with AI tools and workflows. Show hiring 
 
 ---
 
-## 08 · MOTION & INTERACTION
+## 07 · MOTION & INTERACTION
 
 Engine: GSAP + ScrollTrigger via CDN. No bundler. No Framer Motion. No React.
 
@@ -135,7 +132,7 @@ Engine: GSAP + ScrollTrigger via CDN. No bundler. No Framer Motion. No React.
 
 ---
 
-## 09 · COLOR MODES
+## 08 · COLOR MODES
 
 | MVP | Light mode only. Token-driven. No hardcoded hex in components (see **Locked color usage** below). |
 | --- | --- |
@@ -168,7 +165,7 @@ Two-tier system. Primitives CSS already generated. Cursor implements component-l
 
 ---
 
-## 10 · LAYOUT RULES
+## 09 · LAYOUT RULES
 
 | Max-width | Wide. Less margin on sides than previous build. |
 | --- | --- |
@@ -182,7 +179,7 @@ Two-tier system. Primitives CSS already generated. Cursor implements component-l
 
 ---
 
-## 11 · ROUTES
+## 10 · ROUTES
 
 | / (index) | Homepage. Single page. All sections. |
 | --- | --- |
@@ -192,7 +189,7 @@ All nav links on homepage are anchor scrolls, not page navigations. Project deta
 
 ---
 
-## 12 · WHAT'S OUT
+## 11 · WHAT'S OUT
 
 Sections and features explicitly removed from scope to keep the site focused:
 
@@ -200,7 +197,6 @@ Sections and features explicitly removed from scope to keep the site focused:
 - Currently section — not earning its real estate at launch
 - Elaborate hero copy / tagline manifesto — name + descriptor only
 - Contact form — direct email link only
-- Experiments section — ships later when 3+ builds are live
 - Dark mode and Ferrari mode — post-launch progressive enhancement
 - Video backgrounds — post-launch
 - Translation toggle (EN/IT/FR) — post-launch

@@ -15,40 +15,175 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div id="hero">
-    <h1 class="visually-hidden">FRANCESCO BELVEDERE</h1>
+  <h1 class="visually-hidden">FRANCESCO BELVEDERE</h1>
+  <div class="hero-viewport-stack">
     <img class="hero-wordmark" src="assets/logos/wordmark.svg" alt="Francesco Belvedere">
 
     <nav class="hero-nav" aria-label="Primary">
-      <a class="hero-nav-link" href="#about">About</a>
       <a class="hero-nav-link" href="#work">Work</a>
+      <a class="hero-nav-link" href="#about">About</a>
       <a class="hero-nav-link" href="#contact">Contact</a>
     </nav>
 
-    <div class="hero-placeholder-image" aria-hidden="true"></div>
+    <div id="hero">
+      <div class="hero-content">
+        <img class="hero-kraftmouth" src="assets/logos/kraftmouth.svg" alt="" aria-hidden="true">
+        <div class="hero-right-scaffold" aria-hidden="true"></div>
+      </div>
+    </div>
   </div>
 
   <div id="work">
-    <h2 class="work-heading">Work</h2>
-    <div class="work-grid">
-      <article class="work-card">
-        <img class="work-card-image" src="assets/images/project-tile-FPO-01.png" alt="Project tile placeholder 01">
-        <h3 class="work-card-title">Project Name 01</h3>
-        <p class="work-card-description">Short project description goes here.</p>
-      </article>
+    <div class="section-container">
+      <section class="work-section-block" aria-labelledby="selected-projects-heading">
+        <h2 id="selected-projects-heading" class="work-section-heading">Selected Projects</h2>
+        <div class="work-grid">
+          <article class="work-card work-card-large">
+            <div class="work-card-media">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-01.png" alt="Figment project preview">
+            </div>
+            <div class="work-card-text">
+              <h3 class="work-card-title">Figment</h3>
+              <p class="work-card-description">Unlocking the creative spark in each of us</p>
+            </div>
+          </article>
 
-      <article class="work-card">
-        <img class="work-card-image" src="assets/images/project-tile-FPO-02.png" alt="Project tile placeholder 02">
-        <h3 class="work-card-title">Project Name 02</h3>
-        <p class="work-card-description">Short project description goes here.</p>
-      </article>
+          <article class="work-card work-card-large">
+            <div class="work-card-media">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-02.png" alt="Icons project preview">
+            </div>
+            <div class="work-card-text">
+              <h3 class="work-card-title">Icons</h3>
+              <p class="work-card-description">Crafting a custom icon language for a global brand</p>
+            </div>
+          </article>
 
-      <article class="work-card">
-        <img class="work-card-image" src="assets/images/project-tile-FPO-03.png" alt="Project tile placeholder 03">
-        <h3 class="work-card-title">Project Name 03</h3>
-        <p class="work-card-description">Short project description goes here.</p>
-      </article>
+          <article class="work-card work-card-large">
+            <div class="work-card-media">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-03.png" alt="Lumosity project preview">
+            </div>
+            <div class="work-card-text">
+              <h3 class="work-card-title">Lumosity</h3>
+              <p class="work-card-description">Spearheading the UI for a premier brain game platform</p>
+            </div>
+          </article>
+
+          <article class="work-card work-card-large">
+            <div class="work-card-media">
+              <img class="work-card-image work-card-image-large" src="assets/images/accipter-A.png" alt="Radius project preview">
+            </div>
+            <div class="work-card-text">
+              <h3 class="work-card-title">Radius</h3>
+              <p class="work-card-description">Providing tools for environmental researchers</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section-block" aria-labelledby="experimental-builds-heading">
+        <h2 id="experimental-builds-heading" class="work-section-heading">Experimental Builds</h2>
+        <!-- Replace href values with each live experiment URL. -->
+        <div class="playground-row">
+          <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 01">
+            <img class="playground-card-image" src="assets/images/project-tile-FPO-01.png" alt="">
+          </a>
+          <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 02">
+            <img class="playground-card-image" src="assets/images/project-tile-FPO-02.png" alt="">
+          </a>
+          <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 03">
+            <img class="playground-card-image" src="assets/images/project-tile-FPO-03.png" alt="">
+          </a>
+          <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 04">
+            <img class="playground-card-image" src="assets/images/owl-A.png" alt="">
+          </a>
+          <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 05">
+            <img class="playground-card-image" src="assets/images/accipter-A.png" alt="">
+          </a>
+        </div>
+      </section>
     </div>
   </div>
+
+  <section id="about" class="content-section section-tone-light">
+    <div class="section-container">
+      <h2 class="work-heading">About</h2>
+      <p class="about-positioning-statement">
+        <span class="about-positioning-statement-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        <span class="about-positioning-statement-secondary">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+      </p>
+      <img class="about-profile-photo" src="assets/images/profile-photo-A.png" alt="Profile photo of Francesco Belvedere">
+
+      <div class="about-subsection about-impact">
+        <h3 class="about-subheading">Capabilities &amp; Impact</h3>
+        <div class="about-stats-grid">
+          <article class="about-stat-card">
+            <p class="about-stat-value">15+</p>
+            <p class="about-stat-label">Years in design</p>
+          </article>
+
+          <article class="about-stat-card">
+            <p class="about-stat-value">10+</p>
+            <p class="about-stat-label">Years in product design</p>
+          </article>
+
+          <article class="about-stat-card">
+            <p class="about-stat-value">3</p>
+            <p class="about-stat-label">Products still live in the App Store</p>
+          </article>
+
+          <article class="about-stat-card">
+            <p class="about-stat-value">7+</p>
+            <p class="about-stat-label">Notable brands and companies</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="about-subsection about-experience">
+        <h3 class="about-subheading">Selected Experience</h3>
+        <div class="about-timeline">
+          <article class="about-timeline-item">
+            <p class="about-timeline-period">Early Career</p>
+            <p class="about-timeline-title">Brand and print design across small clients and larger names</p>
+          </article>
+
+          <article class="about-timeline-item">
+            <p class="about-timeline-period">Originate</p>
+            <p class="about-timeline-title">Product design for Fortune 500 clients, startups, and founders</p>
+          </article>
+
+          <article class="about-timeline-item">
+            <p class="about-timeline-period">Lumosity, 6 years</p>
+            <p class="about-timeline-title">Designed and launched three products still active today</p>
+          </article>
+
+          <article class="about-timeline-item">
+            <p class="about-timeline-period">Last 10 years</p>
+            <p class="about-timeline-title">Client-side product design as a full-time employee</p>
+          </article>
+        </div>
+
+        <div class="about-companies">
+          <p class="about-companies-label">Notable companies</p>
+          <p class="about-companies-list">Beats by Dre · Apple · Taschen · Playboy · Lumosity · PostPilot · Originate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content-section section-tone-light">
+    <div class="section-container">
+      <h2 class="work-heading">Get in touch</h2>
+    </div>
+  </section>
+
+  <footer id="footer" class="content-section section-tone-light">
+    <div class="section-container">
+      <h2 class="work-heading">Footer</h2>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <img class="back-to-top-icon" src="assets/icons/cta-arrow.svg" alt="" aria-hidden="true">
+  </button>
 </body>
 </html>
