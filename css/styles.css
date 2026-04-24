@@ -8,12 +8,13 @@ body {
   color: var(--Foundation-Black);
   background: linear-gradient(180deg, var(--Foundation-White) 0%, var(--Lime-100) 100%);
   overflow-x: clip;
+  --masthead-for-hero: calc(100vw * 82 / 1441 + 48px);
 }
 
 /* Intro = exactly one viewport: masthead + hero flex slice (no min-only growth past fold) */
 .hero-viewport-stack {
-  height: 100vh;
-  max-height: 100vh;
+  height: calc(100vh - var(--masthead-for-hero));
+  max-height: calc(100vh - var(--masthead-for-hero));
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -22,8 +23,8 @@ body {
 
 @supports (height: 100dvh) {
   .hero-viewport-stack {
-    height: 100dvh;
-    max-height: 100dvh;
+    height: calc(100dvh - var(--masthead-for-hero));
+    max-height: calc(100dvh - var(--masthead-for-hero));
   }
 }
 
@@ -61,7 +62,6 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   flex-shrink: 0;
-  color: var(--Lime-500);
   transform: translateY(-2px);
 }
 
@@ -159,7 +159,7 @@ body {
 .hero-right-scaffold {
   width: 60%;
   height: 100%;
-  background-color: #ff00ff1a;
+  background-color: var(--Blue-100);
 }
 
 #work {
