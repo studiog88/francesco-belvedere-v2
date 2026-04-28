@@ -106,11 +106,12 @@ body {
 }
 
 .back-to-top {
+  box-sizing: border-box;
   width: 64px;
   height: 64px;
-  border: 0;
-  border-radius: 999px;
-  background-color: var(--Warm-Grey-100);
+  border: 1px solid var(--Lime-500);
+  border-radius: var(--Scale-1900);
+  background-color: var(--Foundation-White);
   display: grid;
   place-items: center;
   position: fixed;
@@ -121,6 +122,8 @@ body {
   visibility: hidden;
   pointer-events: none;
   transform: translateY(16px);
+  cursor: pointer;
+  /* Aligned with project detail .project-nav-pill secondary controls */
   transition: background-color 400ms ease-in-out;
 }
 
@@ -142,7 +145,6 @@ body {
   width: 28px;
   height: 28px;
   display: block;
-  transform: rotate(-90deg);
 }
 
 .contact-overlay {
@@ -435,6 +437,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .work-card-media,
   .work-card-image-large {
+    transition: none;
+  }
+
+  .back-to-top {
     transition: none;
   }
 }

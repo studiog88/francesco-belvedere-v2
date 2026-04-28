@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE GUIDE:
+       1) Duplicate this file per project using slug naming:
+          work/<project-slug>.html (examples: work/figment.html, work/icons.html).
+       2) Replace all placeholder copy.
+       3) Replace placeholder media blocks with real images/video.
+       4) Remove .is-empty from filled media.
+       5) Use .is-wide / .is-tall to adjust placeholder proportions quickly.
+       6) For optional fields, keep .hide-if-empty and leave empty to auto-hide.
+       7) Update body hooks to match slug:
+          class="site project-detail-page project-<project-slug>"
+          data-project-slug="<project-slug>"
+       8) Maintain the PROJECT_NAV_ORDER array in ../js/project-detail-nav.js (prev/next wraps). -->
+  <title>Project Detail Template</title>
+  <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../css/tokens/primitives.css">
+  <link rel="stylesheet" href="../css/tokens/responsive.css">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/sections/project-detail.css">
+  <script src="../js/project-detail-nav.js" defer></script>
+</head>
+<body class="site project-detail-page project-template" data-project-slug="template">
+  <header class="project-detail-top-nav">
+    <div class="project-detail-shell project-detail-shell-wide">
+      <nav class="project-detail-top-nav-inner" aria-label="Project navigation">
+        <a class="project-detail-back-link" href="../index.html#work">
+          <img class="project-detail-back-link-icon" src="../assets/icons/cta-arrow-left.svg" alt="" aria-hidden="true">
+          <span>Back to work</span>
+        </a>
+        <a class="project-detail-nameplate" href="../index.html" aria-label="Home">FRANCESCO BELVEDERE</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- FEATURE MEDIA: full-bleed hero area. Replace placeholder with project hero image/video. -->
+    <section class="project-feature-media" aria-label="Feature image placeholder">
+      <!-- Hero height follows first-screen “fold”: swap inner for <img> (object-fit: cover fills frame). -->
+      <div class="project-feature-media-placeholder is-empty is-wide" role="img" aria-label="Feature image placeholder"></div>
+    </section>
+
+    <!-- PROJECT HEADER: category, title, short summary, optional external link pill. -->
+    <section class="project-detail-shell project-detail-shell-wide project-header" aria-labelledby="project-title">
+      <p class="project-category-tag">Product Design</p>
+      <h1 id="project-title" class="project-title">Project title goes here</h1>
+      <p class="project-summary">
+        A short placeholder description for the project detail page. This can explain the context, scope, and core outcome in two concise lines.
+      </p>
+      <!-- OPTIONAL: set href="#" (or empty) to hide via .hide-if-empty -->
+      <a class="project-external-link hide-if-empty" href="#" target="_blank" rel="noopener noreferrer">Visit live project</a>
+    </section>
+
+    <!-- QUICK STATS: remove any stat by emptying text or setting data-empty="true". -->
+    <section class="project-detail-shell project-detail-shell-wide project-stats" aria-label="Project quick stats">
+      <h2 class="visually-hidden">Quick stats</h2>
+      <dl class="project-stats-grid">
+        <div class="project-stat-item hide-if-empty">
+          <dt>Timeframe</dt>
+          <dd>Q1 2026 - Q2 2026</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Role</dt>
+          <dd>Lead Product Designer</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Platform</dt>
+          <dd>Web + iOS</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Team</dt>
+          <dd>Design, PM, Engineering</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 01 CHALLENGE -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="challenge-heading">
+      <p class="project-section-label">01 - CHALLENGE</p>
+      <h2 id="challenge-heading" class="project-content-heading">Define the problem and align stakeholders</h2>
+      <p class="project-content-body">
+        Placeholder text for the challenge section. Describe constraints, competing priorities, and the opportunity this project addressed.
+      </p>
+    </section>
+
+    <!-- SUPPORTING MEDIA ROW: 2-column by default on tablet/desktop -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Supporting image placeholders">
+      <div class="project-image-slot is-empty is-tall" role="img" aria-label="Project image placeholder 1"></div>
+      <div class="project-image-slot is-empty" role="img" aria-label="Project image placeholder 2"></div>
+    </section>
+
+    <!-- 02 PROCESS -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="process-heading">
+      <p class="project-section-label">02 - PROCESS</p>
+      <h2 id="process-heading" class="project-content-heading">Research, iteration, and collaboration</h2>
+      <p class="project-content-body">
+        Placeholder text for process. Summarize the approach, key decisions, and the methods used to move from concept to tested solution.
+      </p>
+    </section>
+
+    <!-- FULL-WIDTH MEDIA ROW -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-full" aria-label="Full-width image placeholder">
+      <div class="project-image-slot project-image-slot-full is-empty is-wide" role="img" aria-label="Project image placeholder 3"></div>
+    </section>
+
+    <!-- 03 SOLUTION -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="solution-heading">
+      <p class="project-section-label">03 - SOLUTION</p>
+      <h2 id="solution-heading" class="project-content-heading">Deliver a clear, scalable product experience</h2>
+      <p class="project-content-body">
+        Placeholder text for solution. Capture what shipped, what improved for users, and how the final work created measurable value.
+      </p>
+    </section>
+
+    <!-- FINAL MEDIA ROW -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Final image placeholders">
+      <div class="project-image-slot is-empty" role="img" aria-label="Project image placeholder 4"></div>
+      <div class="project-image-slot is-empty is-wide" role="img" aria-label="Project image placeholder 5"></div>
+    </section>
+
+    <!-- Prev/Next: order + wrap-around is set in js/project-detail-nav.js (ORDER array). -->
+    <section class="project-detail-shell project-detail-shell-wide project-prev-next" aria-label="Adjacent projects">
+      <a class="project-nav-pill project-nav-pill-prev" href="#" data-project-nav-prev>
+        <img class="project-nav-pill-icon" src="../assets/icons/cta-arrow-left.svg" alt="" aria-hidden="true">
+        <span>Previous</span>
+      </a>
+      <a class="project-nav-pill project-nav-pill-next" href="#" data-project-nav-next>
+        <span>Next</span>
+        <img class="project-nav-pill-icon" src="../assets/icons/cta-arrow-right.svg" alt="" aria-hidden="true">
+      </a>
+    </section>
+  </main>
+
+  <footer class="project-detail-copyright" aria-label="Site copyright">
+    <div class="project-detail-shell project-detail-shell-wide project-detail-copyright-bar">
+      <div class="project-detail-copyright-meta">
+        <span class="project-detail-copyright-item">&copy; 2026 Francesco Belvedere</span>
+        <span class="project-detail-copyright-dot" aria-hidden="true"></span>
+        <a class="project-detail-copyright-item project-detail-copyright-link" href="mailto:info@francescobelvedere.com">info@francescobelvedere.com</a>
+        <span class="project-detail-copyright-dot" aria-hidden="true"></span>
+        <span class="project-detail-copyright-item">A Studio Gestalt | 8pxgrid Production</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
