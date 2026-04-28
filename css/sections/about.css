@@ -16,11 +16,11 @@
   font-family: var(--font-family-primary);
   font-size: clamp(2rem, 5.8vw, var(--Font-Body-Positioning-Statement-text-size));
   line-height: 1.4;
+  font-weight: var(--font-weight-medium);
 }
 
 .about-statement-primary {
   color: var(--Foundation-Black);
-  font-weight: var(--font-weight-black);
 }
 
 .about-statement-secondary {
@@ -77,7 +77,7 @@
 .about-banners {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-400);
+  gap: var(--Scale-800);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -92,8 +92,11 @@
 .about-marquee-track {
   display: flex;
   align-items: center;
-  gap: var(--Scale-500);
-  padding-right: var(--Scale-500);
+  width: 100vw;
+  min-width: 100vw;
+  justify-content: space-between;
+  gap: clamp(var(--Scale-400), 4vw, var(--Scale-1100));
+  padding-right: 0;
 }
 
 .about-marquee-item {
@@ -117,11 +120,11 @@
 }
 
 .about-marquee-left {
-  animation: about-marquee-left 36s linear infinite;
+  animation: about-marquee-left 100s linear infinite;
 }
 
 .about-marquee-right {
-  animation: about-marquee-right 36s linear infinite;
+  animation: about-marquee-right 45s linear infinite;
 }
 
 @keyframes about-marquee-left {
@@ -146,6 +149,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--Scale-400);
+  margin-bottom: var(--Scale-600);
 }
 
 .about-credential-cell {
@@ -168,7 +172,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--Scale-600);
+  gap: var(--Scale-1400);
 }
 
 .about-endorsement-quote,
@@ -188,7 +192,7 @@
 .about-endorsement-meta {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-200);
+  gap: 0;
 }
 
 .about-endorsement-logo {
@@ -200,6 +204,7 @@
 }
 
 .about-endorsement-name {
+  margin-top: var(--Scale-200);
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-text-size);
@@ -209,6 +214,7 @@
 }
 
 .about-endorsement-role {
+  margin-top: var(--Scale-100);
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-text-size);
@@ -237,7 +243,10 @@
     align-items: center;
     justify-content: space-between;
     min-height: 240px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     padding-left: var(--Scale-1000);
+    padding-right: 8px;
     overflow: hidden;
   }
 
@@ -248,11 +257,12 @@
   }
 
   .about-banners {
-    gap: var(--Scale-500);
+    gap: var(--Scale-900);
   }
 
   .about-credentials-grid {
     gap: var(--Scale-1000);
+    margin-bottom: var(--Scale-800);
   }
 
   .about-endorsements-grid {

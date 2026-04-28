@@ -6,7 +6,61 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const contactOverlay = document.querySelector("#contact-overlay");
 const contactDialog = document.querySelector(".contact-overlay-dialog");
 const contactCloseButton = document.querySelector(".contact-overlay-close");
-const contactTriggers = document.querySelectorAll("[data-contact-trigger]");
+const contactTriggers = Array.from(document.querySelectorAll("[data-contact-trigger]"));
+const aboutProfileBanner = document.querySelector(".about-profile-banner");
+const aboutPhotoFrame = document.querySelector(".about-photo-frame");
+const aboutPillLinks = Array.from(document.querySelectorAll(".about-pill-link"));
+
+if (aboutProfileBanner && aboutPhotoFrame && aboutPillLinks.length > 0) {
+  try {
+    if (prefersReducedMotion) {
+      gsap.set([aboutPhotoFrame, ...aboutPillLinks], {
+        clearProps: "opacity,transform"
+      });
+    } else {
+      gsap.set(aboutPhotoFrame, { autoAlpha: 0 });
+      gsap.set(aboutPillLinks, { autoAlpha: 0 });
+
+      const getPhotoStartX = () => {
+        const bannerWidth = aboutProfileBanner.offsetWidth;
+        const photoWidth = aboutPhotoFrame.offsetWidth;
+        return -(bannerWidth - photoWidth - 16);
+      };
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: aboutProfileBanner,
+          start: "bottom bottom",
+          once: true,
+          invalidateOnRefresh: true
+        }
+      })
+        .fromTo(
+          aboutPhotoFrame,
+          { x: getPhotoStartX },
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration: 1.15,
+            ease: "power3.out"
+          },
+          0
+        )
+        .to(
+          aboutPillLinks,
+          {
+            autoAlpha: 1,
+            duration: 0.9,
+            ease: "power2.out",
+            stagger: 0.22
+          },
+          0.82
+        );
+    }
+  } catch (error) {
+    console.warn("About banner animation init failed.", error);
+  }
+}
 
 if (backToTopButton) {
   const showBackToTop = () => {
