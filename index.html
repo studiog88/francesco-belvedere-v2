@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/sections/about.css">
+  <link rel="stylesheet" href="css/sections/footer.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/main.js" defer></script>
@@ -21,7 +23,7 @@
   <nav class="hero-nav" aria-label="Primary">
     <a class="hero-nav-link" href="#work">Work</a>
     <a class="hero-nav-link" href="#about">About</a>
-    <a class="hero-nav-link" href="#contact">Contact</a>
+    <a class="hero-nav-link" href="#contact-overlay" data-contact-trigger>Contact</a>
   </nav>
 
   <div class="hero-viewport-stack">
@@ -104,85 +106,137 @@
     </div>
   </div>
 
-  <section id="about" class="content-section section-tone-light">
-    <div class="section-container">
-      <h2 class="work-heading">About</h2>
-      <p class="about-positioning-statement">
-        <span class="about-positioning-statement-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-        <span class="about-positioning-statement-secondary">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+  <section id="about" class="about-section content-section section-tone-light" aria-labelledby="about-heading">
+    <div class="section-container about-container">
+      <h2 id="about-heading" class="visually-hidden">About</h2>
+
+      <p class="about-statement" data-animate="fade-up">
+        <span class="about-statement-primary">I am a product designer with 10+ years of experience crafting transformative user interfaces. </span>
+        <span class="about-statement-secondary">Originally from New York, I got started more than fifteen years ago in print, designing brands and book designs before progressing to digital, web and app design.</span>
       </p>
-      <img class="about-profile-photo" src="assets/images/profile-photo-A.png" alt="Profile photo of Francesco Belvedere">
 
-      <div class="about-subsection about-impact">
-        <h3 class="about-subheading">Capabilities &amp; Impact</h3>
-        <div class="about-stats-grid">
-          <article class="about-stat-card">
-            <p class="about-stat-value">15+</p>
-            <p class="about-stat-label">Years in design</p>
-          </article>
-
-          <article class="about-stat-card">
-            <p class="about-stat-value">10+</p>
-            <p class="about-stat-label">Years in product design</p>
-          </article>
-
-          <article class="about-stat-card">
-            <p class="about-stat-value">3</p>
-            <p class="about-stat-label">Products still live in the App Store</p>
-          </article>
-
-          <article class="about-stat-card">
-            <p class="about-stat-value">7+</p>
-            <p class="about-stat-label">Notable brands and companies</p>
-          </article>
+      <div class="about-profile-banner">
+        <nav class="about-pill-links" aria-label="About links">
+          <a class="about-pill-link" href="#contact-overlay" data-contact-trigger>Contact</a>
+          <a class="about-pill-link" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="about-pill-link" href="#" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+        <div class="about-photo-frame" data-animate="slide-in" aria-hidden="true">
+          <div class="about-photo-placeholder"></div>
         </div>
       </div>
 
-      <div class="about-subsection about-experience">
-        <h3 class="about-subheading">Selected Experience</h3>
-        <div class="about-timeline">
-          <article class="about-timeline-item">
-            <p class="about-timeline-period">Early Career</p>
-            <p class="about-timeline-title">Brand and print design across small clients and larger names</p>
-          </article>
-
-          <article class="about-timeline-item">
-            <p class="about-timeline-period">Originate</p>
-            <p class="about-timeline-title">Product design for Fortune 500 clients, startups, and founders</p>
-          </article>
-
-          <article class="about-timeline-item">
-            <p class="about-timeline-period">Lumosity, 6 years</p>
-            <p class="about-timeline-title">Designed and launched three products still active today</p>
-          </article>
-
-          <article class="about-timeline-item">
-            <p class="about-timeline-period">Last 10 years</p>
-            <p class="about-timeline-title">Client-side product design as a full-time employee</p>
-          </article>
+      <div class="about-banners" aria-hidden="true">
+        <div class="about-marquee about-marquee-left">
+          <div class="about-marquee-track">
+            <span class="about-marquee-item">METHOD</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">COLLABORATION</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">CURIOSITY</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">CRAFT</span>
+          </div>
+          <div class="about-marquee-track">
+            <span class="about-marquee-item">METHOD</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">COLLABORATION</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">CURIOSITY</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">CRAFT</span>
+          </div>
         </div>
 
-        <div class="about-companies">
-          <p class="about-companies-label">Notable companies</p>
-          <p class="about-companies-list">Beats by Dre · Apple · Taschen · Playboy · Lumosity · PostPilot · Originate</p>
+        <div class="about-marquee about-marquee-right">
+          <div class="about-marquee-track">
+            <span class="about-marquee-item">10+ YEARS</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">BRAND</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">UX/UI</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">PRODUCT</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">MARKETING</span>
+          </div>
+          <div class="about-marquee-track">
+            <span class="about-marquee-item">10+ YEARS</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">BRAND</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">UX/UI</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">PRODUCT</span>
+            <span class="about-marquee-divider"></span>
+            <span class="about-marquee-item">MARKETING</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="contact" class="content-section section-tone-light">
-    <div class="section-container">
-      <h2 class="work-heading">Get in touch</h2>
+      <div class="about-credentials-grid" aria-label="Selected clients logo placeholders">
+        <div class="about-credential-cell"></div>
+        <div class="about-credential-cell"></div>
+        <div class="about-credential-cell"></div>
+        <div class="about-credential-cell"></div>
+        <div class="about-credential-cell"></div>
+        <div class="about-credential-cell"></div>
+      </div>
+
+      <div class="about-endorsements-grid">
+        <article class="about-endorsement-card" data-animate="fade-up">
+          <p class="about-endorsement-quote">He demonstrates the ability to work well with engineering to adapt to technical constraints or limitations while meeting the demands of the end user by creating easy-to-use, beautiful, and accessible interfaces.</p>
+          <div class="about-endorsement-meta">
+            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <p class="about-endorsement-name">JOSHUA ESCRIBANO-FONTANET</p>
+            <p class="about-endorsement-role">Software Engineer, Included Health</p>
+          </div>
+        </article>
+
+        <article class="about-endorsement-card" data-animate="fade-up">
+          <p class="about-endorsement-quote">He brought strategic thinking while providing creative inputs and insightful recommendations at the different design stages.</p>
+          <div class="about-endorsement-meta">
+            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <p class="about-endorsement-name">ELI SHILLOCK</p>
+            <p class="about-endorsement-role">Judge @ FWA</p>
+          </div>
+        </article>
+
+        <article class="about-endorsement-card" data-animate="fade-up">
+          <p class="about-endorsement-quote">It&rsquo;s rare to come across a designer as talented and versatile as Francesco. Francesco not only has an incredible eye for design but also deeply understands the nuances of engineering component libraries and frameworks</p>
+          <div class="about-endorsement-meta">
+            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <p class="about-endorsement-name">HARSH MEHTA</p>
+            <p class="about-endorsement-role">Software Engineer, Lumosity</p>
+          </div>
+        </article>
+
+        <article class="about-endorsement-card" data-animate="fade-up">
+          <p class="about-endorsement-quote">Francesco combines deep expertise and dedication to his craft with a rare ability to think holistically.</p>
+          <div class="about-endorsement-meta">
+            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <p class="about-endorsement-name">NICK RUZHNIKOV</p>
+            <p class="about-endorsement-role">Co-Founder, Head of Design, Eldera AI</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <footer id="footer" class="site-footer">
-    <div class="site-footer-inner">
-      <p class="work-section-heading site-footer-outtro">Let’s work together on something new.</p>
+    <div class="site-footer-landscape" aria-hidden="true">
+      <div class="site-footer-mountains">
+        <img class="site-footer-mountain site-footer-mountain-back" src="assets/images/background-mtn.svg" alt="">
+        <img class="site-footer-mountain site-footer-mountain-front" src="assets/images/foreground-mtn.svg" alt="">
+      </div>
+    </div>
+    <img class="site-footer-hawk" src="assets/images/accipter-A.png" alt="" aria-hidden="true">
+    <div class="site-footer-inner section-container">
+      <p class="site-footer-outro">Let&rsquo;s work together on something new!</p>
       <div class="site-footer-bar">
         <img class="site-footer-logo" src="assets/logos/kraftmouth.svg" alt="" width="58" height="80" aria-hidden="true">
         <div class="site-footer-meta">
-          <span class="site-footer-meta-item">© 2026 Francesco Belvedere</span>
+          <span class="site-footer-meta-item">&copy; 2026 Francesco Belvedere</span>
           <span class="site-footer-dot" aria-hidden="true"></span>
           <a class="site-footer-meta-item site-footer-meta-link" href="mailto:info@francescobelvedere.com">info@francescobelvedere.com</a>
           <span class="site-footer-dot" aria-hidden="true"></span>
@@ -198,5 +252,24 @@
   <button class="back-to-top" type="button" aria-label="Back to top">
     <img class="back-to-top-icon" src="assets/icons/cta-arrow.svg" alt="" aria-hidden="true">
   </button>
+
+  <div id="contact-overlay" class="contact-overlay" hidden>
+    <div class="contact-overlay-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-overlay-title">
+      <button class="contact-overlay-close" type="button" aria-label="Close contact form">✕</button>
+      <h2 id="contact-overlay-title" class="contact-overlay-title">Contact</h2>
+      <form class="contact-overlay-form">
+        <label class="contact-overlay-label" for="contact-name">Name</label>
+        <input class="contact-overlay-input" id="contact-name" name="name" type="text">
+
+        <label class="contact-overlay-label" for="contact-email">Email</label>
+        <input class="contact-overlay-input" id="contact-email" name="email" type="email">
+
+        <label class="contact-overlay-label" for="contact-message">Message</label>
+        <textarea class="contact-overlay-textarea" id="contact-message" name="message" rows="6"></textarea>
+
+        <button class="contact-overlay-send" type="button">Send</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
