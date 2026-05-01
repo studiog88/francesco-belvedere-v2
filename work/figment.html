@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Draft case study copy + FPO tiles for layout preview; replace when final. -->
+  <title>Figment</title>
+  <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../css/tokens/primitives.css">
+  <link rel="stylesheet" href="../css/tokens/responsive.css">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/sections/project-detail.css">
+  <script src="../js/project-detail-nav.js" defer></script>
+</head>
+<body class="site project-detail-page project-figment" data-project-slug="figment">
+  <header class="project-detail-top-nav">
+    <div class="project-detail-shell project-detail-shell-wide">
+      <nav class="project-detail-top-nav-inner" aria-label="Project navigation">
+        <a class="project-detail-back-link" href="../index.html#work">
+          <img class="project-detail-back-link-icon" src="../assets/icons/cta-arrow-left.svg" alt="" aria-hidden="true">
+          <span>Back to work</span>
+        </a>
+        <a class="project-detail-nameplate" href="../index.html" aria-label="Home">FRANCESCO BELVEDERE</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- FEATURE MEDIA: full-bleed hero area. Replace placeholder with project hero image/video. -->
+    <section class="project-feature-media" aria-label="Figment feature image">
+      <div class="project-feature-media-placeholder is-wide">
+        <img src="../assets/images/project-tile-FPO-01.png" alt="">
+      </div>
+    </section>  
+
+    <!-- PROJECT HEADER: category, title, short summary, optional external link pill. -->
+    <section class="project-detail-shell project-detail-shell-wide project-header" aria-labelledby="project-title">
+      <p class="project-category-tag">Product Design</p>
+      <h1 id="project-title" class="project-title">Unlocking the creative spark in each of us.</h1>
+      <p class="project-summary">
+        Figment is a daily creativity app that helps people build an expressive habit through short exercises in drawing, music, poetry, and more.
+      </p>
+      <!-- OPTIONAL: set href="#" (or empty) to hide via .hide-if-empty -->
+      <a class="project-external-link hide-if-empty" href="#" target="_blank" rel="noopener noreferrer">Visit live project</a>
+    </section>
+
+    <!-- QUICK STATS: remove any stat by emptying text or setting data-empty="true". -->
+    <section class="project-detail-shell project-detail-shell-wide project-stats" aria-label="Project quick stats">
+      <h2 class="visually-hidden">Quick stats</h2>
+      <dl class="project-stats-grid">
+        <div class="project-stat-item hide-if-empty">
+          <dt>Timeframe</dt>
+          <dd>12 weeks (concept → hi-fi)</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Role</dt>
+          <dd>Lead Product Designer</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Platform</dt>
+          <dd>Web + iOS</dd>
+        </div>
+        <div class="project-stat-item hide-if-empty">
+          <dt>Team</dt>
+          <dd>Design, PM, Engineering</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 01 BRIEF -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="challenge-heading">
+      <p class="project-section-label">01 — THE BRIEF</p>
+      <h2 id="challenge-heading" class="project-content-heading">A new product bet for Lumosity</h2>
+      <p class="project-content-body">
+        Lumosity wanted to test whether their brain-training audience would engage with creative tools. Figment was the answer — an end-to-end MVP designed and shipped in about five months. I first joined the brand team to help with naming and visual identity, then moved to the product team to lead the UX and UI.
+      </p>
+    </section>
+
+    <!-- SUPPORTING MEDIA ROW: 2-column by default on tablet/desktop -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Supporting visuals">
+      <div class="project-image-slot is-tall" role="presentation">
+        <img src="../assets/images/project-tile-FPO-02.png" alt="">
+      </div>
+      <div class="project-image-slot" role="presentation">
+        <img src="../assets/images/project-tile-FPO-03.png" alt="">
+      </div>
+    </section>
+
+    <!-- 02 THE CHALLENGE -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="process-heading">
+      <p class="project-section-label">02 — THE CHALLENGE</p>
+      <h2 id="process-heading" class="project-content-heading">Twelve activity types. One coherent experience.</h2>
+      <p class="project-content-body">
+        Each exercise — drawing, music composition, poetry, collage, tangrams, and more — had different goals and required different inputs and constraints without being cluttered and over-instructed. My job was to condense the experience for each exercise into something that felt inviting and attainable in under five minutes, while keeping the whole app feeling like a single product.
+      </p>
+    </section>
+
+    <!-- FULL-WIDTH MEDIA ROW -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-full" aria-label="Full-width visual">
+      <div class="project-image-slot project-image-slot-full is-wide" role="presentation">
+        <img src="../assets/images/project-tile-FPO-01.png" alt="">
+      </div>
+    </section>
+
+    <!-- 03 THE APPROACH -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="solution-heading">
+      <p class="project-section-label">03 — THE APPROACH</p>
+      <h2 id="solution-heading" class="project-content-heading">One shared frame with unique individual canvases.</h2>
+      <p class="project-content-body">
+        I designed a consistent structural shell — navigation, entry/exit points, design system with UI patterns and components — and let each exercise own the creative space inside it. Users move between activities without ever feeling lost. The entire app was built entirely in Unity, which freed the UI from native constraints and let the interface itself feel more expressive of the brand.
+      </p>
+    </section>
+
+    <!-- MEDIA ROW -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Closing visuals">
+      <div class="project-image-slot" role="presentation">
+        <img src="../assets/images/accipter-A.png" alt="">
+      </div>
+      <div class="project-image-slot is-wide" role="presentation">
+        <img src="../assets/images/project-tile-FPO-02.png" alt="">
+      </div>
+    </section>
+
+    <!-- 04 placeholder (mirror 03 structure — swap in final label, heading, body) -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="figment-s04-heading">
+      <p class="project-section-label">04 — BRAND & DESIGN SYSTEM</p>
+      <h2 id="figment-s04-heading" class="project-content-heading">A visual identity that lives inside the product</h2>
+      <p class="project-content-body">Previous to the UI work and before transitioning to the product role, I was part of the brand team that created Figment's name, logo, and visual identity. It was imperative that the visual continuity showed through in the UI. I pushed to expresses the brand through color, typography, illustration, and motion, not just as a skin on top of components, but throughout the entire app and the way it interacted with the user.
+      </p>
+    </section>
+    <!-- MEDIA: single full-width gray tile (no image) -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-full" aria-label="Placeholder visual row 04">
+      <div class="project-image-slot project-image-slot-full is-wide" role="presentation"></div>
+    </section>
+
+    <!-- 05 placeholder -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="figment-s05-heading">
+      <p class="project-section-label">05 — THE DETAILS</p>
+      <h2 id="figment-s05-heading" class="project-content-heading">Daily themes, community, dark mode</h2>
+      <p class="project-content-body">A daily-theme system gave users a reason to come back without the paradox of choice. A community gallery let people share creations anonymously and see how others interpreted the same prompt. Light and dark modes offered different emotional registers for different moments.
+      </p>
+    </section>
+    <!-- MEDIA: two-up, tall slot + landscape (matches early brief row pattern) -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Placeholder visual row 05">
+      <div class="project-image-slot is-tall" role="presentation">
+        <img src="../assets/images/project-tile-FPO-03.png" alt="">
+      </div>
+      <div class="project-image-slot" role="presentation">
+        <img src="../assets/images/accipter-A.png" alt="">
+      </div>
+    </section>
+
+    <!-- 06 placeholder -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="figment-s06-heading">
+      <p class="project-section-label">06 — COMPONENT DETAILS</p>
+      <h2 id="figment-s06-heading" class="project-content-heading">UI components and interaction patterns</h2>
+      <p class="project-content-body">
+      </p>
+    </section>
+    <!-- MEDIA: single full-width image -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-full" aria-label="Placeholder visual row 06">
+      <div class="project-image-slot project-image-slot-full is-wide" role="presentation">
+        <img src="../assets/images/project-tile-FPO-02.png" alt="">
+      </div>
+    </section>
+
+    <!-- 07 placeholder -->
+    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="figment-s07-heading">
+      <p class="project-section-label">07 — OUTCOME</p>
+      <h2 id="figment-s07-heading" class="project-content-heading">You can still find it in the App Store</h2>
+      <p class="project-content-body">Figment launched to five-star reviews from users who called it the first app of its kind. It remains available in the App Store years after release. A shift in company priorities eventually moved focus back to Lumosity's core product, but the work endures — and it was the first project at Lumosity where I carried a product from brand identity through to shipped UI on a single arc.
+      </p>
+    </section>
+    <!-- MEDIA: two-up, equal slots (both default height) -->
+    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Placeholder visual row 07">
+      <div class="project-image-slot" role="presentation">
+        <img src="../assets/images/project-tile-FPO-01.png" alt="">
+      </div>
+      <div class="project-image-slot" role="presentation">
+        <img src="../assets/images/project-tile-FPO-03.png" alt="">
+      </div>
+    </section>
+
+    <!-- Prev/Next: order + wrap-around is set in js/project-detail-nav.js (ORDER array). -->
+    <section class="project-detail-shell project-detail-shell-wide project-prev-next" aria-label="Adjacent projects">
+      <a class="project-nav-pill project-nav-pill-prev" href="#" data-project-nav-prev>
+        <img class="project-nav-pill-icon" src="../assets/icons/cta-arrow-left.svg" alt="" aria-hidden="true">
+        <span>Previous</span>
+      </a>
+      <a class="project-nav-pill project-nav-pill-next" href="#" data-project-nav-next>
+        <span>Next</span>
+        <img class="project-nav-pill-icon" src="../assets/icons/cta-arrow-right.svg" alt="" aria-hidden="true">
+      </a>
+    </section>
+  </main>
+
+  <footer class="project-detail-copyright" aria-label="Site copyright">
+    <div class="project-detail-shell project-detail-shell-wide project-detail-copyright-bar">
+      <div class="project-detail-copyright-meta">
+        <span class="project-detail-copyright-item">&copy; 2026 Francesco Belvedere</span>
+        <span class="project-detail-copyright-dot" aria-hidden="true"></span>
+        <a class="project-detail-copyright-item project-detail-copyright-link" href="mailto:info@francescobelvedere.com">info@francescobelvedere.com</a>
+        <span class="project-detail-copyright-dot" aria-hidden="true"></span>
+        <span class="project-detail-copyright-item">A Studio Gestalt | 8pxgrid Production</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
