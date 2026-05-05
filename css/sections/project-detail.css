@@ -95,6 +95,8 @@
   text-transform: uppercase;
   color: var(--Lime-500);
   text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .project-detail-nameplate:focus-visible {

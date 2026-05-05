@@ -4,10 +4,10 @@
  */
 (function () {
   const PROJECT_NAV_ORDER = [
-    "project-template.html",
-    // Example when you add pages (keep one shared list updated everywhere):
-    // "figment.html",
-    // "icons.html",
+    "lumosity.html",
+    "figment.html",
+    "lumosity-system-icons.html",
+    "radius.html",
   ];
 
   const prevAnchor = document.querySelector("[data-project-nav-prev]");
@@ -32,6 +32,14 @@
   }
 
   const n = PROJECT_NAV_ORDER.length;
+
+  if (n === 1) {
+    const onlyHref = `./${PROJECT_NAV_ORDER[0]}`;
+    prevAnchor.setAttribute("href", onlyHref);
+    nextAnchor.setAttribute("href", onlyHref);
+    return;
+  }
+
   const prevHref = `./${PROJECT_NAV_ORDER[(idx - 1 + n) % n]}`;
   const nextHref = `./${PROJECT_NAV_ORDER[(idx + 1) % n]}`;
 

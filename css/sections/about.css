@@ -57,6 +57,12 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--Font-Body-Paragraph-L-text-size);
   line-height: var(--Font-Body-Paragraph-L-line-height);
+  transition: background-color 180ms ease;
+}
+
+.about-pill-link:hover,
+.about-pill-link:focus-visible {
+  background-color: var(--Cool-Grey-50);
 }
 
 .about-photo-frame {
@@ -113,8 +119,8 @@
   display: block;
   width: var(--Scale-1000);
   height: var(--Scale-1000);
-  border-radius: var(--Scale-50);
-  background-color: var(--Rosso-Dino-300);
+  border-radius: var(--Scale-1000);
+  background-color: #ff00ff4a;
   opacity: 0.7;
   flex-shrink: 0;
 }
@@ -155,7 +161,7 @@
 .about-credential-cell {
   height: var(--Scale-1500);
   border-radius: var(--Scale-100);
-  background-color: var(--Rosso-Dino-300);
+  background-color: #ff00ff4a;
   opacity: 0.7;
 }
 
@@ -198,8 +204,8 @@
 .about-endorsement-logo {
   width: var(--Scale-600);
   height: var(--Scale-600);
-  border-radius: var(--Scale-50);
-  background-color: var(--Rosso-Dino-300);
+  border-radius: var(--Scale-1000);
+  background-color: #ff00ff4a;
   opacity: 0.7;
 }
 

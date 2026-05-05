@@ -17,6 +17,7 @@
   <script src="js/main.js" defer></script>
 </head>
 <body class="site">
+  <!-- Hero section -->
   <h1 class="visually-hidden">FRANCESCO BELVEDERE</h1>
   <img class="hero-wordmark" src="assets/logos/wordmark.svg" alt="Francesco Belvedere">
 
@@ -37,75 +38,79 @@
 
   <div id="work">
     <div class="section-container">
+      <!-- Selected Projects section -->
       <section class="work-section-block" aria-labelledby="selected-projects-heading">
         <h2 id="selected-projects-heading" class="work-section-heading">Selected Projects</h2>
         <div class="work-grid">
-          <article class="work-card work-card-large">
+          <a class="work-card work-card-large" href="work/lumosity.html" aria-label="View Lumosity project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-01.png" alt="Figment project preview">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-01.png" alt="Lumosity project preview">
+            </div>
+            <div class="work-card-text">
+              <h3 class="work-card-title">Lumosity</h3>
+              <p class="work-card-description">Spearheading the Xp overhaul for the world’s premier cognitive brain game platform</p>
+            </div>
+          </a>
+
+          <a class="work-card work-card-large" href="work/figment.html" aria-label="View Figment project page">
+            <div class="work-card-media">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-03.png" alt="Figment project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">Figment</h3>
               <p class="work-card-description">Unlocking the creative spark in each of us</p>
             </div>
-          </article>
+          </a>
 
-          <article class="work-card work-card-large">
+          <a class="work-card work-card-large" href="work/lumosity-system-icons.html" aria-label="View Lumosity System Icons project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-02.png" alt="Icons project preview">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-04.png" alt="Icons project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">Icons</h3>
               <p class="work-card-description">Crafting a custom icon language for a global brand</p>
             </div>
-          </article>
+          </a>
 
-          <article class="work-card work-card-large">
+          <a class="work-card work-card-large" href="work/radius.html" aria-label="View Radius project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-03.png" alt="Lumosity project preview">
-            </div>
-            <div class="work-card-text">
-              <h3 class="work-card-title">Lumosity</h3>
-              <p class="work-card-description">Spearheading the UI for a premier brain game platform</p>
-            </div>
-          </article>
-
-          <article class="work-card work-card-large">
-            <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/images/accipter-A.png" alt="Radius project preview">
+              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-02.png" alt="Radius project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">Radius</h3>
-              <p class="work-card-description">Providing tools for environmental researchers</p>
+              <p class="work-card-description">Providing tools for environmental researchers out in the field</p>
             </div>
-          </article>
+          </a>
         </div>
       </section>
 
+      <!-- Experimental Builds section -->
       <section class="work-section-block" aria-labelledby="experimental-builds-heading">
         <h2 id="experimental-builds-heading" class="work-section-heading">Experimental Builds</h2>
         <!-- Replace href values with each live experiment URL. -->
         <div class="playground-row">
+          <!-- Image placeholders: curated assets TBD -->
           <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 01">
-            <img class="playground-card-image" src="assets/images/project-tile-FPO-01.png" alt="">
+            <div class="playground-card-image" aria-hidden="true"></div>
           </a>
           <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 02">
-            <img class="playground-card-image" src="assets/images/project-tile-FPO-02.png" alt="">
+            <div class="playground-card-image" aria-hidden="true"></div>
           </a>
           <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 03">
-            <img class="playground-card-image" src="assets/images/project-tile-FPO-03.png" alt="">
+            <div class="playground-card-image" aria-hidden="true"></div>
           </a>
           <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 04">
-            <img class="playground-card-image" src="assets/images/owl-A.png" alt="">
+            <div class="playground-card-image" aria-hidden="true"></div>
           </a>
           <a class="playground-card" href="https://example.com" target="_blank" rel="noopener noreferrer" aria-label="Experimental build 05">
-            <img class="playground-card-image" src="assets/images/accipter-A.png" alt="">
+            <div class="playground-card-image" aria-hidden="true"></div>
           </a>
         </div>
       </section>
     </div>
   </div>
 
+  <!-- About section -->
   <section id="about" class="about-section content-section section-tone-light" aria-labelledby="about-heading">
     <div class="section-container about-container">
       <h2 id="about-heading" class="visually-hidden">About</h2>
@@ -183,6 +188,7 @@
         <div class="about-credential-cell"></div>
       </div>
 
+      <!-- Testimonials -->
       <div class="about-endorsements-grid">
         <article class="about-endorsement-card" data-animate="fade-up">
           <p class="about-endorsement-quote">He demonstrates the ability to work well with engineering to adapt to technical constraints or limitations while meeting the demands of the end user by creating easy-to-use, beautiful, and accessible interfaces.</p>
@@ -223,6 +229,7 @@
     </div>
   </section>
 
+  <!-- Footer section -->
   <footer id="footer" class="site-footer">
     <div class="site-footer-landscape" aria-hidden="true">
       <div class="site-footer-mountains">
