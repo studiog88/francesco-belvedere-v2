@@ -15,6 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/main.js" defer></script>
+  <script src="js/about-marquee.js" defer></script>
 </head>
 <body class="site">
   <!-- Hero section -->
@@ -132,60 +133,76 @@
       </div>
 
       <div class="about-banners" aria-hidden="true">
-        <div class="about-marquee about-marquee-left">
-          <div class="about-marquee-track">
-            <span class="about-marquee-item">METHOD</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">COLLABORATION</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">CURIOSITY</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">CRAFT</span>
-          </div>
-          <div class="about-marquee-track">
-            <span class="about-marquee-item">METHOD</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">COLLABORATION</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">CURIOSITY</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">CRAFT</span>
+        <!-- One .about-marquee-period per row; js/about-marquee.js clones it for seamless scroll. -->
+        <div
+          class="about-marquee about-marquee-left"
+          data-about-marquee
+          data-marquee-direction="left"
+          data-marquee-duration="100"
+        >
+          <div class="about-marquee-track" data-marquee-track>
+            <div class="about-marquee-period" data-marquee-period>
+              <span class="about-marquee-item">Method</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Collaboration</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Curiosity</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Craft</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+            </div>
           </div>
         </div>
 
-        <div class="about-marquee about-marquee-right">
-          <div class="about-marquee-track">
-            <span class="about-marquee-item">10+ YEARS</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">BRAND</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">UX/UI</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">PRODUCT</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">MARKETING</span>
-          </div>
-          <div class="about-marquee-track">
-            <span class="about-marquee-item">10+ YEARS</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">BRAND</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">UX/UI</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">PRODUCT</span>
-            <span class="about-marquee-divider"></span>
-            <span class="about-marquee-item">MARKETING</span>
+        <div
+          class="about-marquee about-marquee-right"
+          data-about-marquee
+          data-marquee-direction="right"
+          data-marquee-duration="100"
+        >
+          <div class="about-marquee-track" data-marquee-track>
+            <div class="about-marquee-period" data-marquee-period>
+              <span class="about-marquee-item">15+ Years Exp.</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Brand Design</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">UX/UI</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Product Design</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+              <span class="about-marquee-item">Marketing</span>
+              <span class="about-marquee-divider"><svg class="about-marquee-icon" viewBox="0 0 40 40" role="presentation" focusable="false"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="about-credentials-grid" aria-label="Selected clients logo placeholders">
-        <div class="about-credential-cell"></div>
-        <div class="about-credential-cell"></div>
-        <div class="about-credential-cell"></div>
-        <div class="about-credential-cell"></div>
-        <div class="about-credential-cell"></div>
-        <div class="about-credential-cell"></div>
+      <div class="about-credentials-grid" aria-label="Selected clients">
+        <div class="about-credentials-row about-credentials-row--top">
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/lumosity-logo.svg" alt="Lumosity">
+          </div>
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/taschen-logo.svg" alt="Taschen">
+          </div>
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/apple-logo.svg" alt="Apple">
+          </div>
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/originate-logo.svg" alt="Originate">
+          </div>
+        </div>
+        <div class="about-credentials-row about-credentials-row--bottom">
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/post-pilot-logo.svg" alt="PostPilot">
+          </div>
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/beats-logo.svg" alt="Beats">
+          </div>
+          <div class="about-credential-cell">
+            <img class="about-credential-logo" src="assets/logos/playboy-logo.svg" alt="Playboy">
+          </div>
+        </div>
       </div>
 
       <!-- Testimonials -->
