@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero title, metadata tags, intro lede (section.project-intro), then each label + h2 + body triplet.
+       2) Replace placeholder copy: hero title, metadata tags, intro lede, first story row (section.project-story-split), then each label + h2 + body triplet.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
-       4) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
-       5) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
-       6) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
+       4) First story: swap .project-story-media-inner for <img> when art exists.
+       5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
+       6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
+       7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
   <title>Lumosity System Icons</title>
   <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../css/tokens/primitives.css">
@@ -64,11 +65,18 @@
     </section>
 
     <!-- SECTION 01 -->
-    <p class="project-section-label">01 - PROBLEM</p>
-    <h2 id="challenge-heading" class="project-content-heading">Why borrowed icons stop working</h2>
-    <p class="project-content-body">
-      Every time the design team needed an icon, we reached for whatever set was closest. The result was a product UI assembled from mismatched visual vocabularies. Metaphors were duplicated and styles drifted and, ultimately, nothing felt like it belonged to the same system. The fix was not finding a better third-party set that had all of the required metaphors of the application, but to build one ourselves.
-    </p>
+    <section class="project-story-split project-story-split--media-right" aria-labelledby="challenge-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">01 - PROBLEM</p>
+        <h2 id="challenge-heading" class="project-content-heading">Why borrowed icons stop working</h2>
+        <p class="project-content-body">
+          Every time the design team needed an icon, we reached for whatever set was closest. The result was a product UI assembled from mismatched visual vocabularies. Metaphors were duplicated and styles drifted and, ultimately, nothing felt like it belonged to the same system. The fix was not finding a better third-party set that had all of the required metaphors of the application, but to build one ourselves.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
     <!-- SECTION 02 -->
     <p class="project-section-label">02 - AUDIT</p>

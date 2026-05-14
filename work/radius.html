@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero title, metadata tags, intro lede (section.project-intro), then each label + h2 + body triplet.
+       2) Replace placeholder copy: hero title, metadata tags, intro lede, first story row (section.project-story-split), then each label + h2 + body triplet.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
-       4) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
-       5) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
-       6) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
+       4) First story: swap .project-story-media-inner for <img> when art exists.
+       5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
+       6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
+       7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
   <title>Radius</title>
   <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../css/tokens/primitives.css">
@@ -64,11 +65,18 @@
     </section>
 
     <!-- 01 CHALLENGE -->
-    <p class="project-section-label">01 - CHALLENGE</p>
-    <h2 id="challenge-heading" class="project-content-heading">Define the problem and align stakeholders</h2>
-    <p class="project-content-body">
-      Placeholder text for the challenge section. Describe constraints, competing priorities, and the opportunity this project addressed.
-    </p>
+    <section class="project-story-split project-story-split--media-right" aria-labelledby="challenge-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">01 - CHALLENGE</p>
+        <h2 id="challenge-heading" class="project-content-heading">Define the problem and align stakeholders</h2>
+        <p class="project-content-body">
+          Placeholder text for the challenge section. Describe constraints, competing priorities, and the opportunity this project addressed.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
     <!-- 02 PROCESS -->
     <p class="project-section-label">02 - PROCESS</p>

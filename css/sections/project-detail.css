@@ -317,6 +317,47 @@
   line-height: var(--Font-Body-Paragraph-L-line-height);
 }
 
+/*
+ * Story split: text + media on one row (full viewport width like the hero).
+ * --media-right: copy on the left with page gutter; image fills the right half to the viewport edge.
+ * (Reserved hook: a --media-left variant can reverse column order later.)
+ */
+.project-story-split {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  column-gap: var(--Scale-600);
+  margin-bottom: var(--Scale-1700);
+}
+
+.project-story-text {
+  box-sizing: border-box;
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-400);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-600);
+}
+
+.project-story-media {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Solid placeholder; swap for <img> inside this wrapper when you have art */
+.project-story-media-inner {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 28rem;
+  background-color: var(--Warm-Grey-100);
+}
+
 .project-prev-next {
   display: flex;
   align-items: center;
@@ -475,6 +516,20 @@
     padding-right: var(--Scale-500);
   }
 
+  .project-story-split {
+    grid-template-columns: 1fr;
+    row-gap: var(--Scale-700);
+  }
+
+  .project-story-text {
+    padding-left: var(--Scale-500);
+    padding-right: var(--Scale-500);
+  }
+
+  .project-story-media-inner {
+    min-height: 18rem;
+  }
+
   .project-hero-title {
     font-size: var(--Font-Headings-H3-text-size);
     line-height: var(--Font-Headings-H3-line-height);
@@ -525,6 +580,11 @@
   }
 
   .project-intro {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
+  }
+
+  .project-story-text {
     padding-left: var(--Scale-400);
     padding-right: var(--Scale-400);
   }
