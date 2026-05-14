@@ -3,6 +3,16 @@
   color: var(--Foundation-Black);
   /* Sticky top bar height — used for hero min-height math (nav + hero ≈ first viewport) */
   --project-detail-nav-height: 72px;
+  /*
+   * Inner grid: primary text inset from the viewport (Figma ~208px at 1728px wide).
+   * Fluid with vw, floored at page gutter, capped at 208px (5.2 × 40px gutter token).
+   * Overridden at tablet/phone breakpoints to match tighter shells.
+   */
+  --project-inner-text-inset: clamp(
+    var(--Scale-1000),
+    12.037vw,
+    calc(var(--Scale-1000) * 5.2)
+  );
 }
 
 .project-detail-shell {
@@ -265,13 +275,15 @@
 }
 
 /*
- * Intro lede (Figma): 40px gutters; padding-top is the sole gap from hero/metadata
- * bottom to lede (do not add extra margin on .project-hero or the gap doubles).
+ * Intro lede: horizontal edges use inner grid inset; padding-top is the sole gap under hero metadata.
  */
 .project-intro {
   box-sizing: border-box;
   width: 100%;
-  padding: var(--Scale-1000);
+  padding-top: var(--Scale-1000);
+  padding-bottom: var(--Scale-1000);
+  padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
   /* Space before first story block (Figma main stack gap ~120px) */
   margin-bottom: var(--Scale-1700);
 }
@@ -320,8 +332,9 @@
 /*
  * Story split: text + media on one row (full viewport width like the hero).
  * Desktop: each row is at least one viewport tall (100dvh); text column is vertically centered.
- * --media-right: copy on the left with page gutter; media fills the right half to the viewport edge.
- * (Reserved hook: a --media-left variant can reverse column order later.)
+ * Text column uses --project-inner-text-inset on the starting edge; opposite edge stays flush
+ * to the media column (grid column-gap only). For a future image-left variant, mirror padding
+ * on the right instead of the left.
  */
 .project-story-split {
   width: 100vw;
@@ -337,8 +350,8 @@
 
 .project-story-text {
   box-sizing: border-box;
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-400);
+  padding-left: var(--project-inner-text-inset);
+  padding-right: 0;
   min-width: 0;
   min-height: 0;
   display: flex;
@@ -504,6 +517,10 @@
 }
 
 @media (max-width: 810px) {
+  .project-detail-page {
+    --project-inner-text-inset: var(--Scale-500);
+  }
+
   .project-detail-shell {
     padding-left: var(--Scale-500);
     padding-right: var(--Scale-500);
@@ -532,11 +549,6 @@
     right: var(--Scale-500);
   }
 
-  .project-intro {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
-  }
-
   .project-story-split {
     grid-template-columns: 1fr;
     row-gap: var(--Scale-700);
@@ -544,8 +556,7 @@
   }
 
   .project-story-text {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
+    padding-right: var(--project-inner-text-inset);
     justify-content: flex-start;
   }
 
@@ -577,6 +588,7 @@
 @media (max-width: 390px) {
   .project-detail-page {
     --project-detail-nav-height: 64px;
+    --project-inner-text-inset: var(--Scale-400);
   }
 
   .project-detail-shell {
@@ -601,16 +613,6 @@
   .project-hero-metadata::after {
     left: var(--Scale-400);
     right: var(--Scale-400);
-  }
-
-  .project-intro {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
-  }
-
-  .project-story-text {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
   }
 
   .project-hero-title {
