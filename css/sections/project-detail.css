@@ -319,7 +319,8 @@
 
 /*
  * Story split: text + media on one row (full viewport width like the hero).
- * --media-right: copy on the left with page gutter; image fills the right half to the viewport edge.
+ * Desktop: each row is at least one viewport tall (100dvh); text column is vertically centered.
+ * --media-right: copy on the left with page gutter; media fills the right half to the viewport edge.
  * (Reserved hook: a --media-left variant can reverse column order later.)
  */
 .project-story-split {
@@ -329,7 +330,7 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: start;
+  align-items: stretch;
   column-gap: var(--Scale-600);
   margin-bottom: var(--Scale-1700);
 }
@@ -339,23 +340,43 @@
   padding-left: var(--Scale-1000);
   padding-right: var(--Scale-400);
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: var(--Scale-600);
 }
 
 .project-story-media {
   box-sizing: border-box;
   min-width: 0;
+  min-height: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Solid placeholder; swap for <img> inside this wrapper when you have art */
 .project-story-media-inner {
   box-sizing: border-box;
+  flex: 1 1 auto;
   width: 100%;
-  min-height: 28rem;
+  min-height: 0;
   background-color: var(--Warm-Grey-100);
+}
+
+/* One full viewport for each split row; text block vertically centered in the left column */
+@media (min-width: 811px) {
+  .project-story-split {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .project-story-text {
+    justify-content: center;
+    /* Long copy can scroll instead of clipping when taller than the viewport */
+    overflow-y: auto;
+  }
 }
 
 .project-prev-next {
@@ -519,14 +540,17 @@
   .project-story-split {
     grid-template-columns: 1fr;
     row-gap: var(--Scale-700);
+    min-height: 0;
   }
 
   .project-story-text {
     padding-left: var(--Scale-500);
     padding-right: var(--Scale-500);
+    justify-content: flex-start;
   }
 
   .project-story-media-inner {
+    flex: none;
     min-height: 18rem;
   }
 
