@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero title, metadata tags, intro lede, first story row (section.project-story-split), then remaining label + h2 + body triplets.
+       2) Replace placeholder copy: hero title, metadata tags, intro lede, story rows (section.project-story-split --media-right / --media-left), then flat triplets if any remain.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
-       4) First story: replace .project-story-media-inner with your image (keep alt meaningful) or keep the grey block as FPO.
-       5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
+       4) Story splits: --media-right = text first in DOM; --media-left = text first too (grid puts media left on desktop). Replace .project-story-media-inner with <img> when ready.
+       5) Extra sections: duplicate pattern or flat label + h2 + body (see work/PROJECT_PAGE_CHECKLIST.md).
        6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
        7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
   <title>Project Detail Template</title>
@@ -81,12 +81,19 @@
       </div>
     </section>
 
-    <!-- 02 PROCESS -->
-    <p class="project-section-label">02 - PROCESS</p>
-    <h2 id="process-heading" class="project-content-heading">Research, iteration, and collaboration</h2>
-    <p class="project-content-body">
-      Placeholder text for process. Summarize the approach, key decisions, and the methods used to move from concept to tested solution.
-    </p>
+    <!-- 02 PROCESS — media left, text right (text first in DOM; see project-detail.css) -->
+    <section class="project-story-split project-story-split--media-left" aria-labelledby="process-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">02 - PROCESS</p>
+        <h2 id="process-heading" class="project-content-heading">Research, iteration, and collaboration</h2>
+        <p class="project-content-body">
+          Placeholder text for process. Summarize the approach, key decisions, and the methods used to move from concept to tested solution.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
     <!-- 03 SOLUTION -->
     <p class="project-section-label">03 - SOLUTION</p>

@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero title, metadata tags, intro lede, first story row (section.project-story-split), then each label + h2 + body triplet.
+       2) Replace placeholder copy: hero title, metadata tags, intro lede, story rows (section.project-story-split --media-right / --media-left), then each label + h2 + body triplet.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
-       4) First story: swap .project-story-media-inner for <img> when art exists.
+       4) Story splits: --media-right = text first; --media-left = text first in DOM, media left on desktop. Swap .project-story-media-inner for <img> when art exists.
        5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
        6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
        7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
@@ -79,11 +79,18 @@
     </section>
 
     <!-- SECTION 02 -->
-    <p class="project-section-label">02 - AUDIT</p>
-    <h2 id="process-heading" class="project-content-heading">Taking stock of what we were actually using</h2>
-    <p class="project-content-body">
-      Before drawing anything, I inventoried every icon in use across the product. The goal was to see what we actually had in use and the requirements of the system: metaphors, duplicates, nouns, verbs, categories. Some icons were redundant, while others were functionally misaligned with what the UI was asking them to do. The audit produced a clear picture: here is what we keep, here is what we cut, here is what is missing.
-    </p>
+    <section class="project-story-split project-story-split--media-left" aria-labelledby="process-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">02 - AUDIT</p>
+        <h2 id="process-heading" class="project-content-heading">Taking stock of what we were actually using</h2>
+        <p class="project-content-body">
+          Before drawing anything, I inventoried every icon in use across the product. The goal was to see what we actually had in use and the requirements of the system: metaphors, duplicates, nouns, verbs, categories. Some icons were redundant, while others were functionally misaligned with what the UI was asking them to do. The audit produced a clear picture: here is what we keep, here is what we cut, here is what is missing.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
     <!-- SECTION 03 -->
     <p class="project-section-label">03 - GRID</p>

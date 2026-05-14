@@ -329,11 +329,11 @@
 }
 
 /*
- * Story split: text + media on one row (full viewport width like the hero).
- * Desktop: each row is at least one viewport tall (100dvh); text column is vertically centered.
- * Text column uses --project-inner-text-inset on the starting edge; opposite edge stays flush
- * to the media column (grid column-gap only). For a future image-left variant, mirror padding
- * on the right instead of the left.
+ * Story split: full-bleed row; 100vh tall on desktop (see min-width query below).
+ * --media-right: text column first in DOM; inner inset on the left; media flush right.
+ * --media-left: same measurements; media is visually left (grid placement), text on the right
+ * with inner inset on the trailing edge. Put .project-story-text first in the DOM for a11y;
+ * grid swaps columns from min-width 811px up.
  */
 .project-story-split {
   width: 100vw;
@@ -349,7 +349,7 @@
 
 .project-story-text {
   box-sizing: border-box;
-  padding-left: var(--project-inner-text-inset);
+  padding-left: 0;
   padding-right: 0;
   min-width: 0;
   min-height: 0;
@@ -357,6 +357,14 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--Scale-600);
+}
+
+.project-story-split--media-right .project-story-text {
+  padding-left: var(--project-inner-text-inset);
+}
+
+.project-story-split--media-left .project-story-text {
+  padding-right: var(--project-inner-text-inset);
 }
 
 .project-story-media {
@@ -377,7 +385,7 @@
   background-color: var(--Warm-Grey-100);
 }
 
-/* One full viewport for each split row; text block vertically centered in the left column */
+/* Desktop: full viewport row; text vertically centered; --media-left swaps columns (text first in DOM) */
 @media (min-width: 811px) {
   .project-story-split {
     min-height: 100vh;
@@ -388,6 +396,16 @@
     justify-content: center;
     /* Long copy can scroll instead of clipping when taller than the viewport */
     overflow-y: auto;
+  }
+
+  .project-story-split--media-left .project-story-media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .project-story-split--media-left .project-story-text {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
 
@@ -559,9 +577,16 @@
     min-height: 0;
   }
 
-  .project-story-text {
+  .project-story-split--media-left .project-story-media,
+  .project-story-split--media-left .project-story-text {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .project-story-split--media-right .project-story-text,
+  .project-story-split--media-left .project-story-text {
+    padding-left: var(--project-inner-text-inset);
     padding-right: var(--project-inner-text-inset);
-    justify-content: flex-start;
   }
 
   .project-story-media-inner {
