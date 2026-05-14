@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero title, metadata tags, intro lede, story rows (section.project-story-split --media-right / --media-left), then each label + h2 + body triplet.
+       2) Replace placeholder copy: hero title, metadata tags, intro lede, story splits, optional story grid (section.project-story-grid), then each label + h2 + body triplet.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
-       4) Story splits: --media-right = text first; --media-left = text first in DOM, media left on desktop. Swap .project-story-media-inner for <img> when art exists.
+       4) Story splits / grid: swap .project-story-media-inner or .project-story-grid-cell-inner for <img> when art exists.
        5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
        6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
        7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
@@ -93,11 +93,21 @@
     </section>
 
     <!-- SECTION 03 -->
-    <p class="project-section-label">03 - GRID</p>
-    <h2 id="solution-heading" class="project-content-heading">A system rooted in the brand</h2>
-    <p class="project-content-body">
-      I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
-    </p>
+    <section class="project-story-grid" aria-labelledby="solution-heading">
+      <div class="project-story-grid-text">
+        <p class="project-section-label">03 - GRID</p>
+        <h2 id="solution-heading" class="project-content-heading">A system rooted in the brand</h2>
+        <p class="project-content-body">
+          I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
+        </p>
+      </div>
+      <div class="project-story-grid-gallery">
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+      </div>
+    </section>
 
     <!-- SECTION 04 -->
     <p class="project-section-label">04 - SET</p>

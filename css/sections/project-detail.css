@@ -287,7 +287,8 @@
   margin-bottom: var(--Scale-1700);
 }
 
-.project-intro-inner {
+.project-intro-inner,
+.project-story-grid-text {
   box-sizing: border-box;
   max-width: 66.666%;
 }
@@ -407,6 +408,64 @@
     grid-column: 2;
     grid-row: 1;
   }
+
+  .project-story-grid {
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: center;
+  }
+}
+
+/*
+ * Story grid: inner-aligned text (same max-width as intro lede) + 4-up gallery with global gutters.
+ */
+.project-story-grid {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Extra space between copy block and gallery (tune later) */
+  gap: var(--Scale-1800);
+  margin-bottom: var(--Scale-1700);
+}
+
+.project-story-grid-text {
+  padding-left: var(--project-inner-text-inset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-600);
+}
+
+.project-story-grid-gallery {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--Scale-600);
+}
+
+.project-story-grid-cell {
+  min-width: 0;
+}
+
+/* 400px = 10 × 40px gutter token; swap inner for <img> when assets exist */
+.project-story-grid-cell-inner {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(var(--Scale-1000) * 10);
+  background-color: var(--Warm-Grey-100);
+  border-radius: var(--Scale-200);
+  overflow: hidden;
+}
+
+.project-story-grid-cell-inner > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
 }
 
 .project-prev-next {
@@ -589,6 +648,26 @@
     padding-right: var(--project-inner-text-inset);
   }
 
+  .project-story-grid {
+    min-height: 0;
+    justify-content: flex-start;
+    gap: var(--Scale-1700);
+  }
+
+  .project-story-grid-text {
+    padding-right: var(--project-inner-text-inset);
+  }
+
+  .project-story-grid-gallery {
+    padding-left: var(--Scale-500);
+    padding-right: var(--Scale-500);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-story-grid-cell-inner {
+    height: calc(var(--Scale-1000) * 5);
+  }
+
   .project-story-media-inner {
     flex: none;
     min-height: 18rem;
@@ -599,7 +678,8 @@
     line-height: var(--Font-Headings-H3-line-height);
   }
 
-  .project-intro-inner {
+  .project-intro-inner,
+  .project-story-grid-text {
     max-width: 100%;
   }
 
@@ -647,6 +727,12 @@
   .project-intro {
     padding-left: var(--Scale-400);
     padding-right: var(--Scale-400);
+  }
+
+  .project-story-grid-gallery {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
+    grid-template-columns: 1fr;
   }
 
   .project-hero-title {
