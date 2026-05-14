@@ -122,7 +122,8 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-bottom: var(--Scale-1300);
+  /* Intro section uses padding-top (--Scale-1000) for the 40px gap under metadata */
+  margin-bottom: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -264,8 +265,8 @@
 }
 
 /*
- * Intro lede (Figma): 40px horizontal padding on the section; large 40px body copy
- * as a <p>; width spans ~8/12 of the padded content row (inner grid).
+ * Intro lede (Figma): 40px gutters; padding-top is the sole gap from hero/metadata
+ * bottom to lede (do not add extra margin on .project-hero or the gap doubles).
  */
 .project-intro {
   box-sizing: border-box;
