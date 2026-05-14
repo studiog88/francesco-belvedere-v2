@@ -4,17 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
-       1) Duplicate this file per project using slug naming:
-          work/<project-slug>.html (examples: work/figment.html, work/icons.html).
-       2) Replace all placeholder copy.
-       3) Replace placeholder media blocks with real images/video.
-       4) Remove .is-empty from filled media.
-       5) Use .is-wide / .is-tall to adjust placeholder proportions quickly.
-       6) For optional fields, keep .hide-if-empty and leave empty to auto-hide.
-       7) Update body hooks to match slug:
-          class="site project-detail-page project-<project-slug>"
-          data-project-slug="<project-slug>"
-       8) Maintain the PROJECT_NAV_ORDER array in ../js/project-detail-nav.js (prev/next wraps). -->
+       1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
+       2) Replace placeholder copy: hero title, metadata tags, intro lede (section.project-intro), then each label + h2 + body triplet.
+       3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
+       4) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
+       5) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
+       6) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
   <title>Lumosity System Icons</title>
   <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../css/tokens/primitives.css">
@@ -39,104 +34,62 @@
   </header>
 
   <main>
-    <!-- FEATURE MEDIA: full-bleed hero area. Replace placeholder with project hero image/video. -->
-    <section class="project-feature-media" aria-label="Feature image placeholder">
-      <!-- Hero height follows first-screen “fold”: swap inner for <img> (object-fit: cover fills frame). -->
-      <div class="project-feature-media-placeholder is-empty is-wide" role="img" aria-label="Feature image placeholder"></div>
+    <section class="project-hero" aria-labelledby="project-title">
+      <div class="project-hero-content">
+        <div class="project-hero-bg" aria-hidden="true"></div>
+        <div class="project-hero-image">
+          <div class="project-hero-image-inner">
+            <img src="../assets/images/owl-A.png" alt="">
+          </div>
+        </div>
+        <div class="project-hero-heading">
+          <h1 id="project-title" class="project-hero-title">Need a heading</h1>
+        </div>
+      </div>
+      <div class="project-hero-metadata" aria-label="Project metadata">
+        <div class="project-hero-tags">
+          <span class="project-hero-tag">Lead Product Designer</span>
+          <span class="project-hero-tag">Q1 2026 - Q2 2026</span>
+          <span class="project-hero-tag">Web + iOS</span>
+        </div>
+      </div>
     </section>
 
-    <!-- PROJECT HEADER: category, title, short summary, optional external link pill. -->
-    <section class="project-detail-shell project-detail-shell-wide project-header" aria-labelledby="project-title">
-      <p class="project-category-tag">Product Design</p>
-      <h1 id="project-title" class="project-title">Need a heading</h1>
-      <p class="project-summary">
-        Lumosity is a brain-training platform with tens of millions of subscribers and a product library spanning over 40 games across web, iOS, and Android. At some point during our initiative to redesign the platform, the design team had to reckon with the fact that no existing icon set was ever going to fit a product this specific.
-      </p>
-      <!-- OPTIONAL: set href="#" (or empty) to hide via .hide-if-empty -->
-      <a class="project-external-link hide-if-empty" href="#" target="_blank" rel="noopener noreferrer">Visit live project</a>
-    </section>
-
-    <!-- QUICK STATS: remove any stat by emptying text or setting data-empty="true". -->
-    <section class="project-detail-shell project-detail-shell-wide project-stats" aria-label="Project quick stats">
-      <h2 class="visually-hidden">Quick stats</h2>
-      <dl class="project-stats-grid">
-        <div class="project-stat-item hide-if-empty">
-          <dt>Timeframe</dt>
-          <dd>Q1 2026 - Q2 2026</dd>
-        </div>
-        <div class="project-stat-item hide-if-empty">
-          <dt>Role</dt>
-          <dd>Lead Product Designer</dd>
-        </div>
-        <div class="project-stat-item hide-if-empty">
-          <dt>Platform</dt>
-          <dd>Web + iOS</dd>
-        </div>
-        <div class="project-stat-item hide-if-empty">
-          <dt>Team</dt>
-          <dd>Design, PM, Engineering</dd>
-        </div>
-      </dl>
+    <section class="project-intro" aria-label="Project overview">
+      <div class="project-intro-inner">
+        <p class="project-intro-lede">
+          Lumosity is a brain-training platform with tens of millions of subscribers and a product library spanning over 40 games across web, iOS, and Android. At some point during our initiative to redesign the platform, the design team had to reckon with the fact that no existing icon set was ever going to fit a product this specific.
+        </p>
+      </div>
     </section>
 
     <!-- SECTION 01 -->
-    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="challenge-heading">
-      <p class="project-section-label">01 - PROBLEM</p>
-      <h2 id="challenge-heading" class="project-content-heading">Why borrowed icons stop working</h2>
-      <p class="project-content-body">
-        Every time the design team needed an icon, we reached for whatever set was closest. The result was a product UI assembled from mismatched visual vocabularies. Metaphors were duplicated and styles drifted and, ultimately, nothing felt like it belonged to the same system. The fix was not finding a better third-party set that had all of the required metaphors of the application, but to build one ourselves.
-      </p>
-    </section>
-
-    <!-- SUPPORTING MEDIA ROW: 2-column by default on tablet/desktop -->
-    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Supporting image placeholders">
-      <div class="project-image-slot is-empty is-tall" role="img" aria-label="Project image placeholder 1"></div>
-      <div class="project-image-slot is-empty" role="img" aria-label="Project image placeholder 2"></div>
-    </section>
+    <p class="project-section-label">01 - PROBLEM</p>
+    <h2 id="challenge-heading" class="project-content-heading">Why borrowed icons stop working</h2>
+    <p class="project-content-body">
+      Every time the design team needed an icon, we reached for whatever set was closest. The result was a product UI assembled from mismatched visual vocabularies. Metaphors were duplicated and styles drifted and, ultimately, nothing felt like it belonged to the same system. The fix was not finding a better third-party set that had all of the required metaphors of the application, but to build one ourselves.
+    </p>
 
     <!-- SECTION 02 -->
-    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="process-heading">
-      <p class="project-section-label">02 - AUDIT</p>
-      <h2 id="process-heading" class="project-content-heading">Taking stock of what we were actually using</h2>
-      <p class="project-content-body">
-        Before drawing anything, I inventoried every icon in use across the product. The goal was to see what we actually had in use and the requirements of the system: metaphors, duplicates, nouns, verbs, categories. Some icons were redundant, while others were functionally misaligned with what the UI was asking them to do. The audit produced a clear picture: here is what we keep, here is what we cut, here is what is missing.
-      </p>
-    </section>
-
-    <!-- FULL-WIDTH MEDIA ROW -->
-    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-full" aria-label="Full-width image placeholder">
-      <div class="project-image-slot project-image-slot-full is-empty is-wide" role="img" aria-label="Project image placeholder 3"></div>
-    </section>
+    <p class="project-section-label">02 - AUDIT</p>
+    <h2 id="process-heading" class="project-content-heading">Taking stock of what we were actually using</h2>
+    <p class="project-content-body">
+      Before drawing anything, I inventoried every icon in use across the product. The goal was to see what we actually had in use and the requirements of the system: metaphors, duplicates, nouns, verbs, categories. Some icons were redundant, while others were functionally misaligned with what the UI was asking them to do. The audit produced a clear picture: here is what we keep, here is what we cut, here is what is missing.
+    </p>
 
     <!-- SECTION 03 -->
-    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="solution-heading">
-      <p class="project-section-label">03 - GRID</p>
-      <h2 id="solution-heading" class="project-content-heading">A system rooted in the brand</h2>
-      <p class="project-content-body">
-        I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
-      </p>
-    </section>
-
-    <!-- FINAL MEDIA ROW -->
-    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Final image placeholders">
-      <div class="project-image-slot is-empty" role="img" aria-label="Project image placeholder 4"></div>
-      <div class="project-image-slot is-empty is-wide" role="img" aria-label="Project image placeholder 5"></div>
-    </section>
+    <p class="project-section-label">03 - GRID</p>
+    <h2 id="solution-heading" class="project-content-heading">A system rooted in the brand</h2>
+    <p class="project-content-body">
+      I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
+    </p>
 
     <!-- SECTION 04 -->
-    <section class="project-detail-shell project-detail-shell-text project-content-block" aria-labelledby="solution-heading">
-      <p class="project-section-label">04 - SET</p>
-      <h2 id="solution-heading" class="project-content-heading">More than 80 icons with one visual voice</h2>
-      <p class="project-content-body">
-        The first iteration was the delivery of over 80 icons, all in one outlined style, sized at 32px in SVG format, with back-up PNGs if needed. Fill variants were added selectively as use cases required them. As a proof of concept I Included four unique game glyphs that were simplified, single-color symbols that could be paired with their respective game, distinct from the game's full-color illustration assets. This gave the set a character and whimsy that no off-the-shelf library could replicate. The set was adopted immediately by both design and engineering and can be seen being used in the most recent updates to the platform.
-      </p>
-    </section>
-
-    <!-- FINAL MEDIA ROW -->
-    <section class="project-detail-shell project-detail-shell-wide project-image-grid project-image-grid-two" aria-label="Final image placeholders">
-      <div class="project-image-slot is-empty" role="img" aria-label="Project image placeholder 4"></div>
-      <div class="project-image-slot is-empty is-wide" role="img" aria-label="Project image placeholder 5"></div>
-    </section>
+    <p class="project-section-label">04 - SET</p>
+    <h2 id="lumosity-system-icons-s04-heading" class="project-content-heading">More than 80 icons with one visual voice</h2>
+    <p class="project-content-body">
+      The first iteration was the delivery of over 80 icons, all in one outlined style, sized at 32px in SVG format, with back-up PNGs if needed. Fill variants were added selectively as use cases required them. As a proof of concept I Included four unique game glyphs that were simplified, single-color symbols that could be paired with their respective game, distinct from the game's full-color illustration assets. This gave the set a character and whimsy that no off-the-shelf library could replicate. The set was adopted immediately by both design and engineering and can be seen being used in the most recent updates to the platform.
+    </p>
 
     <!-- Prev/Next: order + wrap-around is set in js/project-detail-nav.js (ORDER array). -->
     <section class="project-detail-shell project-detail-shell-wide project-prev-next" aria-label="Adjacent projects">

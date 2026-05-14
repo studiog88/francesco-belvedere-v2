@@ -1,10 +1,8 @@
 .project-detail-page {
   background: var(--Foundation-White);
   color: var(--Foundation-Black);
-  /* Hero “fold”: first screen ≈ sticky nav + hero + peek of project header */
+  /* Sticky top bar height — used for hero min-height math (nav + hero ≈ first viewport) */
   --project-detail-nav-height: 72px;
-  /* Title + summary visible without scrolling — scales on phone/tablet */
-  --project-detail-hero-fold-peek: clamp(150px, 28dvh, 310px);
 }
 
 .project-detail-shell {
@@ -19,21 +17,32 @@
   max-width: 960px;
 }
 
-.project-detail-shell-text {
-  max-width: 680px;
+/*
+ * Bottom project nav: full-width band with same horizontal inset as top nav
+ * (--Scale-1000 = 40px in primitives).
+ */
+.project-detail-shell.project-prev-next {
+  max-width: none;
+  width: 100%;
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
+  box-sizing: border-box;
 }
 
-/* Media rows & prev/next: no shell horizontal inset — aligns with stats bar and full-bleed slots. */
-.project-detail-shell.project-image-grid,
-.project-detail-shell.project-prev-next {
+/* Footer shell: full width; horizontal inset lives on meta + inset lime line */
+.project-detail-copyright .project-detail-shell.project-detail-copyright-bar {
+  max-width: none;
+  width: 100%;
   padding-left: 0;
   padding-right: 0;
+  box-sizing: border-box;
 }
 
 .project-detail-top-nav {
   position: sticky;
   top: 0;
   z-index: 30;
+  border-bottom: none;
   /* Frosted panel: scrolled page content shows through blurred */
   background-color: color-mix(in srgb, var(--Foundation-White) 70%, transparent);
   backdrop-filter: blur(14px);
@@ -104,52 +113,139 @@
   outline-offset: 2px;
 }
 
-.project-feature-media {
+/*
+ * Project hero: full-bleed section; min-height fills viewport below sticky nav.
+ * Outer shell can take a background pattern later (background-image on .project-hero).
+ * Inner .project-hero-bg fills only .project-hero-content (not the metadata strip).
+ */
+.project-hero {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-bottom: var(--Scale-1300);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--project-detail-nav-height));
+  min-height: calc(100dvh - var(--project-detail-nav-height));
+  background-color: var(--Foundation-White);
+  /* No top rule — avoids a “hairline” under the sticky nav (nav sits above hero in flow) */
+  border-top: none;
 }
 
-.project-feature-media-placeholder {
+/* Main split: grows; metadata sits in a non-growing row below */
+.project-hero-content {
   position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   overflow: hidden;
-  width: 100%;
-  /* Viewport-relative height so category + title + summary peek below the fold */
-  aspect-ratio: unset;
-  height: calc(100vh - var(--project-detail-nav-height) - var(--project-detail-hero-fold-peek));
-  height: calc(100dvh - var(--project-detail-nav-height) - var(--project-detail-hero-fold-peek));
-  min-height: 220px;
-  background-color: var(--Warm-Grey-100);
-  border-top: 1px solid var(--Warm-Grey-200);
-  border-bottom: 1px solid var(--Warm-Grey-200);
 }
 
-/* Replace placeholder inner with <img> — fills frame; any aspect ratio crops with cover */
-.project-feature-media-placeholder > img {
+/* Fills hero-content only (stops above metadata) — add background-image when asset exists */
+.project-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: color-mix(in srgb, var(--Warm-Grey-100) 40%, var(--Foundation-White));
+}
+
+.project-hero-image,
+.project-hero-heading {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.project-hero-image-inner {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 12rem;
+  background-color: var(--Warm-Grey-100);
+}
+
+/* Real hero image: fills the left column (reset img max-width: 100% can letterbox — use full bleed) */
+.project-hero-image-inner > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
   display: block;
 }
 
-/* Optional content utility: add to fields that should collapse if empty */
-.hide-if-empty:empty {
-  display: none;
+.project-hero-heading {
+  justify-content: center;
+  padding: var(--Scale-600);
+  box-sizing: border-box;
 }
 
-.project-external-link.hide-if-empty:not([href]),
-.project-external-link.hide-if-empty[href=""],
-.project-external-link.hide-if-empty[href="#"] {
-  display: none;
+/* H1 token (60px desktop — see responsive.css); single page title lives in hero */
+.project-hero-title {
+  margin: 0;
+  max-width: 100%;
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Headings-H1-text-size);
+  line-height: var(--Font-Headings-H1-line-height);
 }
 
-.project-stat-item.hide-if-empty[data-empty="true"],
-.project-stat-item.hide-if-empty:has(dd:empty),
-.project-stat-item.hide-if-empty:has(dt:empty) {
-  display: none;
+/* Fixed strip: tags + inset bottom rule (same 40px gutters as top nav; line mirrors footer pattern) */
+.project-hero-metadata {
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--Scale-600);
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
+  background-color: var(--Foundation-White);
+}
+
+/* Inset separator — subtle on white; reads more once body scrolls under the frosted nav */
+.project-hero-metadata::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--Scale-1000);
+  right: var(--Scale-1000);
+  height: 1px;
+  background-color: var(--Warm-Grey-100);
+  pointer-events: none;
+}
+
+.project-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--Scale-100);
+  padding-bottom: var(--Scale-600);
+}
+
+.project-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--Scale-100) var(--Scale-200);
+  border-radius: var(--Scale-100);
+  background-color: var(--Blue-100);
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Body-Paragraph-SM-text-size);
+  line-height: var(--Font-Body-Paragraph-SM-line-height);
+  white-space: nowrap;
 }
 
 /* Placeholder modifier system for quick per-project swaps */
@@ -167,149 +263,30 @@
   background-size: 24px 24px;
 }
 
-.project-image-slot.is-wide,
-.project-feature-media-placeholder.is-wide {
-  grid-column: 1 / -1;
+/*
+ * Intro lede (Figma): 40px horizontal padding on the section; large 40px body copy
+ * as a <p>; width spans ~8/12 of the padded content row (inner grid).
+ */
+.project-intro {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--Scale-1000);
+  /* Space before first story block (Figma main stack gap ~120px) */
+  margin-bottom: var(--Scale-1700);
 }
 
-.project-image-slot.is-tall {
-  min-height: 320px;
+.project-intro-inner {
+  box-sizing: border-box;
+  max-width: 66.666%;
 }
 
-.project-header {
-  padding-bottom: var(--Scale-1100);
-  display: flex;
-  flex-direction: column;
-  gap: var(--Scale-500);
-}
-
-.project-category-tag {
-  margin: 0;
-  align-self: flex-start;
-  padding: var(--Scale-100) var(--Scale-300);
-  border-radius: var(--Scale-1900);
-  background-color: var(--Warm-Grey-100);
-  color: var(--Warm-Grey-700);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Caption-text-size);
-  line-height: var(--Font-Body-Caption-line-height);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.project-title {
+.project-intro-lede {
   margin: 0;
   color: var(--Foundation-Black);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--Font-Headings-H2-text-size);
-  line-height: var(--Font-Headings-H2-line-height);
-}
-
-.project-summary {
-  margin: 0;
-  color: var(--Warm-Grey-700);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
-  max-width: 640px;
-}
-
-.project-external-link {
-  align-self: flex-start;
-  margin-top: var(--Scale-200);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: var(--Scale-200) var(--Scale-500);
-  border-radius: var(--Scale-1900);
-  background-color: var(--Warm-Grey-100);
-  color: var(--Foundation-Black);
-  text-decoration: none;
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: 1;
-}
-
-.project-external-link:hover {
-  background-color: var(--Warm-Grey-200);
-}
-
-.project-external-link:focus-visible {
-  outline: 2px solid var(--Foundation-Black);
-  outline-offset: 2px;
-}
-
-/* Same lateral shell as `.project-image-grid`: `.project-detail-shell-wide` (+ shell padding). */
-.project-stats {
-  padding-top: var(--Scale-900);
-  padding-bottom: var(--Scale-900);
-  background-color: var(--Warm-Grey-50);
-  border-radius: var(--Scale-400);
-}
-
-.project-stats-grid {
-  margin: 0;
-  display: grid;
-  /* Mobile: stack */
-  grid-template-columns: 1fr;
-  gap: var(--Scale-600);
-}
-
-.project-stat-item {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--Scale-200);
-  min-width: 0;
-}
-
-.project-stat-item dt {
-  margin: 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Body-Caption-text-size);
-  line-height: var(--Font-Body-Caption-line-height);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--Foundation-Black);
-}
-
-.project-stat-item dd {
-  margin: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: var(--Font-Body-Paragraph-line-height);
-  color: var(--Foundation-Black);
-}
-
-/* Tablet: 2×2 */
-@media (min-width: 391px) {
-  .project-stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--Scale-800);
-    row-gap: var(--Scale-700);
-  }
-}
-
-/* Desktop: single row, four columns */
-@media (min-width: 811px) {
-  .project-stats-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--Scale-800);
-    align-items: start;
-  }
-}
-
-.project-content-block {
-  padding-top: var(--Scale-1200);
-  padding-bottom: var(--Scale-1100);
-  display: grid;
-  gap: var(--Scale-400);
+  font-size: var(--Font-Headings-H3-text-size);
+  line-height: var(--Font-Headings-H3-line-height);
 }
 
 .project-section-label {
@@ -337,44 +314,6 @@
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-L-text-size);
   line-height: var(--Font-Body-Paragraph-L-line-height);
-}
-
-.project-image-grid {
-  padding-top: var(--Scale-200);
-  padding-bottom: var(--Scale-600);
-  display: grid;
-  gap: var(--Scale-600);
-}
-
-.project-image-grid-two {
-  grid-template-columns: 1fr;
-}
-
-.project-image-grid-full {
-  grid-template-columns: 1fr;
-}
-
-.project-image-slot {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 220px;
-  background-color: var(--Warm-Grey-50);
-  border: 1px solid var(--Warm-Grey-200);
-}
-
-/* Match hero pattern: real <img> fills the slot with cover crop */
-.project-image-slot > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.project-image-slot-full {
-  min-height: 340px;
 }
 
 .project-prev-next {
@@ -432,19 +371,32 @@
   }
 }
 
-/* Minimal copyright — same shell width as detail content (960px column); lime bar matches homepage footer strip */
+/* Minimal copyright — full-width bar under project pages; lime rule matches homepage footer strip */
 .project-detail-copyright {
   width: 100%;
   box-sizing: border-box;
 }
 
 .project-detail-copyright-bar {
-  border-top: 1px solid var(--Lime-400);
+  /* Lime rule is drawn inset (see ::before) so it aligns with nav gutters, not viewport edges */
+  border-top: none;
+  position: relative;
   min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+}
+
+.project-detail-copyright-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--Scale-1000);
+  right: var(--Scale-1000);
+  height: 1px;
+  background-color: var(--Lime-400);
+  pointer-events: none;
 }
 
 .project-detail-copyright-meta {
@@ -453,6 +405,11 @@
   justify-content: center;
   align-items: center;
   gap: var(--Scale-300);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Caption-text-size);
   line-height: var(--Font-Body-Caption-line-height);
@@ -489,19 +446,51 @@
     padding-right: var(--Scale-500);
   }
 
-  .project-title {
+  /* Stack image above heading until you tune breakpoints in QA */
+  .project-hero-content {
+    flex-direction: column;
+  }
+
+  .project-hero-image-inner {
+    min-height: 10rem;
+  }
+
+  .project-hero-heading {
+    padding: var(--Scale-500);
+  }
+
+  .project-hero-metadata {
+    padding-left: var(--Scale-500);
+    padding-right: var(--Scale-500);
+  }
+
+  .project-hero-metadata::after {
+    left: var(--Scale-500);
+    right: var(--Scale-500);
+  }
+
+  .project-intro {
+    padding-left: var(--Scale-500);
+    padding-right: var(--Scale-500);
+  }
+
+  .project-hero-title {
     font-size: var(--Font-Headings-H3-text-size);
     line-height: var(--Font-Headings-H3-line-height);
   }
 
-  .project-summary,
+  .project-intro-inner {
+    max-width: 100%;
+  }
+
+  .project-intro-lede {
+    font-size: var(--Font-Body-Paragraph-L-text-size);
+    line-height: var(--Font-Body-Paragraph-L-line-height);
+  }
+
   .project-content-body {
     font-size: var(--Font-Body-Paragraph-text-size);
     line-height: var(--Font-Body-Paragraph-line-height);
-  }
-
-  .project-image-grid-two {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -519,18 +508,34 @@
     min-height: 64px;
   }
 
-  .project-title {
+  .project-hero-heading {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
+  }
+
+  .project-hero-metadata {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
+  }
+
+  .project-hero-metadata::after {
+    left: var(--Scale-400);
+    right: var(--Scale-400);
+  }
+
+  .project-intro {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
+  }
+
+  .project-hero-title {
     font-size: var(--Font-Headings-H4-text-size);
     line-height: var(--Font-Headings-H4-line-height);
   }
 
-  .project-image-grid-two {
-    grid-template-columns: 1fr;
-  }
-
-  .project-content-block {
-    padding-top: var(--Scale-1000);
-    padding-bottom: var(--Scale-900);
+  .project-intro-lede {
+    font-size: var(--Font-Body-Paragraph-text-size);
+    line-height: var(--Font-Body-Paragraph-line-height);
   }
 
   .project-detail-copyright-bar {
