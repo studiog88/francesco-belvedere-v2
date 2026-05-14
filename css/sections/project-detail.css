@@ -4,7 +4,8 @@
   /* Sticky top bar height — used for hero min-height math (nav + hero ≈ first viewport) */
   --project-detail-nav-height: 72px;
   /*
-   * Inner grid: primary text inset from the viewport (Figma ~208px at 1728px wide).
+   * Inner grid: story text inset from the viewport (Figma ~208px at 1728px wide).
+   * Not used on .project-intro — intro keeps 40px gutters for the stepped layout vs splits.
    * Fluid with vw, floored at page gutter, capped at 208px (5.2 × 40px gutter token).
    * Overridden at tablet/phone breakpoints to match tighter shells.
    */
@@ -275,15 +276,13 @@
 }
 
 /*
- * Intro lede: horizontal edges use inner grid inset; padding-top is the sole gap under hero metadata.
+ * Intro lede: 40px page gutters (staggered vs story sections that use --project-inner-text-inset).
+ * Padding-top is the sole gap under hero metadata.
  */
 .project-intro {
   box-sizing: border-box;
   width: 100%;
-  padding-top: var(--Scale-1000);
-  padding-bottom: var(--Scale-1000);
-  padding-left: var(--project-inner-text-inset);
-  padding-right: var(--project-inner-text-inset);
+  padding: var(--Scale-1000);
   /* Space before first story block (Figma main stack gap ~120px) */
   margin-bottom: var(--Scale-1700);
 }
@@ -549,6 +548,11 @@
     right: var(--Scale-500);
   }
 
+  .project-intro {
+    padding-left: var(--Scale-500);
+    padding-right: var(--Scale-500);
+  }
+
   .project-story-split {
     grid-template-columns: 1fr;
     row-gap: var(--Scale-700);
@@ -613,6 +617,11 @@
   .project-hero-metadata::after {
     left: var(--Scale-400);
     right: var(--Scale-400);
+  }
+
+  .project-intro {
+    padding-left: var(--Scale-400);
+    padding-right: var(--Scale-400);
   }
 
   .project-hero-title {
