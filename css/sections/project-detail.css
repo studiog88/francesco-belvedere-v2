@@ -344,7 +344,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  column-gap: var(--Scale-600);
+  /* Horizontal alley between text and media (wider than story grid cell gap) */
+  column-gap: var(--Scale-1300);
   margin-bottom: var(--Scale-1700);
 }
 
