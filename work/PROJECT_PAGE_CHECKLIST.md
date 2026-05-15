@@ -4,6 +4,8 @@ Use this checklist whenever you create a new project detail page from `work/proj
 
 The template is intentionally minimal: **`section.project-hero`** (full-height band below the sticky nav: split **image | title**, then a **metadata tag** strip), then **flat copy** in `<main>` (`p` / `h2` only — the single **`h1`** lives in the hero), then **prev/next** and the **footer**. There is no category pill, duplicate title, stats row, external link, or in-page image grid in the template—you add new blocks and CSS when you need them.
 
+**Project images:** put all media for a slug in `assets/projects/<project-slug>/` (e.g. `hero-bg.png`, `hero-fg.png`, `feature.gif` for the homepage card). Keep `work/` for HTML pages only.
+
 ## 5-Minute Checklist
 
 - [ ] Duplicate `work/project-template.html` and rename to `work/<project-slug>.html`

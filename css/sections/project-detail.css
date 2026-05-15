@@ -213,6 +213,160 @@
   line-height: var(--Font-Headings-H1-line-height);
 }
 
+/* Figment: hero bg on .project-hero-content only (via .project-hero-bg), not metadata */
+.project-figment .project-hero-bg {
+  background-color: transparent;
+  background-image: url("../../assets/projects/figment/hero-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Stretch to fill hero-content; texture tolerates distortion on narrow viewports */
+  background-size: 100% 100%;
+}
+
+.project-figment .project-hero-image-inner {
+  background-color: transparent;
+}
+
+/* Figma: ~480px wide, top-center — hangs from top of left column */
+.project-figment .project-hero-image-inner > img {
+  inset: auto;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-figment .project-story-media-inner:has(> img) {
+  background-color: transparent;
+}
+
+.project-figment .project-story-media-inner > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Figment section 01 — The Brief: centered art at 55% column width */
+.project-figment .project-story-split[aria-labelledby="challenge-heading"] .project-story-media-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-figment .project-story-split[aria-labelledby="challenge-heading"] .project-story-media-inner > img {
+  width: 55%;
+  max-width: 55%;
+  height: auto;
+}
+
+/* Figment section 02 — The Challenge: centered art at 75% column width */
+.project-figment .project-story-split[aria-labelledby="process-heading"] .project-story-media-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-figment .project-story-split[aria-labelledby="process-heading"] .project-story-media-inner > img {
+  width: 75%;
+  max-width: 75%;
+  height: auto;
+}
+
+/* Figment section 04 — The System: right column art at 80% width, centered */
+.project-figment .project-story-split[aria-labelledby="figment-s04-heading"] .project-story-media-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-figment .project-story-split[aria-labelledby="figment-s04-heading"] .project-story-media-inner > img {
+  width: 80%;
+  max-width: 80%;
+  height: auto;
+}
+
+/* Figment section 05 — The Experience: left column, warm grey 50 fill, art 90% width centered */
+.project-figment .project-story-split[aria-labelledby="figment-s05-heading"] .project-story-media-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Warm-Grey-50);
+}
+
+.project-figment .project-story-split[aria-labelledby="figment-s05-heading"] .project-story-media-inner > img {
+  width: 90%;
+  max-width: 90%;
+  height: auto;
+}
+
+/* Figment — 03 Approach: seven screens across; full-bleed row + 40px gutters + tighter gaps */
+.project-figment .project-story-grid-gallery {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  grid-template-columns: repeat(7, 1fr);
+  /* No column gap — shadows extend past the screen in the exports; gap was double-counting separation */
+  gap: var(--Scale-0);
+  padding-left: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
+  box-sizing: border-box;
+}
+
+/* Figment — 03 Approach: less air between lede block and gallery (~66% reduction vs default gap) */
+.project-figment .project-story-grid {
+  gap: calc(var(--Scale-1800) * 0.34);
+}
+
+.project-figment .project-story-grid-cell-inner:has(> img) {
+  height: auto;
+  min-height: 0;
+  background-color: transparent;
+}
+
+.project-figment .project-story-grid-cell-inner > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Figment — page-end kicker: seven-up row + tagline (gallery uses .project-story-grid-gallery rules) */
+.project-figment-kicker {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--Scale-1000);
+  /* Space before prev/next pills (~120px in Figma) */
+  margin-bottom: var(--Scale-1700);
+}
+
+.project-figment-tagline {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--Scale-600);
+  /* Space from grid to tagline (~120px in Figma) */
+  margin: var(--Scale-1700) 0 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.project-figment-tagline img {
+  display: block;
+  height: var(--Scale-1000);
+  width: auto;
+  max-width: none;
+}
+
 /* Fixed strip: tags + inset bottom rule (same 40px gutters as top nav; line mirrors footer pattern) */
 .project-hero-metadata {
   position: relative;
@@ -278,14 +432,17 @@
 /*
  * Intro lede: equal horizontal gutters (--Scale-1000); lede spans full width between them
  * (no max-width cap — aligns with hero / prev-next band). Story grid copy still uses ~2/3 cap.
- * Padding-top is the sole gap under hero metadata.
+ * padding-top (--Scale-1000 = 40px) is the gap under hero metadata — do not reduce that when tuning stack rhythm.
  */
 .project-intro {
   box-sizing: border-box;
   width: 100%;
-  padding: var(--Scale-1000);
-  /* Space before first story block (Figma main stack gap ~120px) */
-  margin-bottom: var(--Scale-1700);
+  padding-top: var(--Scale-1000);
+  padding-right: var(--Scale-1000);
+  padding-bottom: var(--Scale-1000);
+  padding-left: var(--Scale-1000);
+  /* No vertical gap after intro — add margin here when you want air before first story */
+  margin-bottom: 0;
 }
 
 .project-intro-inner {
@@ -347,7 +504,8 @@
   align-items: stretch;
   /* Horizontal alley between text and media (wider than story grid cell gap) */
   column-gap: var(--Scale-1300);
-  margin-bottom: var(--Scale-1700);
+  /* No gap between full-height story rows — add margin when you want separation */
+  margin-bottom: 0;
 }
 
 .project-story-text {
@@ -416,10 +574,15 @@
     min-height: 100dvh;
     justify-content: center;
   }
+
+  /* Figment 7-up: pull columns together so baked-in drop shadows overlap (desktop row only) */
+  .project-figment .project-story-grid-gallery .project-story-grid-cell:not(:last-child) {
+    margin-right: calc(-1 * var(--Scale-200));
+  }
 }
 
 /*
- * Story grid: inner-aligned text (~2/3 max-width) + 4-up gallery with global gutters.
+ * Story grid: inner-aligned text (~2/3 max-width) + gallery row (default 4 placeholders; Figment uses 7 real screens).
  */
 .project-story-grid {
   box-sizing: border-box;
@@ -428,7 +591,7 @@
   flex-direction: column;
   /* Extra space between copy block and gallery (tune later) */
   gap: var(--Scale-1800);
-  margin-bottom: var(--Scale-1700);
+  margin-bottom: 0;
 }
 
 .project-story-grid-text {
@@ -658,6 +821,11 @@
     gap: var(--Scale-1700);
   }
 
+  /* Figment: same ~66% reduction on tablet story-grid (base here is --Scale-1700) */
+  .project-figment .project-story-grid {
+    gap: calc(var(--Scale-1700) * 0.34);
+  }
+
   .project-story-grid-text {
     padding-right: var(--project-inner-text-inset);
   }
@@ -666,6 +834,14 @@
     padding-left: var(--Scale-500);
     padding-right: var(--Scale-500);
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-figment .project-story-grid-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-figment .project-story-grid-cell-inner:has(> img) {
+    height: auto;
   }
 
   .project-story-grid-cell-inner {
@@ -735,6 +911,10 @@
   .project-story-grid-gallery {
     padding-left: var(--Scale-400);
     padding-right: var(--Scale-400);
+    grid-template-columns: 1fr;
+  }
+
+  .project-figment .project-story-grid-gallery {
     grid-template-columns: 1fr;
   }
 

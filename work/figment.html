@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/sections/project-detail.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="../js/project-detail-nav.js" defer></script>
+  <script src="../js/figment-tagline-jiggle.js" defer></script>
 </head>
 <body class="site project-detail-page project-figment" data-project-slug="figment">
   <header class="project-detail-top-nav">
@@ -32,7 +35,7 @@
         <div class="project-hero-bg" aria-hidden="true"></div>
         <div class="project-hero-image">
           <div class="project-hero-image-inner">
-            <img src="../assets/images/owl-A.png" alt="">
+            <img src="../assets/projects/figment/hero-fg.png" alt="">
           </div>
         </div>
         <div class="project-hero-heading">
@@ -66,7 +69,9 @@
         </p>
       </div>
       <div class="project-story-media">
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+        <div class="project-story-media-inner">
+          <img src="../assets/projects/figment/section-01.png" alt="Figment MVP screens for Lumosity's creative product bet">
+        </div>
       </div>
     </section>
 
@@ -79,7 +84,9 @@
         </p>
       </div>
       <div class="project-story-media">
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+        <div class="project-story-media-inner">
+          <img src="../assets/projects/figment/section-02.png" alt="Figment interface showing twelve activity types in one shared experience">
+        </div>
       </div>
     </section>
 
@@ -93,10 +100,13 @@
         </p>
       </div>
       <div class="project-story-grid-gallery">
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-A.png" alt="Figment app screen 1 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-B.png" alt="Figment app screen 2 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-C.png" alt="Figment app screen 3 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-D.png" alt="Figment app screen 4 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-E.png" alt="Figment app screen 5 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-F.png" alt="Figment app screen 6 of 7 in the shared product frame"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/section-03-G.png" alt="Figment app screen 7 of 7 in the shared product frame"></div></div>
       </div>
     </section>
 
@@ -110,8 +120,9 @@
         </p>
       </div>
       <div class="project-story-media">
-        <!-- Replace with <img src="…" alt="…"> when the section image is ready -->
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+        <div class="project-story-media-inner">
+          <img src="../assets/projects/figment/section-04.png" alt="Figment visual identity and UI expression in the product">
+        </div>
       </div>
     </section>
 
@@ -125,7 +136,9 @@
         </p>
       </div>
       <div class="project-story-media">
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+        <div class="project-story-media-inner">
+          <img src="../assets/projects/figment/section-05.png" alt="Figment design system components and curriculum experience in the product">
+        </div>
       </div>
     </section>
 
@@ -140,6 +153,25 @@
       </div>
       <div class="project-story-media">
         <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Kicker: seven-up grid + paper tagline (Figment page end) -->
+    <section class="project-figment-kicker" aria-label="Figment product screens and closing tagline">
+      <div class="project-story-grid-gallery">
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-A.png" alt="Figment app screen 1 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-B.png" alt="Figment app screen 2 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-C.png" alt="Figment app screen 3 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-D.png" alt="Figment app screen 4 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-E.png" alt="Figment app screen 5 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-F.png" alt="Figment app screen 6 of 7 in closing kicker row"></div></div>
+        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img src="../assets/projects/figment/kicker-grid-G.png" alt="Figment app screen 7 of 7 in closing kicker row"></div></div>
+      </div>
+      <div class="project-figment-tagline" role="group" aria-label="Develop your creative superpowers">
+        <img src="../assets/projects/figment/tagline-A.png" alt="">
+        <img src="../assets/projects/figment/tagline-B.png" alt="">
+        <img src="../assets/projects/figment/tagline-C.png" alt="">
+        <img src="../assets/projects/figment/tagline-D.png" alt="">
       </div>
     </section>
 
