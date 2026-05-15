@@ -2,14 +2,15 @@
 
 Use this checklist whenever you create a new project detail page from `work/project-template.html`.
 
+The template is intentionally minimal: **`section.project-hero`** (full-height band below the sticky nav: split **image | title**, then a **metadata tag** strip), then **flat copy** in `<main>` (`p` / `h2` only — the single **`h1`** lives in the hero), then **prev/next** and the **footer**. There is no category pill, duplicate title, stats row, external link, or in-page image grid in the template—you add new blocks and CSS when you need them.
+
 ## 5-Minute Checklist
 
 - [ ] Duplicate `work/project-template.html` and rename to `work/<project-slug>.html`
 - [ ] Update body hooks to match slug (`project-<project-slug>` and `data-project-slug`)
-- [ ] Replace title, category, summary, challenge/process/solution content
-- [ ] Add real media, remove `.is-empty` where filled, keep `.is-wide` / `.is-tall` as needed
-- [ ] Fill stats; hide optional fields by leaving empty or using `data-empty="true"`
-- [ ] Set external link (or leave hidden with `href="#"`)
+- [ ] Update `<title>`, hero `h1` (`.project-hero-title`), hero metadata tags, summary paragraph
+- [ ] Update each narrative block: `p.project-section-label` + `h2.project-content-heading` + `p.project-content-body` (duplicate the trio for extra sections as needed)
+- [ ] Hero: optional `background-image` on `.project-hero` or `.project-hero-bg`; left column: real `<img>` and remove `.is-empty` when no longer a placeholder
 - [ ] Update `PROJECT_NAV_ORDER` in `js/project-detail-nav.js` (include new filename; circular prev/next wraps)
 - [ ] Verify mobile/tablet/desktop and check homepage card link
 
@@ -33,64 +34,44 @@ Use this checklist whenever you create a new project detail page from `work/proj
 
 ---
 
-## 3) Header Content
+## 3) Hero (`section.project-hero`)
 
-- [ ] Replace category tag text
-- [ ] Replace project `h1` title
-- [ ] Replace short summary paragraph
-- [ ] External link:
-  - [ ] Add real URL if needed
-  - [ ] Or leave `href="#"` (or empty) to auto-hide via `.hide-if-empty`
+- [ ] Set `h1#project-title.project-hero-title` copy (only one `h1` on the page)
+- [ ] Edit `.project-hero-metadata` tags (`.project-hero-tag` spans): role, timeframe, platform, etc.
+- [ ] Left column: replace `.project-hero-image-inner` placeholder with real `<img>` (or video) when assets exist; remove `.is-empty` when appropriate
+- [ ] Optional: add `background-image` (pattern / texture) on `.project-hero` (outer) and/or `.project-hero-bg` (fills **hero-content** only, not the metadata strip)
 
----
-
-## 4) Quick Stats Row
-
-- [ ] Fill `Timeframe`
-- [ ] Fill `Role`
-- [ ] Fill `Platform`
-- [ ] Fill `Team`
-- [ ] For optional stats:
-  - [ ] Leave `dt`/`dd` empty to hide
-  - [ ] Or set `data-empty="true"` on `.project-stat-item`
+The sticky **top nav stays outside** the hero in the HTML (see `header.project-detail-top-nav`).
 
 ---
 
-## 5) Long-Form Sections
+## 4) Summary + Narrative (flat in `<main>`)
 
-- [ ] Replace `01 - CHALLENGE` heading + body text
-- [ ] Replace `02 - PROCESS` heading + body text
-- [ ] Replace `03 - SOLUTION` heading + body text
+- [ ] Replace short summary (`p.project-summary`) — first body copy after the hero
 
-Keep labels all caps and numbered in sequence.
+For each story beat:
 
----
+1. `p.project-section-label` — short all-caps label (e.g. `01 - CHALLENGE`)
+2. `h2.project-content-heading` — section title (use a unique `id` per `h2` if you need in-page anchors)
+3. `p.project-content-body` — body copy
 
-## 6) Media Slots
-
-- [ ] Replace placeholder blocks with real media where available
-- [ ] Remove `.is-empty` on slots that are filled with real media
-- [ ] Keep or adjust modifiers as needed:
-  - [ ] `.is-wide` for full-span behavior
-  - [ ] `.is-tall` for taller placeholder/media frames
-- [ ] Confirm alt text / aria labels are accurate (or decorative if appropriate)
+- [ ] Replace placeholder labels, headings, and body text for every block
+- [ ] Keep labels readable (caps + numbering are fine; use an em dash or hyphen consistently within the project)
 
 ---
 
-## 7) Final QA (Manual)
+## 5) Final QA (Manual)
 
 - [ ] Mobile check (`<=390px`)
 - [ ] Tablet check (`<=810px`)
 - [ ] Desktop check (`>810px`)
 - [ ] Verify no broken links
 - [ ] Verify no missing media paths
-- [ ] Verify optional fields hide correctly
 - [ ] Verify visual tone stays restrained and consistent with the rest of the site
 
 ---
 
-## 8) Homepage Linking
+## 6) Homepage Linking
 
 - [ ] Add/update corresponding project card link on homepage when ready
-- [ ] Re-check card title/description matches project page title
-
+- [ ] Re-check card title/description matches project page hero title

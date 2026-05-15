@@ -48,6 +48,7 @@
       </div>
     </section>
 
+    <!-- Intro: lede is full width between symmetric section padding (see .project-intro / .project-intro-inner in project-detail.css). -->
     <section class="project-intro" aria-label="Project overview">
       <div class="project-intro-inner">
         <p class="project-intro-lede">
@@ -99,23 +100,48 @@
       </div>
     </section>
 
-    <p class="project-section-label">04 — THE SYSTEM</p>
-    <h2 id="figment-s04-heading" class="project-content-heading">A visual identity that lives inside the product</h2>
-    <p class="project-content-body">
-      Before joining the product team, I was part of the brand team that created Figment's name, logo, and visual identity. That foundation informed every UI decision. I made sure the brand expressed itself through color, typography, illustration, and motion, not just as a skin on top of components, but in the way the app moved and responded to the user.
-    </p>
+    <!-- 04 — THE SYSTEM: text left, media right -->
+    <section class="project-story-split project-story-split--media-right" aria-labelledby="figment-s04-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">04 — THE SYSTEM</p>
+        <h2 id="figment-s04-heading" class="project-content-heading">A visual identity that lives inside the product</h2>
+        <p class="project-content-body">
+          Before joining the product team, I was part of the brand team that created Figment's name, logo, and visual identity. That foundation informed every UI decision. I made sure the brand expressed itself through color, typography, illustration, and motion, not just as a skin on top of components, but in the way the app moved and responded to the user.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <!-- Replace with <img src="…" alt="…"> when the section image is ready -->
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
-    <p class="project-section-label">05 — THE EXPERIENCE</p>
-    <h2 id="figment-s05-heading" class="project-content-heading">A curriculum of creativity, built to scale</h2>
-    <p class="project-content-body">
-      Each day surfaced a themed set of exercises, presenting the user with a progressive curriculum designed to guide them from their first creative steps toward more expansive ways of thinking and making. The design system underneath it was foundational by intention: built lean to move fast, but architected to scale as the product grew.
-    </p>
+    <!-- 05 — THE EXPERIENCE: media left, text right (text first in DOM; see project-detail.css) -->
+    <section class="project-story-split project-story-split--media-left" aria-labelledby="figment-s05-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">05 — THE EXPERIENCE</p>
+        <h2 id="figment-s05-heading" class="project-content-heading">A curriculum of creativity, built to scale</h2>
+        <p class="project-content-body">
+          Each day surfaced a themed set of exercises, presenting the user with a progressive curriculum designed to guide them from their first creative steps toward more expansive ways of thinking and making. The design system underneath it was foundational by intention: built lean to move fast, but architected to scale as the product grew.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
-    <p class="project-section-label">06 — THE OUTCOME</p>
-    <h2 id="figment-s06-heading" class="project-content-heading">You can still find it in the App Store</h2>
-    <p class="project-content-body">
-      Figment launched to five-star reviews from users who called it the first app of its kind. It remains available in the App Store years after release. A shift in company priorities eventually moved focus back to Lumosity's core product, but the work endures and it stands out as the first project at Lumosity where I carried a product from brand identity through to shipped UI on a single arc.
-    </p>
+    <!-- 06 — THE OUTCOME: text left, media right -->
+    <section class="project-story-split project-story-split--media-right" aria-labelledby="figment-s06-heading">
+      <div class="project-story-text">
+        <p class="project-section-label">06 — THE OUTCOME</p>
+        <h2 id="figment-s06-heading" class="project-content-heading">You can still find it in the App Store</h2>
+        <p class="project-content-body">
+          Figment launched to five-star reviews from users who called it the first app of its kind. It remains available in the App Store years after release. A shift in company priorities eventually moved focus back to Lumosity's core product, but the work endures and it stands out as the first project at Lumosity where I carried a product from brand identity through to shipped UI on a single arc.
+        </p>
+      </div>
+      <div class="project-story-media">
+        <div class="project-story-media-inner" aria-hidden="true"></div>
+      </div>
+    </section>
 
     <section class="project-detail-shell project-detail-shell-wide project-prev-next" aria-label="Adjacent projects">
       <a class="project-nav-pill project-nav-pill-prev" href="#" data-project-nav-prev>

@@ -5,7 +5,7 @@
   --project-detail-nav-height: 72px;
   /*
    * Inner grid: story text inset from the viewport (Figma ~208px at 1728px wide).
-   * Not used on .project-intro — intro keeps 40px gutters for the stepped layout vs splits.
+   * Not used on .project-intro — intro uses symmetric page padding; lede spans full width inside that band.
    * Fluid with vw, floored at page gutter, capped at 208px (5.2 × 40px gutter token).
    * Overridden at tablet/phone breakpoints to match tighter shells.
    */
@@ -276,7 +276,8 @@
 }
 
 /*
- * Intro lede: 40px page gutters (staggered vs story sections that use --project-inner-text-inset).
+ * Intro lede: equal horizontal gutters (--Scale-1000); lede spans full width between them
+ * (no max-width cap — aligns with hero / prev-next band). Story grid copy still uses ~2/3 cap.
  * Padding-top is the sole gap under hero metadata.
  */
 .project-intro {
@@ -287,10 +288,10 @@
   margin-bottom: var(--Scale-1700);
 }
 
-.project-intro-inner,
-.project-story-grid-text {
+.project-intro-inner {
   box-sizing: border-box;
-  max-width: 66.666%;
+  width: 100%;
+  max-width: none;
 }
 
 .project-intro-lede {
@@ -418,7 +419,7 @@
 }
 
 /*
- * Story grid: inner-aligned text (same max-width as intro lede) + 4-up gallery with global gutters.
+ * Story grid: inner-aligned text (~2/3 max-width) + 4-up gallery with global gutters.
  */
 .project-story-grid {
   box-sizing: border-box;
@@ -431,6 +432,8 @@
 }
 
 .project-story-grid-text {
+  box-sizing: border-box;
+  max-width: 66.666%;
   padding-left: var(--project-inner-text-inset);
   display: flex;
   flex-direction: column;
@@ -679,7 +682,6 @@
     line-height: var(--Font-Headings-H3-line-height);
   }
 
-  .project-intro-inner,
   .project-story-grid-text {
     max-width: 100%;
   }

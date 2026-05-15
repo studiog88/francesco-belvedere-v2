@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE GUIDE:
        1) Duplicate this file per project: work/<project-slug>.html (e.g. work/figment.html).
-       2) Replace placeholder copy: hero, intro, story splits (--media-right / --media-left), optional story grid (section.project-story-grid), then flat triplets.
+       2) Replace placeholder copy: hero, intro (lede spans full width between intro padding), story splits (--media-right / --media-left), optional story grid (section.project-story-grid), then flat triplets.
        3) Hero: add background-image on .project-hero-bg or .project-hero when ready; left column: replace placeholder with <img> and remove .is-empty.
        4) Story splits / grid: swap .project-story-media-inner or .project-story-grid-cell-inner for <img> when assets exist.
        5) Extra sections: duplicate pattern or flat label + h2 + body (see work/PROJECT_PAGE_CHECKLIST.md).
@@ -58,6 +58,7 @@
       </div>
     </section>
 
+    <!-- Intro: lede is full width between symmetric section padding (see .project-intro / .project-intro-inner in project-detail.css). -->
     <section class="project-intro" aria-label="Project overview">
       <div class="project-intro-inner">
         <p class="project-intro-lede">
