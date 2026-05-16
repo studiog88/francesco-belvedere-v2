@@ -38,6 +38,15 @@
         <div class="project-hero-heading">
           <h1 id="project-title" class="project-hero-title">Spearheading the XP overhaul for the world's premier cognitive brain game platform</h1>
         </div>
+        <!-- Hero “view more”: links to #project-intro (scroll-margin clears sticky nav in project-detail.css) -->
+        <a class="project-hero-view-more" href="#project-intro" aria-label="Continue to project overview">
+          <span class="project-hero-view-more-inner">
+            <img class="project-hero-view-more-eye" src="../assets/icons/viewmore-icon-a.svg" width="28" height="21" alt="" aria-hidden="true">
+            <span class="project-hero-view-more-pointer-wrap">
+              <img class="project-hero-view-more-pointer" src="../assets/icons/viewmore-icon-b.svg" width="18" height="22" alt="" aria-hidden="true">
+            </span>
+          </span>
+        </a>
       </div>
       <div class="project-hero-metadata" aria-label="Project metadata">
         <div class="project-hero-tags">
@@ -49,7 +58,7 @@
     </section>
 
     <!-- Intro: lede is full width between symmetric section padding (see .project-intro / .project-intro-inner in project-detail.css). -->
-    <section class="project-intro" aria-label="Project overview">
+    <section class="project-intro" id="project-intro" aria-label="Project overview">
       <div class="project-intro-inner">
         <p class="project-intro-lede">
           I am missing an intro descriptor here.

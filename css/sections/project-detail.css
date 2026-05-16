@@ -16,6 +16,11 @@
   );
 }
 
+/* In-page anchors (hero “view more” → #project-intro): sit below sticky project nav */
+.project-detail-page #project-intro {
+  scroll-margin-top: var(--project-detail-nav-height);
+}
+
 .project-detail-shell {
   width: 100%;
   margin: 0 auto;
@@ -198,7 +203,8 @@
 
 .project-hero-heading {
   justify-content: center;
-  padding: var(--Scale-600);
+  /* Full-bleed hero — no shell padding; extra right inset keeps title off viewport edge */
+  padding: var(--Scale-600) var(--Scale-1100) var(--Scale-600) var(--Scale-600);
   box-sizing: border-box;
 }
 
@@ -237,6 +243,134 @@
   max-width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+/*
+ * Hero “view more” pill (project pages): eye default; hover/focus expands height + fades pointer in.
+ * Placement: 40px from right; closed pill bottom inset 64px from .project-hero-content (extra height grows downward).
+ */
+.project-detail-page .project-hero-view-more {
+  position: absolute;
+  /* Top fixed so height increase extends the bottom edge downward (closed bottom inset = --Scale-1300). */
+  top: calc(100% - var(--Scale-1300) - 44px);
+  right: var(--Scale-1000);
+  bottom: auto;
+  z-index: 2;
+  box-sizing: border-box;
+  width: var(--Scale-1300);
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--Lime-500);
+  border-radius: var(--Scale-1900);
+  background-color: var(--Foundation-White);
+  color: var(--Foundation-Black);
+  display: flex;
+  /* Content anchored to top so hover growth reveals arrow below without lifting the eye */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: height 320ms ease-in-out;
+}
+
+.project-detail-page .project-hero-view-more:hover,
+.project-detail-page .project-hero-view-more:focus-visible {
+  height: 80px;
+}
+
+.project-detail-page .project-hero-view-more:focus-visible {
+  outline: 2px solid var(--Foundation-Black);
+  outline-offset: 2px;
+}
+
+.project-detail-page .project-hero-view-more-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  width: 100%;
+  transition: gap 320ms ease-in-out;
+}
+
+.project-detail-page .project-hero-view-more:hover .project-hero-view-more-inner,
+.project-detail-page .project-hero-view-more:focus-visible .project-hero-view-more-inner {
+  gap: var(--Scale-200);
+}
+
+.project-detail-page .project-hero-view-more-eye {
+  width: 28px;
+  height: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.project-detail-page .project-hero-view-more-pointer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition:
+    max-height 320ms ease-in-out,
+    opacity 320ms ease-in-out,
+    transform 320ms ease-in-out;
+}
+
+.project-detail-page .project-hero-view-more-pointer {
+  width: 18px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.project-detail-page .project-hero-view-more:hover .project-hero-view-more-pointer-wrap,
+.project-detail-page .project-hero-view-more:focus-visible .project-hero-view-more-pointer-wrap {
+  max-height: var(--Scale-1300);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-detail-page .project-hero-view-more,
+  .project-detail-page .project-hero-view-more-inner,
+  .project-detail-page .project-hero-view-more-pointer-wrap {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Lumosity System Icons: hero bg fills .project-hero-content only (via .project-hero-bg), not metadata */
+.project-lumosity-system-icons .project-hero-bg {
+  background-color: transparent;
+  background-image: url("../../assets/projects/lumosity-icons/hero-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* Hero FG: ~66% of left column, centered (no column fill color — bg shows through) */
+.project-lumosity-system-icons .project-hero-image-inner {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-lumosity-system-icons .project-hero-image-inner > img {
+  position: static;
+  inset: auto;
+  width: 75%;
+  height: auto;
+  max-height: 100%;
+  max-width: none;
+  object-fit: contain;
+  display: block;
 }
 
 .project-figment .project-story-media-inner:has(> img) {
@@ -302,8 +436,27 @@
   height: auto;
 }
 
-/* Figment — 03 Approach: seven screens across; full-bleed row + 40px gutters + tighter gaps */
-.project-figment .project-story-grid-gallery {
+/* Figment section 06 — The Outcome: GIF centered; below 811px uses intrinsic height (stacked layout) */
+.project-figment .project-story-split[aria-labelledby="figment-s06-heading"] .project-story-media-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+}
+
+.project-figment .project-story-split[aria-labelledby="figment-s06-heading"] .project-story-media-inner > img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/*
+ * Figment — page-end kicker: seven-up row uses .project-story-grid-gallery inside .project-figment-kicker (full bleed + 40px gutters).
+ * Section 03 Approach uses .project-story-grid-gallery.project-figment-approach-gallery — horizontal scroll strip (see block below).
+ */
+.project-figment-kicker .project-story-grid-gallery {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -314,6 +467,94 @@
   padding-left: var(--Scale-1000);
   padding-right: var(--Scale-1000);
   box-sizing: border-box;
+}
+
+/*
+ * Figment — 03 Approach: full-bleed horizontal strip (no side gutters — peek at viewport edges).
+ * Revert: remove class project-figment-approach-gallery + ../js/figment-approach-gallery.js from figment.html and restore kicker-only selector above if needed.
+ */
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  /* Scroll container; flex row lives on .project-figment-approach-track (rubber-band translateX) */
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  /* Hide scrollbar — strip stays scrollable (wheel, trackpad, drag, touch) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Horizontal slide row inside approach gallery (GSAP sets x for edge overscroll) */
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-figment-approach-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--Scale-0);
+  width: max-content;
+  box-sizing: border-box;
+  min-height: 0;
+  will-change: transform;
+}
+
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery:hover {
+    cursor: grab;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery:active {
+    cursor: grabbing;
+  }
+}
+
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery:focus {
+  /* Mouse click focus: no ring; keyboard uses :focus-visible below */
+  outline: none;
+}
+
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery:focus-visible {
+  /* Keyboard-style focus only (paired with :focus outline reset above) */
+  outline: 1px solid color-mix(in srgb, var(--Warm-Grey-800) 28%, transparent);
+  outline-offset: 3px;
+}
+
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
+  flex: 0 0 auto;
+  /* Override global .project-story-grid-cell { min-width: 0 } so slides keep intrinsic width and the strip can scroll */
+  min-width: min-content;
+}
+
+/* Desktop: ~720px tall slides (Figma @ 1728px → ~4.5 visible); width follows asset aspect ratio */
+@media (min-width: 811px) {
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
+    height: 720px;
+    width: auto;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    display: block;
+    /* Prevent browser “drag image” ghost — lets pointer-drag scroll work */
+    -webkit-user-drag: none;
+    user-select: none;
+  }
 }
 
 /* Figment — 03 Approach: less air between lede block and gallery (~66% reduction vs default gap) */
@@ -335,7 +576,7 @@
   object-fit: contain;
 }
 
-/* Figment — page-end kicker: seven-up row + tagline (gallery uses .project-story-grid-gallery rules) */
+/* Figment — page-end kicker: seven-up row lives in .project-figment-kicker .project-story-grid-gallery */
 .project-figment-kicker {
   box-sizing: border-box;
   width: 100%;
@@ -576,8 +817,28 @@
   }
 
   /* Figment 7-up: pull columns together so baked-in drop shadows overlap (desktop row only) */
-  .project-figment .project-story-grid-gallery .project-story-grid-cell:not(:last-child) {
+  .project-figment-kicker .project-story-grid-gallery .project-story-grid-cell:not(:last-child) {
     margin-right: calc(-1 * var(--Scale-200));
+  }
+
+  /*
+   * Figment section 06: GIF at 66% of media column height, centered; width follows aspect ratio.
+   * max-width keeps it inside the column if the implied width would overflow.
+   */
+  .project-figment .project-story-split[aria-labelledby="figment-s06-heading"] .project-story-media {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .project-figment .project-story-split[aria-labelledby="figment-s06-heading"] .project-story-media-inner {
+    align-items: center;
+  }
+
+  .project-figment .project-story-split[aria-labelledby="figment-s06-heading"] .project-story-media-inner > img {
+    height: 66%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -688,6 +949,10 @@
   .project-nav-pill {
     transition: none;
   }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
+    scroll-snap-type: none;
+  }
 }
 
 /* Minimal copyright — full-width bar under project pages; lime rule matches homepage footer strip */
@@ -779,7 +1044,7 @@
   }
 
   .project-hero-heading {
-    padding: var(--Scale-500);
+    padding: var(--Scale-500) var(--Scale-900) var(--Scale-500) var(--Scale-500);
   }
 
   .project-hero-metadata {
@@ -836,8 +1101,35 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .project-figment .project-story-grid-gallery {
+  .project-figment-kicker .project-story-grid-gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Figment 03 — Approach carousel: ~3.6 slides visible; shorter than desktop 720px */
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
+    scroll-snap-type: x proximity;
+    gap: var(--Scale-200);
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
+    flex: 0 0 calc(100vw / 3.65);
+    scroll-snap-align: start;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
+    height: 520px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
   }
 
   .project-figment .project-story-grid-cell-inner:has(> img) {
@@ -889,8 +1181,7 @@
   }
 
   .project-hero-heading {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
+    padding: var(--Scale-500) var(--Scale-800) var(--Scale-500) var(--Scale-400);
   }
 
   .project-hero-metadata {
@@ -914,8 +1205,32 @@
     grid-template-columns: 1fr;
   }
 
-  .project-figment .project-story-grid-gallery {
+  .project-figment-kicker .project-story-grid-gallery {
     grid-template-columns: 1fr;
+  }
+
+  /* Figment 03 — Approach carousel: one full slide centered with ~half-slide peek each side */
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
+    scroll-snap-type: x mandatory;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
+    flex: 0 0 calc((100vw - var(--Scale-400)) / 3);
+    scroll-snap-align: center;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
+    height: 420px;
+    width: 100%;
+  }
+
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
   }
 
   .project-hero-title {
