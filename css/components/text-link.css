@@ -1,0 +1,32 @@
+/*
+ * Inline text links inside body copy.
+ * Default: 1px underline (--Lime-500).
+ * Hover / focus: full line-height fill (--Lime-100) with underline retained.
+ *
+ * Usage: <a class="text-link" href="…">…</a>
+ */
+
+.text-link {
+  color: inherit;
+  text-decoration: none;
+  background-image:
+    linear-gradient(var(--Lime-500), var(--Lime-500)),
+    linear-gradient(var(--Lime-100), var(--Lime-100));
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 1px, 100% 0%;
+  background-position: 0 100%, 0 100%;
+  transition: background-size 160ms ease-in-out;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  background-size: 100% 1px, 100% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-link {
+    transition: none;
+  }
+}

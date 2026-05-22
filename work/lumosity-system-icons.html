@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/components/text-link.css">
   <link rel="stylesheet" href="../css/sections/project-detail.css">
   <script src="../js/project-detail-nav.js" defer></script>
 </head>
@@ -74,63 +75,167 @@
       </div>
     </section>
 
-    <!-- SECTION 01 -->
-    <section class="project-story-split project-story-split--media-right" aria-labelledby="challenge-heading">
-      <div class="project-story-text">
-        <p class="project-section-label">01 - PROBLEM</p>
+    <!-- SECTION 01 — centered copy + 4-up gallery -->
+    <section class="project-story-grid" aria-labelledby="challenge-heading">
+      <div class="project-story-grid-text">
         <h2 id="challenge-heading" class="project-content-heading">Why borrowed icons stop working</h2>
         <p class="project-content-body">
           Every time the design team needed an icon, we reached for whatever set was closest. The result was a product UI assembled from mismatched visual vocabularies. Metaphors were duplicated and styles drifted and, ultimately, nothing felt like it belonged to the same system. The fix was not finding a better third-party set that had all of the required metaphors of the application, but to build one ourselves.
         </p>
       </div>
-      <div class="project-story-media">
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+      <!-- Section 01: before/after rows (caption + two image strips per row) -->
+      <div class="project-story-grid-gallery project-lumosity-icons-s01-gallery">
+        <div class="project-lumosity-icons-s01-row">
+          <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--before">
+            <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+              <path d="M6 6L10 10" stroke="currentColor" stroke-linecap="round"/>
+              <path d="M6 10L10 5.99999" stroke="currentColor" stroke-linecap="square"/>
+            </svg>
+            <span class="project-lumosity-icons-s01-caption-text">before — mixed weights &amp; styling</span>
+          </div>
+          <div class="project-lumosity-icons-s01-images" aria-label="Before — mixed weights and styling icons">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-01.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-02.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-03.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-04.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-05.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-06.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-07.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-08.png" alt="" width="96" height="96" decoding="async">
+          </div>
+        </div>
+        <div class="project-lumosity-icons-s01-row">
+          <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--after">
+            <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+              <path d="M5.64046 7.68763C5.46796 7.472 5.15331 7.43704 4.93768 7.60954C4.72205 7.78204 4.68708 8.09669 4.85959 8.31232L5.25002 7.99998L5.64046 7.68763ZM11.1447 6.30697L11.4516 5.91229L10.6623 5.29835L10.3553 5.69303L10.75 6L11.1447 6.30697ZM7.05203 10.2525L6.66159 10.5649L7.05203 10.2525ZM5.25002 7.99998L4.85959 8.31232L6.66159 10.5649L7.05203 10.2525L7.44246 9.94017L5.64046 7.68763L5.25002 7.99998ZM7.44458 10.2498L7.83926 10.5568L11.1447 6.30697L10.75 6L10.3553 5.69303L7.04991 9.94286L7.44458 10.2498ZM7.05203 10.2525L6.66159 10.5649C6.96447 10.9435 7.54159 10.9395 7.83926 10.5568L7.44458 10.2498L7.04991 9.94286C7.14913 9.81529 7.3415 9.81397 7.44246 9.94017L7.05203 10.2525Z" fill="currentColor"/>
+            </svg>
+            <span class="project-lumosity-icons-s01-caption-text">after — uniform styling</span>
+          </div>
+          <div class="project-lumosity-icons-s01-images" aria-label="After — uniform styling icons">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-09.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-10.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-11.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-12.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-13.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-14.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-15.png" alt="" width="96" height="96" decoding="async">
+            <img src="../assets/projects/lumosity-icons/section-01-icon-16.png" alt="" width="96" height="96" decoding="async">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SECTION 02 -->
-    <section class="project-story-split project-story-split--media-left" aria-labelledby="process-heading">
-      <div class="project-story-text">
-        <p class="project-section-label">02 - AUDIT</p>
+    <!-- SECTION 02 — centered copy + 4-up gallery -->
+    <section class="project-story-grid" aria-labelledby="process-heading">
+      <div class="project-story-grid-text">
         <h2 id="process-heading" class="project-content-heading">Taking stock of what we were actually using</h2>
         <p class="project-content-body">
           Before drawing anything, I inventoried every icon in use across the product. The goal was to see what we actually had in use and the requirements of the system: metaphors, duplicates, nouns, verbs, categories. Some icons were redundant, while others were functionally misaligned with what the UI was asking them to do. The audit produced a clear picture: here is what we keep, here is what we cut, here is what is missing.
         </p>
       </div>
-      <div class="project-story-media">
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+      <!-- Section 02: side nav + utility nav before/after (Figma 262:3590) -->
+      <div class="project-story-grid-gallery project-lumosity-icons-s02-gallery">
+        <div class="project-lumosity-icons-s02-group" aria-label="Side navigation audit">
+          <div class="project-lumosity-icons-s02-pair project-lumosity-icons-s02-pair--side">
+            <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--before">
+              <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+                <path d="M6 6L10 10" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M6 10L10 5.99999" stroke="currentColor" stroke-linecap="square"/>
+              </svg>
+              <span class="project-lumosity-icons-s01-caption-text">side nav (before)</span>
+            </div>
+            <img src="../assets/projects/lumosity-icons/section-02-A.png" alt="" width="262" height="217" decoding="async">
+          </div>
+          <div class="project-lumosity-icons-s02-pair project-lumosity-icons-s02-pair--side">
+            <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--after">
+              <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+                <path d="M5.64046 7.68763C5.46796 7.472 5.15331 7.43704 4.93768 7.60954C4.72205 7.78204 4.68708 8.09669 4.85959 8.31232L5.25002 7.99998L5.64046 7.68763ZM11.1447 6.30697L11.4516 5.91229L10.6623 5.29835L10.3553 5.69303L10.75 6L11.1447 6.30697ZM7.05203 10.2525L6.66159 10.5649L7.05203 10.2525ZM5.25002 7.99998L4.85959 8.31232L6.66159 10.5649L7.05203 10.2525L7.44246 9.94017L5.64046 7.68763L5.25002 7.99998ZM7.44458 10.2498L7.83926 10.5568L11.1447 6.30697L10.75 6L10.3553 5.69303L7.04991 9.94286L7.44458 10.2498ZM7.05203 10.2525L6.66159 10.5649C6.96447 10.9435 7.54159 10.9395 7.83926 10.5568L7.44458 10.2498L7.04991 9.94286C7.14913 9.81529 7.3415 9.81397 7.44246 9.94017L7.05203 10.2525Z" fill="currentColor"/>
+              </svg>
+              <span class="project-lumosity-icons-s01-caption-text">side nav (after)</span>
+            </div>
+            <img src="../assets/projects/lumosity-icons/section-02-B.png" alt="" width="262" height="217" decoding="async">
+          </div>
+        </div>
+        <div class="project-lumosity-icons-s02-group" aria-label="Utility navigation audit">
+          <div class="project-lumosity-icons-s02-pair project-lumosity-icons-s02-pair--utility">
+            <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--before">
+              <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+                <path d="M6 6L10 10" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M6 10L10 5.99999" stroke="currentColor" stroke-linecap="square"/>
+              </svg>
+              <span class="project-lumosity-icons-s01-caption-text">utility nav (before)</span>
+            </div>
+            <img src="../assets/projects/lumosity-icons/section-02-C.png" alt="" width="322" height="230" decoding="async">
+          </div>
+          <div class="project-lumosity-icons-s02-pair project-lumosity-icons-s02-pair--utility">
+            <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--after">
+              <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+                <path d="M5.64046 7.68763C5.46796 7.472 5.15331 7.43704 4.93768 7.60954C4.72205 7.78204 4.68708 8.09669 4.85959 8.31232L5.25002 7.99998L5.64046 7.68763ZM11.1447 6.30697L11.4516 5.91229L10.6623 5.29835L10.3553 5.69303L10.75 6L11.1447 6.30697ZM7.05203 10.2525L6.66159 10.5649L7.05203 10.2525ZM5.25002 7.99998L4.85959 8.31232L6.66159 10.5649L7.05203 10.2525L7.44246 9.94017L5.64046 7.68763L5.25002 7.99998ZM7.44458 10.2498L7.83926 10.5568L11.1447 6.30697L10.75 6L10.3553 5.69303L7.04991 9.94286L7.44458 10.2498ZM7.05203 10.2525L6.66159 10.5649C6.96447 10.9435 7.54159 10.9395 7.83926 10.5568L7.44458 10.2498L7.04991 9.94286C7.14913 9.81529 7.3415 9.81397 7.44246 9.94017L7.05203 10.2525Z" fill="currentColor"/>
+              </svg>
+              <span class="project-lumosity-icons-s01-caption-text">utility nav (after)</span>
+            </div>
+            <img src="../assets/projects/lumosity-icons/section-02-D.png" alt="" width="322" height="230" decoding="async">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SECTION 03 -->
+    <!-- SECTION 03 — centered copy + 4-up gallery -->
     <section class="project-story-grid" aria-labelledby="solution-heading">
       <div class="project-story-grid-text">
-        <p class="project-section-label">03 - GRID</p>
         <h2 id="solution-heading" class="project-content-heading">A system rooted in the brand</h2>
         <p class="project-content-body">
           I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
         </p>
       </div>
-      <div class="project-story-grid-gallery">
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
-        <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner" aria-hidden="true"></div></div>
+      <!-- Section 03: brand grid — 3 across, then 2 across (Figma 262:3741) -->
+      <div class="project-story-grid-gallery project-lumosity-icons-s03-gallery">
+        <div class="project-lumosity-icons-s03-row project-lumosity-icons-s03-row--three">
+          <img src="../assets/projects/lumosity-icons/section-03-A.png" alt="" width="320" height="322" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-B.png" alt="" width="320" height="320" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-C.png" alt="" width="320" height="320" decoding="async">
+        </div>
+        <div class="project-lumosity-icons-s03-row project-lumosity-icons-s03-row--two">
+          <img src="../assets/projects/lumosity-icons/section-03-D.png" alt="" width="496" height="496" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-E.png" alt="" width="496" height="496" decoding="async">
+        </div>
       </div>
     </section>
 
-    <!-- SECTION 04 — text left, media right -->
-    <section class="project-story-split project-story-split--media-right" aria-labelledby="lumosity-system-icons-s04-heading">
-      <div class="project-story-text">
-        <p class="project-section-label">04 - SET</p>
+    <!-- Section 04: gradient band + full icon grid (Figma 262:3854); single @2x composite -->
+    <section class="project-story-grid project-lumosity-icons-s04" aria-labelledby="lumosity-system-icons-s04-heading">
+      <div class="project-story-grid-text">
         <h2 id="lumosity-system-icons-s04-heading" class="project-content-heading">More than 80 icons with one visual voice</h2>
         <p class="project-content-body">
           The first iteration was the delivery of over 80 icons, all in one outlined style, sized at 32px in SVG format, with back-up PNGs if needed. Fill variants were added selectively as use cases required them. As a proof of concept I Included four unique game glyphs that were simplified, single-color symbols that could be paired with their respective game, distinct from the game's full-color illustration assets. This gave the set a character and whimsy that no off-the-shelf library could replicate. The set was adopted immediately by both design and engineering and can be seen being used in the most recent updates to the platform.
         </p>
       </div>
-      <div class="project-story-media">
-        <!-- Replace with <img src="…" alt="…"> when the section image is ready -->
-        <div class="project-story-media-inner" aria-hidden="true"></div>
+      <div class="project-story-grid-gallery project-lumosity-icons-s04-media">
+        <img src="../assets/projects/lumosity-icons/section-4-A.png" alt="" width="1314" height="1314" decoding="async">
+      </div>
+    </section>
+
+    <!-- Kicker: 2×2 game tile + glyph pairs (Figma 261:4517); stacks on phone -->
+    <section class="project-lumosity-icons-kicker" aria-label="Game artwork and matching glyph pairs">
+      <div class="project-lumosity-icons-kicker-grid">
+        <div class="project-lumosity-icons-kicker-cell">
+          <img src="../assets/projects/lumosity-icons/kicker-01.png" alt="" width="592" height="336" decoding="async">
+        </div>
+        <div class="project-lumosity-icons-kicker-cell">
+          <img src="../assets/projects/lumosity-icons/kicker-02.png" alt="" width="592" height="336" decoding="async">
+        </div>
+        <div class="project-lumosity-icons-kicker-cell">
+          <img src="../assets/projects/lumosity-icons/kicker-03.png" alt="" width="592" height="336" decoding="async">
+        </div>
+        <div class="project-lumosity-icons-kicker-cell">
+          <img src="../assets/projects/lumosity-icons/kicker-04.png" alt="" width="592" height="336" decoding="async">
+        </div>
       </div>
     </section>
 
