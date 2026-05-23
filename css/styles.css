@@ -2,6 +2,33 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Home ↔ project page fade (js/page-transition.js) */
+html.is-page-entering,
+html.is-page-leaving {
+  opacity: 0;
+}
+
+html.is-page-visible {
+  opacity: 1;
+  transition: opacity 320ms ease;
+}
+
+html.is-page-leaving {
+  transition: opacity 280ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.is-page-entering,
+  html.is-page-leaving {
+    opacity: 1;
+    transition: none;
+  }
+
+  html.is-page-visible {
+    transition: none;
+  }
+}
+
 body {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
@@ -287,7 +314,7 @@ a:focus-visible {
 }
 
 #work .section-container {
-  width: min(100%, 1648px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--Scale-1500);
@@ -432,7 +459,7 @@ a:focus-visible {
 
 @media (min-width: 811px) {
   .work-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--Scale-600);
   }
 

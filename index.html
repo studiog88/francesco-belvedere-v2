@@ -3,6 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Back to work (#work): hide until load + instant scroll (avoids top-of-page flash) -->
+  <script>
+    if (location.hash) {
+      document.documentElement.classList.add("is-awaiting-hash-scroll");
+      document.documentElement.style.visibility = "hidden";
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("is-page-entering");
+      }
+    }
+  </script>
+  <style>
+    html.is-awaiting-hash-scroll {
+      scroll-behavior: auto !important;
+    }
+  </style>
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && !location.hash) {
+      document.documentElement.classList.add("is-page-entering");
+    }
+  </script>
   <title></title>
   <link rel="preload" href="fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="css/tokens/primitives.css">
@@ -13,6 +36,7 @@
   <link rel="stylesheet" href="css/components/text-link.css">
   <link rel="stylesheet" href="css/sections/about.css">
   <link rel="stylesheet" href="css/sections/footer.css">
+  <script src="js/page-transition.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/main.js" defer></script>
@@ -46,7 +70,7 @@
         <div class="work-grid">
           <a class="work-card work-card-large" href="work/lumosity.html" aria-label="View Lumosity project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/images/project-tile-FPO-01.png" alt="Lumosity project preview">
+              <img class="work-card-image work-card-image-large" src="assets/projects/lumosity/feature-C.png" alt="Lumosity project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">Lumosity</h3>
@@ -174,10 +198,16 @@
 
       <!-- Testimonials -->
       <div class="about-endorsements-grid">
+        <img
+          class="about-endorsements-quote-decor"
+          src="assets/images/quote.png"
+          alt=""
+          aria-hidden="true"
+        >
         <article class="about-endorsement-card" data-animate="fade-up">
           <p class="about-endorsement-quote">He demonstrates the ability to work well with engineering to adapt to technical constraints or limitations while meeting the demands of the end user by creating easy-to-use, beautiful, and accessible interfaces.</p>
           <div class="about-endorsement-meta">
-            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <img class="about-endorsement-logo" src="assets/logos/testimonial-icon-included.png" alt="Included Health">
             <p class="about-endorsement-name">JOSHUA ESCRIBANO-FONTANET</p>
             <p class="about-endorsement-role">Software Engineer, Included Health</p>
           </div>
@@ -186,7 +216,7 @@
         <article class="about-endorsement-card" data-animate="fade-up">
           <p class="about-endorsement-quote">He brought strategic thinking while providing creative inputs and insightful recommendations at the different design stages.</p>
           <div class="about-endorsement-meta">
-            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <img class="about-endorsement-logo" src="assets/logos/testimonial-icon-FWA.png" alt="FWA">
             <p class="about-endorsement-name">ELI SHILLOCK</p>
             <p class="about-endorsement-role">Judge @ FWA</p>
           </div>
@@ -195,7 +225,7 @@
         <article class="about-endorsement-card" data-animate="fade-up">
           <p class="about-endorsement-quote">It&rsquo;s rare to come across a designer as talented and versatile as Francesco. Francesco not only has an incredible eye for design but also deeply understands the nuances of engineering component libraries and frameworks</p>
           <div class="about-endorsement-meta">
-            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <img class="about-endorsement-logo" src="assets/logos/testimonial-icon-lumosity.png" alt="Lumosity">
             <p class="about-endorsement-name">HARSH MEHTA</p>
             <p class="about-endorsement-role">Software Engineer, Lumosity</p>
           </div>
@@ -204,7 +234,7 @@
         <article class="about-endorsement-card" data-animate="fade-up">
           <p class="about-endorsement-quote">Francesco combines deep expertise and dedication to his craft with a rare ability to think holistically.</p>
           <div class="about-endorsement-meta">
-            <span class="about-endorsement-logo" aria-hidden="true"></span>
+            <img class="about-endorsement-logo" src="assets/logos/testimonial-icon-eldera.png" alt="Eldera AI">
             <p class="about-endorsement-name">NICK RUZHNIKOV</p>
             <p class="about-endorsement-role">Co-Founder, Head of Design, Eldera AI</p>
           </div>

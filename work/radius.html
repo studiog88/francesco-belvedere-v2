@@ -11,6 +11,11 @@
        5) Extra sections: duplicate another label + h2 + body group in <main> (see work/PROJECT_PAGE_CHECKLIST.md).
        6) Update body hooks: class="site project-detail-page project-<project-slug>" and data-project-slug="<project-slug>".
        7) Maintain PROJECT_NAV_ORDER in ../js/project-detail-nav.js (prev/next wraps). -->
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("is-page-entering");
+    }
+  </script>
   <title>Radius</title>
   <link rel="preload" href="../fonts/Work_Sans/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../css/tokens/primitives.css">
@@ -20,6 +25,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/components/text-link.css">
   <link rel="stylesheet" href="../css/sections/project-detail.css">
+  <script src="../js/page-transition.js" defer></script>
   <script src="../js/project-detail-nav.js" defer></script>
 </head>
 <body class="site project-detail-page project-radius" data-project-slug="radius">

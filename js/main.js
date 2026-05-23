@@ -1,5 +1,115 @@
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * index.html#work (Back to work): hide until we can jump to the hash, then show.
+ * Prevents a flash of the hero before scroll settles on #work.
+ */
+(function initHashLandingWithoutFlash() {
+  if (!location.hash) {
+    return;
+  }
+
+  let didReveal = false;
+
+  const jumpToHash = () => {
+    const target = document.querySelector(location.hash);
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ block: "start", behavior: "instant" });
+    const top = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top, left: 0, behavior: "instant" });
+  };
+
+  const revealPage = () => {
+    if (didReveal) {
+      return;
+    }
+
+    didReveal = true;
+    jumpToHash();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.documentElement.style.visibility = "";
+        document.documentElement.classList.remove("is-awaiting-hash-scroll");
+      });
+    });
+  };
+
+  if (document.documentElement.classList.contains("is-awaiting-hash-scroll")) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealPage, { once: true });
+    } else {
+      revealPage();
+    }
+
+    /* Images/fonts can shift layout after first jump */
+    window.addEventListener("load", jumpToHash, { once: true });
+    window.setTimeout(revealPage, 4000);
+  }
+
+  /* Back/forward cache: head script does not re-run; fix scroll before paint */
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) {
+      return;
+    }
+
+    didReveal = false;
+    document.documentElement.classList.add("is-awaiting-hash-scroll");
+    document.documentElement.style.visibility = "hidden";
+    revealPage();
+  });
+})();
+
+/**
+ * Remove #work / #about from the URL when the user scrolls back to the hero so Cmd+R
+ * stays at the top. Back-to-work landing still uses the hash until they scroll up.
+ */
+(function initStripSectionHashAtTop() {
+  const STRIP_HASHES = new Set(["#work", "#about"]);
+  const TOP_THRESHOLD_PX = 48;
+  let stripEnabled = false;
+
+  const maybeStripHash = () => {
+    if (!stripEnabled || !STRIP_HASHES.has(location.hash)) {
+      return;
+    }
+
+    if (window.scrollY > TOP_THRESHOLD_PX) {
+      return;
+    }
+
+    history.replaceState(
+      history.state,
+      "",
+      `${window.location.pathname}${window.location.search}`
+    );
+  };
+
+  const enableStrip = () => {
+    stripEnabled = true;
+    maybeStripHash();
+  };
+
+  if (document.documentElement.classList.contains("is-awaiting-hash-scroll")) {
+    const observer = new MutationObserver(() => {
+      if (!document.documentElement.classList.contains("is-awaiting-hash-scroll")) {
+        observer.disconnect();
+        enableStrip();
+      }
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  } else {
+    enableStrip();
+  }
+
+  window.addEventListener("scroll", maybeStripHash, { passive: true });
+})();
+
 const backToTopButton = document.querySelector(".back-to-top");
 const footerInnerContainer = document.querySelector(".site-footer-inner");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
