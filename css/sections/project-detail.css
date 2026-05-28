@@ -113,9 +113,9 @@
 .project-detail-nameplate {
   margin: 0;
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-bold);
-  font-size: calc(var(--Font-Body-Caption-text-size) * 1.2);
-  line-height: 1;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--Font-Body-Caption-text-size);
+  line-height: var(--Font-Body-Caption-line-height);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--Lime-500);
@@ -208,15 +208,15 @@
   box-sizing: border-box;
 }
 
-/* H1 token (60px desktop — see responsive.css); single page title lives in hero */
+/* Hero type token (60px desktop — see responsive.css); single page title lives in hero */
 .project-hero-title {
   margin: 0;
   max-width: 100%;
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Headings-H1-text-size);
-  line-height: var(--Font-Headings-H1-line-height);
+  font-size: var(--Font-Headings-Hero-text-size);
+  line-height: var(--Font-Headings-Hero-line-height);
 }
 
 /* Figment: hero bg on .project-hero-content only (via .project-hero-bg), not metadata */
@@ -444,7 +444,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Caption-text-size);
   line-height: var(--Font-Body-Caption-line-height);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -915,8 +915,8 @@
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Body-Paragraph-SM-text-size);
-  line-height: var(--Font-Body-Paragraph-SM-line-height);
+  font-size: var(--Font-Body-Paragraph-text-size);
+  line-height: var(--Font-Body-Paragraph-line-height);
   white-space: nowrap;
 }
 
@@ -962,15 +962,16 @@
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Headings-H3-text-size);
-  line-height: var(--Font-Headings-H3-line-height);
+  font-size: var(--Font-Body-Intro-text-size);
+  line-height: var(--Font-Body-Intro-line-height);
 }
 
 .project-section-label {
   margin: 0;
   font-family: var(--font-family-primary);
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: var(--Font-Body-Caption-text-size);
+  line-height: var(--Font-Body-Caption-line-height);
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--Warm-Grey-600);
@@ -980,8 +981,8 @@
   margin: 0;
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-H4-text-size);
-  line-height: var(--Font-Headings-H4-line-height);
+  font-size: var(--Font-Headings-Section-text-size);
+  line-height: var(--Font-Headings-Section-line-height);
   font-weight: var(--font-weight-medium);
 }
 
@@ -989,8 +990,8 @@
   margin: 0;
   color: var(--Warm-Grey-800);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
 }
 
 /*
@@ -1435,8 +1436,8 @@
   }
 
   .project-hero-title {
-    font-size: var(--Font-Headings-H3-text-size);
-    line-height: var(--Font-Headings-H3-line-height);
+    font-size: var(--Font-Body-Intro-text-size);
+    line-height: var(--Font-Body-Intro-line-height);
   }
 
   .project-story-grid-text {
@@ -1444,8 +1445,8 @@
   }
 
   .project-intro-lede {
-    font-size: var(--Font-Body-Paragraph-L-text-size);
-    line-height: var(--Font-Body-Paragraph-L-line-height);
+    font-size: var(--Font-Body-Large-text-size);
+    line-height: var(--Font-Body-Large-line-height);
   }
 
   .project-content-body {
@@ -1523,8 +1524,8 @@
   }
 
   .project-hero-title {
-    font-size: var(--Font-Headings-H4-text-size);
-    line-height: var(--Font-Headings-H4-line-height);
+    font-size: var(--Font-Headings-Section-text-size);
+    line-height: var(--Font-Headings-Section-line-height);
   }
 
   .project-intro-lede {

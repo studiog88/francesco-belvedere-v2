@@ -14,9 +14,9 @@
 .about-statement {
   margin: 0;
   font-family: var(--font-family-primary);
-  font-size: clamp(2rem, 5.8vw, var(--Font-Body-Positioning-Statement-text-size));
-  line-height: 1.4;
-  font-weight: var(--font-weight-medium);
+  font-size: var(--Font-Body-Intro-text-size);
+  line-height: var(--Font-Body-Intro-line-height);
+  font-weight: var(--font-weight-regular);
 }
 
 .about-statement-primary {
@@ -55,8 +55,8 @@
   background-color: var(--Foundation-White);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
   transition: background-color 180ms ease;
 }
 
@@ -124,8 +124,8 @@
 .about-marquee-item {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: clamp(1.5rem, 4vw, var(--Font-Headings-H4-text-size));
-  line-height: 1.4;
+  font-size: var(--Font-Headings-Section-text-size);
+  line-height: var(--Font-Headings-Section-line-height);
   letter-spacing: 0;
   color: var(--Foundation-Black);
   white-space: nowrap;
@@ -239,8 +239,8 @@
 .about-endorsement-quote {
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: 1.4;
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
   font-weight: var(--font-weight-regular);
 }
 
@@ -263,7 +263,7 @@
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: 1.4;
+  line-height: var(--Font-Body-Paragraph-line-height);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
 }
@@ -273,7 +273,7 @@
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: 1.4;
+  line-height: var(--Font-Body-Paragraph-line-height);
   font-weight: var(--font-weight-regular);
 }
 

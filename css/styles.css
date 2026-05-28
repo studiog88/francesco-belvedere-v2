@@ -111,7 +111,7 @@ body {
   min-height: 0;
   flex: 1 1 0;
   display: flex;
-  gap: var(--Scale-600);
+  gap: var(--Scale-1300);
   align-items: stretch;
 }
 
@@ -119,9 +119,9 @@ body {
   color: var(--Foundation-Black);
   background-color: var(--Warm-Grey-100);
   font-family: var(--font-family-primary);
-  font-size: 16px;
+  font-size: var(--Font-Body-Paragraph-text-size);
   font-weight: var(--font-weight-regular);
-  line-height: 1;
+  line-height: var(--Font-Body-Paragraph-line-height);
   text-decoration: none;
   padding: var(--Scale-200) var(--Scale-400);
   border-radius: var(--Scale-1900);
@@ -224,8 +224,8 @@ a:focus-visible {
 .contact-overlay-title {
   margin: 0 0 var(--Scale-700);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-H4-text-size);
-  line-height: var(--Font-Headings-H4-line-height);
+  font-size: var(--Font-Headings-Section-text-size);
+  line-height: var(--Font-Headings-Section-line-height);
   font-weight: var(--font-weight-medium);
 }
 
@@ -236,8 +236,8 @@ a:focus-visible {
 
 .contact-overlay-label {
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-SM-text-size);
-  line-height: var(--Font-Body-Paragraph-SM-line-height);
+  font-size: var(--Font-Body-Paragraph-text-size);
+  line-height: var(--Font-Body-Paragraph-line-height);
   color: var(--Warm-Grey-700);
 }
 
@@ -291,10 +291,16 @@ a:focus-visible {
   object-position: left top;
 }
 
-.hero-right-scaffold {
-  width: 60%;
-  height: 100%;
-  background-color: var(--Blue-100);
+.hero-heading {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  align-self: center;
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Headings-Hero-text-size);
+  line-height: var(--Font-Headings-Hero-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--Foundation-Black);
 }
 
 #work {
@@ -331,9 +337,9 @@ a:focus-visible {
 .work-heading {
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-black);
-  font-size: 60px;
-  line-height: 1;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Headings-Hero-text-size);
+  line-height: var(--Font-Headings-Hero-line-height);
   text-align: left;
   margin-bottom: var(--Scale-600);
 }
@@ -349,9 +355,9 @@ a:focus-visible {
   margin: 0;
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-H2-text-size);
+  font-size: var(--Font-Headings-Section-text-size);
   font-weight: var(--font-weight-medium);
-  line-height: 1.4;
+  line-height: var(--Font-Headings-Section-line-height);
 }
 
 .work-grid {
@@ -398,9 +404,9 @@ a:focus-visible {
   margin: 0;
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
+  font-size: var(--Font-Headings-Card-title-text-size);
   font-weight: var(--font-weight-medium);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  line-height: var(--Font-Headings-Card-title-line-height);
 }
 
 .work-card-text {
@@ -490,8 +496,8 @@ a:focus-visible {
   margin: 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Body-Positioning-Statement-text-size);
-  line-height: var(--Font-Body-Positioning-Statement-line-height);
+  font-size: var(--Font-Body-Intro-text-size);
+  line-height: var(--Font-Body-Intro-line-height);
 }
 
 .about-positioning-statement-primary {
@@ -519,9 +525,9 @@ a:focus-visible {
   margin: 0 0 var(--Scale-600);
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-H5-text-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--Font-Headings-H5-line-height);
+  font-size: var(--Font-Headings-Card-title-text-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--Font-Headings-Card-title-line-height);
 }
 
 .about-stats-grid {
@@ -544,17 +550,17 @@ a:focus-visible {
   margin: 0;
   color: var(--Warm-Grey-900);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-black);
-  font-size: clamp(2.5rem, 2vw + 1.8rem, 4.5rem);
-  line-height: 1;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Headings-Hero-text-size);
+  line-height: var(--Font-Headings-Hero-line-height);
 }
 
 .about-stat-label {
   margin: 0;
   color: var(--Warm-Grey-700);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
 }
 
 .about-timeline {
@@ -581,8 +587,8 @@ a:focus-visible {
   margin: 0;
   color: var(--Warm-Grey-900);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
 }
 
 .about-companies {
@@ -595,8 +601,9 @@ a:focus-visible {
   margin: 0 0 var(--Scale-300);
   color: var(--Warm-Grey-600);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-SM-text-size);
-  line-height: var(--Font-Body-Paragraph-SM-line-height);
+  font-size: var(--Font-Body-Caption-text-size);
+  line-height: var(--Font-Body-Caption-line-height);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -605,8 +612,8 @@ a:focus-visible {
   margin: 0;
   color: var(--Warm-Grey-900);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-L-text-size);
-  line-height: var(--Font-Body-Paragraph-L-line-height);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
 }
 
 @media (max-width: 810px) {
@@ -627,11 +634,6 @@ a:focus-visible {
 
   .playground-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .about-positioning-statement {
-    font-size: var(--Font-Body-Positioning-Statement-text-size);
-    line-height: var(--Font-Body-Positioning-Statement-line-height);
   }
 
   .about-stats-grid {
@@ -656,11 +658,6 @@ a:focus-visible {
 
   .playground-row {
     grid-template-columns: 1fr;
-  }
-
-  .about-positioning-statement {
-    font-size: var(--Font-Body-Positioning-Statement-text-size);
-    line-height: var(--Font-Body-Positioning-Statement-line-height);
   }
 
   .about-stats-grid {

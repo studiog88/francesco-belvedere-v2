@@ -71,9 +71,9 @@
   margin: 0;
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-H2-text-size);
+  font-size: var(--Font-Body-Intro-text-size);
   font-weight: var(--font-weight-regular);
-  line-height: 1.4;
+  line-height: var(--Font-Body-Intro-line-height);
 }
 
 .site-footer-bar {

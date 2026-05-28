@@ -128,17 +128,6 @@
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
 
-  /* ============================================
-     ALIAS BLOCK (TEMPORARY)
-     Remove after migrating all legacy token names.
-     Search check: rg "Font-Family-|Font-Weight-" css/
-     ============================================ */
-  --Font-Family-Display: var(--font-family-primary);
-  --Font-Family-Headings: var(--font-family-primary);
-  --Font-Family-Body: var(--font-family-primary);
-  --Font-Weight-Regular: var(--font-weight-regular);
-  --Font-Weight-Semibold: var(--font-weight-semibold);
-  --Font-Weight-Bold: var(--font-weight-bold);
 
   /* ============================================
      SCALE PRIMITIVES
@@ -159,6 +148,7 @@
   --Scale-1000: 40px;
   --Scale-1100: 48px;
   --Scale-1200: 56px;
+  --Scale-1250: 60px;
   --Scale-1300: 64px;
   --Scale-1400: 72px;
   --Scale-1500: 80px;
