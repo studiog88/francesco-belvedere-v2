@@ -53,6 +53,7 @@
   const fadeIn = () => {
     document.documentElement.classList.remove("is-page-entering", "is-page-leaving");
     document.documentElement.classList.add("is-page-visible");
+    window.dispatchEvent(new CustomEvent("portfolio:page-visible"));
   };
 
   const startFadeIn = () => {
