@@ -13,7 +13,7 @@
 
   const isHomePath = (pathname) => /(?:^|\/)index\.html$/.test(pathname) || /\/$/.test(pathname) && !pathname.includes("/work/");
 
-  const isProjectPath = (pathname) => /\/work\/[^/]+\.html$/.test(pathname);
+  const isProjectPath = (pathname) => /\/work\/[^/]+(?:\.html)?$/.test(pathname);
 
   const isPortfolioPath = (pathname) => isHomePath(pathname) || isProjectPath(pathname);
 

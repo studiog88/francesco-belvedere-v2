@@ -17,9 +17,19 @@
     return;
   }
 
+  /**
+   * Basename for PROJECT_NAV_ORDER lookup (e.g. "lumosity.html").
+   * Netlify Pretty URLs serve /work/lumosity without .html; local dev often uses .html in the path.
+   */
   function currentBasename() {
-    const segments = decodeURIComponent(location.pathname).split("/");
-    const last = segments.pop() || "";
+    const segments = decodeURIComponent(location.pathname).split("/").filter(Boolean);
+    let last = segments.pop() || "";
+    if (!last) {
+      return "";
+    }
+    if (!/\.html?$/i.test(last)) {
+      last = `${last}.html`;
+    }
     return last;
   }
 
