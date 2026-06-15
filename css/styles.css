@@ -35,34 +35,11 @@ body {
   color: var(--Foundation-Black);
   background: linear-gradient(180deg, var(--Foundation-White) 0%, var(--Lime-50) 100%);
   overflow-x: clip;
-  --masthead-for-hero: calc(100vw * 82 / 1441 + 48px);
-}
-
-/* Intro = exactly one viewport: masthead + hero flex slice (no min-only growth past fold) */
-.hero-viewport-stack {
-  height: calc(100vh - var(--masthead-for-hero));
-  max-height: calc(100vh - var(--masthead-for-hero));
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-@supports (height: 100dvh) {
-  .hero-viewport-stack {
-    height: calc(100dvh - var(--masthead-for-hero));
-    max-height: calc(100dvh - var(--masthead-for-hero));
-  }
 }
 
 #hero {
-  flex: 1 1 0;
-  min-height: 0;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0 var(--Scale-1000) var(--Scale-1000);
+  padding: 0 var(--Scale-1000);
+  margin-bottom: var(--Scale-1500);
   box-sizing: border-box;
 }
 
@@ -98,21 +75,11 @@ body {
   top: var(--Scale-400);
   z-index: 20;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: var(--Scale-200);
   padding: 0 40px;
-  margin: 0;
-  flex-shrink: 0;  
-  padding-top: var(--Scale-200);
-  padding-bottom: var(--Scale-200);
-}
-
-.hero-content {
-  min-height: 0;
-  flex: 1 1 0;
-  display: flex;
-  gap: var(--Scale-1300);
-  align-items: stretch;
+  margin: var(--Scale-1000) 0;
+  flex-shrink: 0;
 }
 
 .hero-nav-link {
@@ -280,33 +247,46 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-.hero-kraftmouth {
-  flex: 0 0 auto;
-  width: auto;
-  height: 100%;
-  max-width: 50%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain;
-  object-position: left top;
+.hero-heading {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: 72px;
+  line-height: 1;
+  font-weight: var(--font-weight-light);
+  color: var(--Foundation-Black);
+  /* Room for descenders when background-clip: text is active (e.g. g, y) */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
 }
 
-.hero-heading {
-  flex: 1 1 0;
-  min-width: 0;
-  margin: 0;
-  align-self: center;
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-Hero-text-size);
-  line-height: var(--Font-Headings-Hero-line-height);
-  font-weight: var(--font-weight-regular);
-  color: var(--Foundation-Black);
+.hero-heading-logo {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  margin-left: 0.15em;
+  vertical-align: middle;
+}
+
+/* Figma angular fill (334:19043): conic mint → cyan; position tuned to comp */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-heading {
+    background-image: conic-gradient(
+      from 90deg at 35% 85%,
+      var(--Lime-300) 0%,
+      var(--Blue-400) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 #work {
   color: var(--Foundation-Black);
-  /* Space after intro stack (was #hero margin-bottom; keep outside the 100dvh budget) */
-  padding: calc(var(--Scale-1700) + var(--Scale-1000)) var(--Scale-1000) var(--Scale-1700);
+  padding: 0 var(--Scale-1000) var(--Scale-1700);
+  /* Anchor landings: sticky nav top + pill row + 40px gap */
+  scroll-margin-top: var(--Scale-1600);
 }
 
 .content-section {
@@ -643,7 +623,7 @@ a:focus-visible {
 
 @media (max-width: 390px) {
   #work {
-    padding: calc(var(--Scale-1100) + var(--Scale-1000)) var(--Scale-400) var(--Scale-1100);
+    padding: 0 var(--Scale-400) var(--Scale-1100);
   }
 
   .content-section {

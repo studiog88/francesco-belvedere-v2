@@ -17,8 +17,8 @@ gsap.registerPlugin(ScrollTrigger);
       return;
     }
 
-    target.scrollIntoView({ block: "start", behavior: "instant" });
-    const top = target.getBoundingClientRect().top + window.scrollY;
+    const marginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - marginTop;
     window.scrollTo({ top, left: 0, behavior: "instant" });
   };
 
