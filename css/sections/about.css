@@ -1,48 +1,76 @@
 .about-section {
   padding-top: var(--Scale-1000);
   padding-bottom: var(--Scale-1000);
-  /* Anchor: section top flush under sticky nav; padding-top places border 40px below nav */
   scroll-margin-top: var(--Scale-1200);
 }
 
 .about-container {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-1000);
+  gap: var(--Scale-1800);
   border-top: 1px solid var(--Lime-500);
   padding-top: var(--Scale-1000);
 }
 
-.about-statement {
+.about-lede {
   margin: 0;
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Intro-text-size);
-  line-height: var(--Font-Body-Intro-line-height);
+  font-size: var(--Font-Body-About-lede-text-size);
+  line-height: var(--Font-Body-About-lede-line-height);
   font-weight: var(--font-weight-regular);
-}
-
-.about-statement-primary {
   color: var(--Foundation-Black);
+  letter-spacing: -0.02em;
 }
 
-.about-statement-secondary {
-  color: var(--Warm-Grey-600);
-  font-weight: var(--font-weight-regular);
-}
-
-.about-profile-banner {
+.about-bio {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-600);
-  background-color: var(--Lime-400);
-  border-radius: var(--Scale-600);
-  padding: var(--Scale-600);
+  gap: var(--Scale-1000);
+}
+
+.about-bio-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1000);
+}
+
+.about-photo-frame {
+  width: min(100%, 400px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-inline: auto;
+}
+
+.about-photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.about-bio-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1000);
+}
+
+.about-bio-body {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Scale-700);
+  font-weight: var(--font-weight-regular);
+  color: var(--Foundation-Black);
+  letter-spacing: -0.02em;
 }
 
 .about-pill-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--Scale-200);
+  gap: var(--Scale-400);
 }
 
 .about-pill-link {
@@ -51,71 +79,177 @@
   justify-content: center;
   min-height: 48px;
   padding: var(--Scale-300) var(--Scale-400);
-  border-radius: var(--Scale-1900);
   text-decoration: none;
-  color: var(--Foundation-Black);
-  background-color: var(--Foundation-White);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Body-Large-text-size);
-  line-height: var(--Font-Body-Large-line-height);
-  transition: background-color 180ms ease;
 }
 
-.about-pill-link:hover,
-.about-pill-link:focus-visible {
-  background-color: var(--Cool-Grey-50);
-}
-
-.about-photo-frame {
+.about-testimonials {
   position: relative;
-  border: var(--Scale-100) solid var(--Lime-400);
-  border-radius: var(--Scale-600);
-  overflow: hidden;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: var(--Scale-1000);
+  overflow: visible;
 }
 
-/* Mint → cyan wash; matches hero heading gradient */
-.about-photo-frame::after {
-  content: "";
+.about-endorsements-quote-decor {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
+  top: -51px;
+  left: -56px;
+  z-index: 0;
+  width: auto;
+  height: 132px;
   pointer-events: none;
-  background-image: conic-gradient(
-    from 90deg at 35% 85%,
-    var(--Lime-300) 0%,
-    var(--Blue-400) 100%
-  );
-  opacity: 0.35;
-  mix-blend-mode: soft-light;
+  user-select: none;
 }
 
-.about-photo-image {
+.about-endorsement-card {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--Lime-500);
+  padding-top: var(--Scale-1000);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--Scale-1000);
+}
+
+.about-endorsement-quote,
+.about-endorsement-name,
+.about-endorsement-role {
+  margin: 0;
+}
+
+.about-endorsement-quote {
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Scale-700);
+  font-weight: var(--font-weight-regular);
+}
+
+.about-endorsement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-200);
+}
+
+.about-endorsement-logo {
   display: block;
+  flex-shrink: 0;
+  width: var(--Scale-600);
+  height: var(--Scale-600);
+  object-fit: contain;
+}
+
+.about-endorsement-name {
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Paragraph-text-size);
+  line-height: var(--Font-Body-Paragraph-line-height);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+.about-endorsement-role {
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Paragraph-text-size);
+  line-height: var(--Font-Body-Paragraph-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.about-client-logos {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--Scale-400);
   width: 100%;
-  height: auto;
-  transform: scale(1.2);
-  transform-origin: center center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fixed-height cell; each logo gets its own optical width/height inside */
+.about-client-logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: var(--Scale-1200);
+}
+
+.about-client-logo {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  transform: translate(var(--logo-offset-x, 0), var(--logo-offset-y, 0));
+}
+
+/*
+ * Per-logo optical sizes from Figma logo-row (node 391:18025).
+ * --logo-offset-x/y: nudge individual marks for visual balance in the 56px row.
+ */
+.about-client-logo--lumosity {
+  width: 135px;
+  height: 26px;
+  --logo-offset-y: 2px;
+}
+
+.about-client-logo--taschen {
+  width: 98px;
+  height: 18px;
+  --logo-offset-y: 1px;
+}
+
+.about-client-logo--apple {
+  width: 105px;
+  height: 32px;
+  --logo-offset-y: -2px;
+}
+
+.about-client-logo--originate {
+  width: 114px;
+  height: 28px;
+  --logo-offset-x: 4px;
+  --logo-offset-y: 2px;
+}
+
+.about-client-logo--post-pilot {
+  width: 141px;
+  height: 18px;
+  --logo-offset-y: 1px;
+}
+
+.about-client-logo--beats {
+  width: 189px;
+  height: 23px;
+  --logo-offset-y: 2px;
+}
+
+.about-client-logo--playboy {
+  width: 140px;
+  height: 28px;
+  --logo-offset-y: -2px;
 }
 
 .about-banners {
   display: flex;
   flex-direction: column;
-  /* ~80% more than Scale-800 alone */
-  gap: calc(var(--Scale-800) * 1.8);
+  gap: var(--Scale-1500);
+}
+
+.about-marquees {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1500);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
-  /* Word ↔ icon horizontal rhythm (also used between cloned periods; same scale at every breakpoint). */
-  /* ~80% more than prior clamp legs; does not affect .about-banners vertical gap between tracks. */
   --about-marquee-item-gap: clamp(
-    calc(var(--Scale-700) * 1.5 * 1.8),
-    calc(8.25vw * 1.8),
-    calc(var(--Scale-1400) * 1.5 * 1.8)
+    var(--Scale-1000),
+    12vw,
+    calc(var(--Scale-1000) * 5)
   );
 }
 
@@ -137,29 +271,30 @@
   align-items: center;
   flex-wrap: nowrap;
   width: max-content;
-  /* Same gap between cloned periods as between words/icons inside a period (js clones in index). */
   justify-content: flex-start;
   gap: var(--about-marquee-item-gap);
 }
 
 .about-marquee-item {
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--Font-Headings-Section-text-size);
-  line-height: var(--Font-Headings-Section-line-height);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--Font-Headings-Card-title-text-size);
+  line-height: 1.4;
   letter-spacing: 0;
   color: var(--Foundation-Black);
   white-space: nowrap;
 }
 
 .about-marquee-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   flex-shrink: 0;
-  width: var(--Scale-1000);
-  height: var(--Scale-1000);
-  color: var(--Cool-Grey-500);
+  width: var(--Scale-800);
+  height: var(--Scale-800);
+}
+
+/* Temporary until marquee icons are provided */
+.about-marquee-divider--placeholder {
+  background-color: rgb(255 0 255 / 20%);
 }
 
 .about-marquee-icon {
@@ -168,184 +303,69 @@
   height: 100%;
 }
 
-/* Two full-width rows within the parent container. */
-.about-credentials-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--Scale-1500);
-  width: 100%;
-  margin-top: calc(var(--Scale-1000) * 0.75);
-  margin-bottom: var(--Scale-600);
-}
-
-.about-credentials-row {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  /* When row content is wider than the viewport, scroll horizontally instead of crushing cells. */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.about-credentials-row--top {
-  justify-content: space-between;
-}
-
-.about-credentials-row--bottom {
-  justify-content: space-around;
-}
-
-.about-credential-cell {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  min-width: 240px;
-  padding-left: var(--Scale-1300);
-  padding-right: var(--Scale-1300);
-  height: var(--Scale-1500);
-  max-height: var(--Scale-1500);
-  border-radius: var(--Scale-200); /* 8px */
-  background-color: var(--Foundation-White);
-  overflow: hidden;
-}
-
-/* Intrinsic dimensions come from each SVG; no width/height overrides here. */
-.about-credential-logo {
-  display: block;
-  flex-shrink: 0;
-}
-
-.about-endorsements-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--Scale-600);
-  overflow: visible;
-}
-
-/* Decorative quote — absolute so it does not affect grid layout */
-.about-endorsements-quote-decor {
-  position: absolute;
-  top: -64px;
-  left: -56px;
-  z-index: 0;
-  width: auto;
-  height: 158px;
-  pointer-events: none;
-  user-select: none;
-}
-
-.about-endorsement-card {
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--Cool-Grey-300);
-  padding-top: var(--Scale-1000);
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--Scale-1400);
-}
-
-.about-endorsement-quote,
-.about-endorsement-name,
-.about-endorsement-role {
-  margin: 0;
-}
-
-.about-endorsement-quote {
-  color: var(--Foundation-Black);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Large-text-size);
-  line-height: var(--Font-Body-Large-line-height);
-  font-weight: var(--font-weight-regular);
-}
-
-.about-endorsement-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.about-endorsement-logo {
-  display: block;
-  flex-shrink: 0;
-  width: var(--Scale-600);
-  height: var(--Scale-600);
-  object-fit: contain;
-}
-
-.about-endorsement-name {
-  margin-top: var(--Scale-200);
-  color: var(--Foundation-Black);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: var(--Font-Body-Paragraph-line-height);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-}
-
-.about-endorsement-role {
-  margin-top: var(--Scale-100);
-  color: var(--Foundation-Black);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: var(--Font-Body-Paragraph-line-height);
-  font-weight: var(--font-weight-regular);
-}
-
 @media (min-width: 811px) {
   .about-section {
     padding-top: var(--Scale-1100);
     padding-bottom: var(--Scale-1100);
   }
 
-  .about-container {
+  .about-bio-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
     gap: var(--Scale-1500);
   }
 
-  .about-profile-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 240px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: var(--Scale-1000);
-    padding-right: 8px;
-    overflow: hidden;
-  }
-
   .about-photo-frame {
-    margin-left: 0;
-    width: 400px;
-    flex: 0 0 400px;
+    width: 100%;
+    max-width: 640px;
+    justify-self: center;
   }
 
-  /* Must match the ~80% bump on the base .about-banners gap (see default block). */
-  .about-banners {
-    gap: calc(var(--Scale-900) * 1.8);
+  .about-bio-content {
+    width: 100%;
+    max-width: 640px;
+    justify-self: center;
+    padding-top: var(--Scale-1300);
   }
 
-  .about-credentials-grid {
-    margin-top: calc(var(--Scale-1500) * 0.75);
-    margin-bottom: var(--Scale-800);
-  }
-
-  .about-endorsements-grid {
+  .about-testimonials {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--Scale-1000);
+    gap: var(--Scale-1500);
   }
 }
 
 @media (min-width: 1201px) {
-  .about-endorsements-grid {
+  .about-testimonials {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--Scale-1000);
+    gap: var(--Scale-1500);
   }
 }
 
+@media (max-width: 810px) {
+  .about-client-logos {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 390px) {
+  .about-container {
+    gap: var(--Scale-1000);
+  }
+
+  .about-banners,
+  .about-marquees {
+    gap: var(--Scale-1000);
+  }
+
+  .about-photo-frame {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-endorsements-quote-decor {
+    top: -40px;
+    left: -24px;
+    height: 100px;
+  }
+}

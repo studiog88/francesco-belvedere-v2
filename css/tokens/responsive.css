@@ -25,16 +25,22 @@
 
   --Font-Body-Caption-text-size: 12px;
   --Font-Body-Caption-line-height: 14px;
+
+  /* About section */
+  --Font-Body-About-lede-text-size: 32px;
+  --Font-Body-About-lede-line-height: 40px;
 }
 
 @media (max-width: 810px) {
   :root {
-    /* Heading size overrides — TBD */
+    --Font-Body-About-lede-text-size: 28px;
+    --Font-Body-About-lede-line-height: 35px;
   }
 }
 
 @media (max-width: 390px) {
   :root {
-    /* Heading size overrides — TBD */
+    --Font-Body-About-lede-text-size: 24px;
+    --Font-Body-About-lede-line-height: 30px;
   }
 }

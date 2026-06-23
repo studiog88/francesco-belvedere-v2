@@ -83,16 +83,11 @@ body {
 }
 
 .hero-nav-link {
-  color: var(--Foundation-Black);
-  background-color: var(--Warm-Grey-100);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--Font-Body-Paragraph-line-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   padding: var(--Scale-200) var(--Scale-400);
-  border-radius: var(--Scale-1900);
-  transition: background-color 400ms ease-in-out;
 }
 
 a,
@@ -105,17 +100,9 @@ a:focus-visible {
   color: inherit;
 }
 
-.hero-nav-link:hover {
-  background-color: var(--Lime-500);
-}
-
 .back-to-top {
-  box-sizing: border-box;
   width: 64px;
   height: 64px;
-  border: 1px solid var(--Lime-500);
-  border-radius: var(--Scale-1900);
-  background-color: var(--Foundation-White);
   display: grid;
   place-items: center;
   position: fixed;
@@ -127,20 +114,13 @@ a:focus-visible {
   pointer-events: none;
   transform: translateY(16px);
   cursor: pointer;
-  /* Aligned with project detail .project-nav-pill secondary controls */
-  transition: background-color 400ms ease-in-out;
 }
 
 .back-to-top.is-visible {
   pointer-events: auto;
 }
 
-.back-to-top:hover {
-  background-color: var(--Lime-500);
-}
-
 .back-to-top:focus-visible {
-  background-color: var(--Lime-500);
   outline: 2px solid var(--Foundation-Black);
   outline-offset: 2px;
 }
@@ -228,14 +208,7 @@ a:focus-visible {
 .contact-overlay-send {
   margin-top: var(--Scale-300);
   justify-self: start;
-  border: 0;
-  border-radius: var(--Scale-1900);
   padding: var(--Scale-300) var(--Scale-700);
-  background-color: var(--Lime-500);
-  color: var(--Foundation-Black);
-  font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Paragraph-text-size);
-  line-height: 1;
   cursor: pointer;
 }
 
@@ -463,10 +436,6 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .work-card-media,
   .work-card-image-large {
-    transition: none;
-  }
-
-  .back-to-top {
     transition: none;
   }
 }

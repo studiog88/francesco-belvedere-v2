@@ -1,0 +1,48 @@
+/*
+ * Site-wide pill buttons: hero nav, about links, project nav, back-to-top, contact send.
+ * 20px Regular · Foundation White fill · Lime 500 border · Lime 500 hover/focus fill.
+ */
+
+.hero-nav-link,
+.about-pill-link,
+.project-detail-back-link,
+.project-nav-pill,
+.back-to-top,
+.contact-overlay-send {
+  box-sizing: border-box;
+  border: 1px solid var(--Lime-500);
+  border-radius: var(--Scale-1900);
+  background-color: var(--Foundation-White);
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Large-text-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--Font-Body-Large-line-height);
+  transition: background-color 400ms ease-in-out;
+}
+
+.hero-nav-link:hover,
+.about-pill-link:hover,
+.project-detail-back-link:hover,
+.project-nav-pill:hover,
+.back-to-top:hover,
+.contact-overlay-send:hover,
+.hero-nav-link:focus-visible,
+.about-pill-link:focus-visible,
+.project-detail-back-link:focus-visible,
+.project-nav-pill:focus-visible,
+.back-to-top:focus-visible,
+.contact-overlay-send:focus-visible {
+  background-color: var(--Lime-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-nav-link,
+  .about-pill-link,
+  .project-detail-back-link,
+  .project-nav-pill,
+  .back-to-top,
+  .contact-overlay-send {
+    transition: none;
+  }
+}
