@@ -29,6 +29,10 @@
   /* About section */
   --Font-Body-About-lede-text-size: 32px;
   --Font-Body-About-lede-line-height: 40px;
+
+  /* Home hero (index .hero-heading) */
+  --Font-Body-Home-hero-text-size: 72px;
+  --Font-Body-Home-hero-line-height: 72px;
 }
 
 @media (max-width: 810px) {
@@ -42,5 +46,8 @@
   :root {
     --Font-Body-About-lede-text-size: 24px;
     --Font-Body-About-lede-line-height: 30px;
+
+    --Font-Body-Home-hero-text-size: 32px;
+    --Font-Body-Home-hero-line-height: 38px;
   }
 }

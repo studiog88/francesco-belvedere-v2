@@ -69,6 +69,10 @@ body {
   transform: translateY(-2px);
 }
 
+.hero-wordmark--stacked {
+  display: none;
+}
+
 /* Sticks 16px below top of viewport once the name has scrolled past */
 .hero-nav {
   position: sticky;
@@ -223,8 +227,8 @@ a:focus-visible {
 .hero-heading {
   margin: 0;
   font-family: var(--font-family-primary);
-  font-size: 72px;
-  line-height: 1;
+  font-size: var(--Font-Body-Home-hero-text-size);
+  line-height: var(--Font-Body-Home-hero-line-height);
   font-weight: var(--font-weight-light);
   color: var(--Foundation-Black);
   /* Room for descenders when background-clip: text is active (e.g. g, y) */
@@ -591,6 +595,14 @@ a:focus-visible {
 }
 
 @media (max-width: 390px) {
+  .hero-wordmark--wide {
+    display: none;
+  }
+
+  .hero-wordmark--stacked {
+    display: block;
+  }
+
   #work {
     padding: 0 var(--Scale-400) var(--Scale-1100);
   }
