@@ -570,6 +570,11 @@ a:focus-visible {
 }
 
 @media (max-width: 810px) {
+  .hero-heading {
+    font-size: var(--Font-Body-Home-hero-text-size);
+    line-height: var(--Font-Body-Home-hero-line-height);
+  }
+
   #work {
     padding-left: var(--Scale-600);
     padding-right: var(--Scale-600);
@@ -595,6 +600,11 @@ a:focus-visible {
 }
 
 @media (max-width: 390px) {
+  .hero-heading {
+    font-size: var(--Font-Body-Home-hero-text-size);
+    line-height: var(--Font-Body-Home-hero-line-height);
+  }
+
   .hero-wordmark--wide {
     display: none;
   }

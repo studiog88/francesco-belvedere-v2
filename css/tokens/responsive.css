@@ -39,6 +39,9 @@
   :root {
     --Font-Body-About-lede-text-size: 28px;
     --Font-Body-About-lede-line-height: 35px;
+
+    --Font-Body-Home-hero-text-size: 48px;
+    --Font-Body-Home-hero-line-height: 58px;
   }
 }
 
