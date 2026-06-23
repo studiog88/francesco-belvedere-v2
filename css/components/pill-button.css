@@ -46,3 +46,15 @@
     transition: none;
   }
 }
+
+@media (max-width: 390px) {
+  .hero-nav-link,
+  .about-pill-link,
+  .project-detail-back-link,
+  .project-nav-pill,
+  .back-to-top,
+  .contact-overlay-send {
+    font-size: var(--Font-Body-Paragraph-text-size);
+    line-height: var(--Font-Body-Paragraph-line-height);
+  }
+}
