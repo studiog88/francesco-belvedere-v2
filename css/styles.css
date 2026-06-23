@@ -239,8 +239,8 @@ a:focus-visible {
 
 .hero-heading-logo {
   display: inline-block;
-  width: 56px;
-  height: 56px;
+  width: var(--Home-hero-logo-size);
+  height: var(--Home-hero-logo-size);
   margin-left: 0.15em;
   vertical-align: middle;
 }
