@@ -33,6 +33,9 @@
   /* Home hero (index .hero-heading) */
   --Font-Body-Home-hero-text-size: 72px;
   --Font-Body-Home-hero-line-height: 72px;
+
+  /* Global left/right page margin */
+  --page-gutter-inline: var(--Scale-1000);
 }
 
 @media (max-width: 810px) {
@@ -42,6 +45,8 @@
 
     --Font-Body-Home-hero-text-size: 48px;
     --Font-Body-Home-hero-line-height: 58px;
+
+    --page-gutter-inline: var(--Scale-600);
   }
 }
 
@@ -52,5 +57,7 @@
 
     --Font-Body-Home-hero-text-size: 32px;
     --Font-Body-Home-hero-line-height: 38px;
+
+    --page-gutter-inline: var(--Scale-400);
   }
 }

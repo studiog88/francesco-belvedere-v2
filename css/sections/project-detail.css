@@ -10,9 +10,9 @@
    * Overridden at tablet/phone breakpoints to match tighter shells.
    */
   --project-inner-text-inset: clamp(
-    var(--Scale-1000),
+    var(--page-gutter-inline),
     12.037vw,
-    calc(var(--Scale-1000) * 5.2)
+    calc(var(--page-gutter-inline) * 5.2)
   );
 }
 
@@ -24,8 +24,8 @@
 .project-detail-shell {
   width: 100%;
   margin: 0 auto;
-  padding-left: var(--Scale-600);
-  padding-right: var(--Scale-600);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   box-sizing: border-box;
 }
 
@@ -40,8 +40,8 @@
 .project-detail-shell.project-prev-next {
   max-width: none;
   width: 100%;
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   box-sizing: border-box;
 }
 
@@ -67,8 +67,8 @@
 
 .project-detail-top-nav .project-detail-shell {
   max-width: none;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
 }
 
 .project-detail-top-nav-inner {
@@ -241,7 +241,7 @@
   position: absolute;
   /* Top fixed so height increase extends the bottom edge downward (closed bottom inset = --Scale-1300). */
   top: calc(100% - var(--Scale-1300) - 44px);
-  right: var(--Scale-1000);
+  right: var(--page-gutter-inline);
   bottom: auto;
   z-index: 2;
   box-sizing: border-box;
@@ -717,8 +717,8 @@
   grid-template-columns: repeat(7, 1fr);
   /* No column gap — shadows extend past the screen in the exports; gap was double-counting separation */
   gap: var(--Scale-0);
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   box-sizing: border-box;
 }
 
@@ -868,8 +868,8 @@
   box-sizing: border-box;
   width: 100%;
   padding-top: var(--Scale-600);
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   background-color: var(--Foundation-White);
 }
 
@@ -878,8 +878,8 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: var(--Scale-1000);
-  right: var(--Scale-1000);
+  left: var(--page-gutter-inline);
+  right: var(--page-gutter-inline);
   height: 1px;
   background-color: var(--Warm-Grey-100);
   pointer-events: none;
@@ -932,9 +932,9 @@
   box-sizing: border-box;
   width: 100%;
   padding-top: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-right: var(--page-gutter-inline);
   padding-bottom: var(--Scale-1000);
-  padding-left: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
   /* No vertical gap after intro — add margin here when you want air before first story */
   margin-bottom: 0;
 }
@@ -1121,8 +1121,8 @@
 .project-story-grid-gallery {
   box-sizing: border-box;
   width: 100%;
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--Scale-600);
@@ -1209,8 +1209,8 @@
   content: "";
   position: absolute;
   top: 0;
-  left: var(--Scale-1000);
-  right: var(--Scale-1000);
+  left: var(--page-gutter-inline);
+  right: var(--page-gutter-inline);
   height: 1px;
   background-color: var(--Lime-400);
   pointer-events: none;
@@ -1225,8 +1225,8 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding-left: var(--Scale-1000);
-  padding-right: var(--Scale-1000);
+  padding-left: var(--page-gutter-inline);
+  padding-right: var(--page-gutter-inline);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Caption-text-size);
   line-height: var(--Font-Body-Caption-line-height);
@@ -1258,15 +1258,6 @@
 }
 
 @media (max-width: 810px) {
-  .project-detail-page {
-    --project-inner-text-inset: var(--Scale-500);
-  }
-
-  .project-detail-shell {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
-  }
-
   /* Stack image above heading until you tune breakpoints in QA */
   .project-hero-content {
     flex-direction: column;
@@ -1278,21 +1269,6 @@
 
   .project-hero-heading {
     padding: var(--Scale-500) var(--Scale-900) var(--Scale-500) var(--Scale-500);
-  }
-
-  .project-hero-metadata {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
-  }
-
-  .project-hero-metadata::after {
-    left: var(--Scale-500);
-    right: var(--Scale-500);
-  }
-
-  .project-intro {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
   }
 
   .project-story-split {
@@ -1336,8 +1312,8 @@
   }
 
   .project-story-grid-gallery {
-    padding-left: var(--Scale-500);
-    padding-right: var(--Scale-500);
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1425,12 +1401,6 @@
 @media (max-width: 390px) {
   .project-detail-page {
     --project-detail-nav-height: 64px;
-    --project-inner-text-inset: var(--Scale-400);
-  }
-
-  .project-detail-shell {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
   }
 
   .project-detail-top-nav-inner {
@@ -1438,27 +1408,12 @@
   }
 
   .project-hero-heading {
-    padding: var(--Scale-500) var(--Scale-800) var(--Scale-500) var(--Scale-400);
-  }
-
-  .project-hero-metadata {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
-  }
-
-  .project-hero-metadata::after {
-    left: var(--Scale-400);
-    right: var(--Scale-400);
-  }
-
-  .project-intro {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
+    padding: var(--Scale-500) var(--Scale-800) var(--Scale-500) var(--page-gutter-inline);
   }
 
   .project-story-grid-gallery {
-    padding-left: var(--Scale-400);
-    padding-right: var(--Scale-400);
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
     grid-template-columns: 1fr;
   }
 
@@ -1472,7 +1427,7 @@
   }
 
   .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
-    flex: 0 0 calc((100vw - var(--Scale-400)) / 3);
+    flex: 0 0 calc((100vw - var(--page-gutter-inline)) / 3);
     scroll-snap-align: center;
   }
 
