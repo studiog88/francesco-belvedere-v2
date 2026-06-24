@@ -262,6 +262,8 @@ a:focus-visible {
 
 .content-section {
   min-height: 420px;
+  min-width: 0;
+  max-width: 100%;
   padding: var(--Scale-1100) var(--page-gutter-inline);
 }
 
