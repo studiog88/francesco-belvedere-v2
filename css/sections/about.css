@@ -86,8 +86,14 @@
   text-decoration: none;
 }
 
-.about-testimonials {
+.about-testimonials-wrap {
+  position: relative;
   margin-top: var(--about-gap-bio-testimonials);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.about-testimonials {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -113,6 +119,7 @@
   position: relative;
   z-index: 1;
   height: 100%;
+  min-width: 0;
   border-top: 1px solid var(--Lime-500);
   padding-top: var(--Scale-1000);
   display: flex;
@@ -129,8 +136,8 @@
 .about-endorsement-quote {
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Body-Large-text-size);
-  line-height: var(--Scale-700);
+  font-size: var(--Font-Body-Endorsement-text-size);
+  line-height: var(--Font-Body-Endorsement-line-height);
   font-weight: var(--font-weight-regular);
 }
 
@@ -174,6 +181,8 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
+  /* Sum of row-1 optical logo widths (lumosity + apple + post-pilot + playboy) */
+  --about-logo-row1-width: 521px;
 }
 
 .about-client-logo-row {
@@ -271,6 +280,7 @@
     12vw,
     calc(var(--Scale-1000) * 5)
   );
+  --about-marquee-icon-size: var(--Scale-800);
 }
 
 .about-marquee {
@@ -308,14 +318,36 @@
 .about-marquee-divider {
   display: block;
   flex-shrink: 0;
-  width: var(--Scale-800);
-  height: var(--Scale-800);
+  width: var(--about-marquee-icon-size);
+  height: var(--about-marquee-icon-size);
 }
 
 .about-marquee-icon {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* Two-row centered layout (391px+); vertical stack overrides at max-width 390px */
+@media (max-width: 810px) {
+  .about-marquees {
+    --about-marquee-icon-size: var(--Scale-600);
+  }
+}
+
+@media (min-width: 391px) {
+  .about-client-logo-row {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    gap: clamp(
+      var(--Scale-400),
+      calc((100% - var(--about-logo-row1-width)) / 3),
+      calc(var(--Scale-1000) * 6)
+    );
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (min-width: 811px) {
@@ -328,17 +360,16 @@
     --about-gap-testimonials-banners: var(--Scale-1700);
   }
 
+  .about-bio {
+    gap: var(--Scale-1500);
+  }
+
   .about-client-logos {
     gap: var(--Scale-1500);
   }
 
   .about-client-logo-row {
-    width: 100%;
-    max-width: 100%;
-    justify-content: center;
-    gap: clamp(var(--Scale-400), 4vw, var(--Scale-1500));
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible;
   }
 
   .about-banners {
@@ -357,8 +388,7 @@
   }
 
   .about-photo-frame {
-    width: 100%;
-    max-width: 640px;
+    width: min(100%, 640px);
     justify-self: center;
   }
 
@@ -366,7 +396,6 @@
     width: 100%;
     max-width: 640px;
     justify-self: center;
-    padding-top: var(--Scale-1300);
   }
 
   .about-testimonials {
@@ -382,14 +411,6 @@
   }
 }
 
-/* Full logo-row gap needs ~1321px viewport (4 logos + 3×240px gaps + page gutters) */
-@media (min-width: 1321px) {
-  .about-client-logo-row {
-    gap: calc(var(--Scale-1000) * 6);
-    overflow: visible;
-  }
-}
-
 @media (max-width: 390px) {
   .about-container {
     --about-gap-bio-testimonials: var(--Scale-1000);
@@ -399,6 +420,10 @@
   .about-banners,
   .about-marquees {
     gap: var(--Scale-1000);
+  }
+
+  .about-marquees {
+    --about-marquee-icon-size: var(--Scale-500);
   }
 
   .about-photo-frame {
@@ -411,4 +436,22 @@
     left: -24px;
     height: 100px;
   }
+
+  /* Single centered column; rows flatten via display: contents */
+  .about-client-logos {
+    align-items: center;
+    gap: var(--Scale-1100);
+  }
+
+  .about-client-logo-row {
+    display: contents;
+  }
+
+  .about-client-logo-cell:has(.about-client-logo--lumosity) { order: 1; }
+  .about-client-logo-cell:has(.about-client-logo--taschen) { order: 2; }
+  .about-client-logo-cell:has(.about-client-logo--apple) { order: 3; }
+  .about-client-logo-cell:has(.about-client-logo--originate) { order: 4; }
+  .about-client-logo-cell:has(.about-client-logo--post-pilot) { order: 5; }
+  .about-client-logo-cell:has(.about-client-logo--beats) { order: 6; }
+  .about-client-logo-cell:has(.about-client-logo--playboy) { order: 7; }
 }
