@@ -36,6 +36,9 @@
   --Font-Body-Endorsement-text-size: 20px;
   --Font-Body-Endorsement-line-height: 28px;
 
+  --Font-Body-Outro-text-size: 32px;
+  --Font-Body-Outro-line-height: 40px;
+
   /* Home hero (index .hero-heading) */
   --Font-Body-Home-hero-text-size: 72px;
   --Font-Body-Home-hero-line-height: 72px;
@@ -58,6 +61,9 @@
     --Font-Body-Marquee-text-size: 20px;
     --Font-Body-Marquee-line-height: 28px;
 
+    --Font-Body-Outro-text-size: 28px;
+    --Font-Body-Outro-line-height: 35px;
+
     --page-gutter-inline: var(--Scale-600);
   }
 }
@@ -75,6 +81,9 @@
 
     --Font-Body-Marquee-text-size: 18px;
     --Font-Body-Marquee-line-height: 26px;
+
+    --Font-Body-Outro-text-size: 24px;
+    --Font-Body-Outro-line-height: 30px;
 
     --page-gutter-inline: var(--Scale-400);
   }

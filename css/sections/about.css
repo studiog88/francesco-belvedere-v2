@@ -12,8 +12,8 @@
   padding-top: var(--Scale-1000);
   min-width: 0;
   max-width: 100%;
-  --about-gap-bio-testimonials: var(--Scale-1800);
-  --about-gap-testimonials-banners: var(--Scale-1800);
+  --about-gap-bio-testimonials: var(--Scale-1700);
+  --about-gap-testimonials-banners: var(--Scale-1700);
 }
 
 .about-lede {
@@ -328,14 +328,8 @@
   height: 100%;
 }
 
-/* Two-row centered layout (391px+); vertical stack overrides at max-width 390px */
-@media (max-width: 810px) {
-  .about-marquees {
-    --about-marquee-icon-size: var(--Scale-600);
-  }
-}
-
-@media (min-width: 391px) {
+/* Two-row centered layout (641px+); vertical stack at max-width 640px */
+@media (min-width: 641px) {
   .about-client-logo-row {
     width: 100%;
     max-width: 100%;
@@ -350,14 +344,41 @@
   }
 }
 
+@media (max-width: 810px) {
+  .about-container {
+    --about-gap-bio-testimonials: var(--Scale-1500);
+    --about-gap-testimonials-banners: var(--Scale-1500);
+  }
+
+  .about-marquees {
+    --about-marquee-icon-size: var(--Scale-600);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Single centered column; rows flatten via display: contents */
+  .about-client-logos {
+    align-items: center;
+    gap: var(--Scale-1100);
+  }
+
+  .about-client-logo-row {
+    display: contents;
+  }
+
+  .about-client-logo-cell:has(.about-client-logo--lumosity) { order: 1; }
+  .about-client-logo-cell:has(.about-client-logo--taschen) { order: 2; }
+  .about-client-logo-cell:has(.about-client-logo--apple) { order: 3; }
+  .about-client-logo-cell:has(.about-client-logo--originate) { order: 4; }
+  .about-client-logo-cell:has(.about-client-logo--post-pilot) { order: 5; }
+  .about-client-logo-cell:has(.about-client-logo--beats) { order: 6; }
+  .about-client-logo-cell:has(.about-client-logo--playboy) { order: 7; }
+}
+
 @media (min-width: 811px) {
   .about-section {
     padding-top: var(--Scale-1100);
     padding-bottom: calc(var(--Scale-1800) / 2);
-  }
-
-  .about-container {
-    --about-gap-testimonials-banners: var(--Scale-1700);
   }
 
   .about-bio {
@@ -373,7 +394,7 @@
   }
 
   .about-banners {
-    gap: var(--Scale-1700);
+    gap: var(--Scale-1500);
   }
 
   .about-marquees {
@@ -405,6 +426,15 @@
 }
 
 @media (min-width: 1201px) {
+  .about-container {
+    --about-gap-bio-testimonials: var(--Scale-1800);
+    --about-gap-testimonials-banners: var(--Scale-1800);
+  }
+
+  .about-banners {
+    gap: var(--Scale-1700);
+  }
+
   .about-testimonials {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--Scale-1500);
@@ -412,14 +442,9 @@
 }
 
 @media (max-width: 390px) {
-  .about-container {
-    --about-gap-bio-testimonials: var(--Scale-1000);
-    --about-gap-testimonials-banners: var(--Scale-1000);
-  }
-
   .about-banners,
   .about-marquees {
-    gap: var(--Scale-1000);
+    gap: var(--Scale-1500);
   }
 
   .about-marquees {
@@ -436,22 +461,4 @@
     left: -24px;
     height: 100px;
   }
-
-  /* Single centered column; rows flatten via display: contents */
-  .about-client-logos {
-    align-items: center;
-    gap: var(--Scale-1100);
-  }
-
-  .about-client-logo-row {
-    display: contents;
-  }
-
-  .about-client-logo-cell:has(.about-client-logo--lumosity) { order: 1; }
-  .about-client-logo-cell:has(.about-client-logo--taschen) { order: 2; }
-  .about-client-logo-cell:has(.about-client-logo--apple) { order: 3; }
-  .about-client-logo-cell:has(.about-client-logo--originate) { order: 4; }
-  .about-client-logo-cell:has(.about-client-logo--post-pilot) { order: 5; }
-  .about-client-logo-cell:has(.about-client-logo--beats) { order: 6; }
-  .about-client-logo-cell:has(.about-client-logo--playboy) { order: 7; }
 }
