@@ -141,7 +141,7 @@
 
 @media (min-width: 811px) {
   .site-footer {
-    padding-top: var(--Scale-1800);
+    padding-top: calc(var(--Scale-1800) / 2);
     padding-bottom: var(--Scale-1000);
   }
 

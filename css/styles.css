@@ -237,14 +237,6 @@ a:focus-visible {
   margin-bottom: -0.12em;
 }
 
-.hero-heading-logo {
-  display: inline-block;
-  width: var(--Home-hero-logo-size);
-  height: var(--Home-hero-logo-size);
-  margin-left: 0.15em;
-  vertical-align: middle;
-}
-
 /* Figma hero text fill (node 393:18167): radial mint → teal → blue */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-heading {
@@ -283,6 +275,8 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: var(--Scale-1500);
+  border-top: 1px solid var(--Lime-500);
+  padding-top: var(--Scale-1000);
 }
 
 .section-tone-light {

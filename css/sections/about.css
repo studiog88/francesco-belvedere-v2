@@ -7,9 +7,11 @@
 .about-container {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-1800);
+  gap: 0;
   border-top: 1px solid var(--Lime-500);
   padding-top: var(--Scale-1000);
+  --about-gap-bio-testimonials: var(--Scale-1800);
+  --about-gap-testimonials-banners: var(--Scale-1800);
 }
 
 .about-lede {
@@ -83,10 +85,11 @@
 }
 
 .about-testimonials {
+  margin-top: var(--about-gap-bio-testimonials);
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  align-items: start;
+  align-items: stretch;
   gap: var(--Scale-1000);
   overflow: visible;
 }
@@ -105,12 +108,12 @@
 .about-endorsement-card {
   position: relative;
   z-index: 1;
+  height: 100%;
   border-top: 1px solid var(--Lime-500);
   padding-top: var(--Scale-1000);
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--Scale-1000);
 }
 
 .about-endorsement-quote,
@@ -131,6 +134,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--Scale-200);
+  margin-top: auto;
+  padding-top: var(--Scale-1000);
 }
 
 .about-endorsement-logo {
@@ -160,11 +165,17 @@
 
 .about-client-logos {
   display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1000);
+  width: 100%;
+}
+
+.about-client-logo-row {
+  display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--Scale-400);
-  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -233,6 +244,7 @@
 }
 
 .about-banners {
+  margin-top: var(--about-gap-testimonials-banners);
   display: flex;
   flex-direction: column;
   gap: var(--Scale-1500);
@@ -278,8 +290,8 @@
 .about-marquee-item {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
-  font-size: var(--Font-Headings-Card-title-text-size);
-  line-height: 1.4;
+  font-size: var(--Font-Body-Marquee-text-size);
+  line-height: var(--Font-Body-Marquee-line-height);
   letter-spacing: 0;
   color: var(--Foundation-Black);
   white-space: nowrap;
@@ -292,11 +304,6 @@
   height: var(--Scale-800);
 }
 
-/* Temporary until marquee icons are provided */
-.about-marquee-divider--placeholder {
-  background-color: rgb(255 0 255 / 20%);
-}
-
 .about-marquee-icon {
   display: block;
   width: 100%;
@@ -306,7 +313,30 @@
 @media (min-width: 811px) {
   .about-section {
     padding-top: var(--Scale-1100);
-    padding-bottom: var(--Scale-1100);
+    padding-bottom: calc(var(--Scale-1800) / 2);
+  }
+
+  .about-container {
+    --about-gap-testimonials-banners: var(--Scale-1700);
+  }
+
+  .about-client-logos {
+    gap: var(--Scale-1500);
+  }
+
+  .about-client-logo-row {
+    width: 100%;
+    justify-content: center;
+    gap: calc(var(--Scale-1000) * 6);
+    overflow: visible;
+  }
+
+  .about-banners {
+    gap: var(--Scale-1700);
+  }
+
+  .about-marquees {
+    gap: var(--Scale-1700);
   }
 
   .about-bio-row {
@@ -342,15 +372,10 @@
   }
 }
 
-@media (max-width: 810px) {
-  .about-client-logos {
-    justify-content: flex-start;
-  }
-}
-
 @media (max-width: 390px) {
   .about-container {
-    gap: var(--Scale-1000);
+    --about-gap-bio-testimonials: var(--Scale-1000);
+    --about-gap-testimonials-banners: var(--Scale-1000);
   }
 
   .about-banners,
