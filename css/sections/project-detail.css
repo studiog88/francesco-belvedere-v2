@@ -99,17 +99,16 @@
 }
 
 .project-detail-nameplate {
-  margin: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--Font-Body-Caption-text-size);
-  line-height: var(--Font-Body-Caption-line-height);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--Lime-500);
+  display: block;
+  line-height: 0;
+  flex-shrink: 0;
   text-decoration: none;
-  -webkit-user-select: none;
-  user-select: none;
+}
+
+.project-detail-nameplate-logo {
+  width: var(--Scale-1000);
+  height: var(--Scale-1000);
+  display: block;
 }
 
 .project-detail-nameplate:focus-visible {
