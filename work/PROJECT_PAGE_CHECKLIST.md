@@ -2,7 +2,11 @@
 
 Use this checklist whenever you create a new project detail page from `work/project-template.html`.
 
-The template is intentionally minimal: **`section.project-hero`** (full-height band below the sticky nav: split **image | title**, then a **metadata tag** strip), then **flat copy** in `<main>` (`p` / `h2` only — the single **`h1`** lives in the hero), then **prev/next** and the **footer**. There is no category pill, duplicate title, stats row, external link, or in-page image grid in the template—you add new blocks and CSS when you need them.
+**Before launch:** for site-wide cleanup, performance, and deploy tasks, see [`PRE-LAUNCH-CHECKLIST.md`](../PRE-LAUNCH-CHECKLIST.md) at the repo root.
+
+The template is intentionally minimal: **`section.project-hero`** (full-height band below the sticky nav: split **image | title**, then a **metadata tag** strip), then story content in `<main>`, then **prev/next** and the **footer**. The single **`h1`** lives in the hero.
+
+**Story sections (current pattern):** use stacked `.project-story-grid` blocks — `.project-story-grid-text` (label + heading + body) with an optional `.project-story-grid-gallery` below. See Lumosity, Figment, or System Icons for reference. The template still uses the older `.project-story-split` layout until it is updated.
 
 **Project images:** put all media for a slug in `assets/projects/<project-slug>/` (e.g. `hero-bg.png`, `hero-fg.png`, `feature.gif` for the homepage card). Keep `work/` for HTML pages only.
 
@@ -11,7 +15,7 @@ The template is intentionally minimal: **`section.project-hero`** (full-height b
 - [ ] Duplicate `work/project-template.html` and rename to `work/<project-slug>.html`
 - [ ] Update body hooks to match slug (`project-<project-slug>` and `data-project-slug`)
 - [ ] Update `<title>`, hero `h1` (`.project-hero-title`), hero metadata tags, summary paragraph
-- [ ] Update each narrative block: `p.project-section-label` + `h2.project-content-heading` + `p.project-content-body` (duplicate the trio for extra sections as needed)
+- [ ] Update each story section: `.project-story-grid` → `.project-story-grid-text` with `p.project-section-label` + `h2.project-content-heading` + `p.project-content-body`; add `.project-story-grid-gallery` when media is ready
 - [ ] Hero: optional `background-image` on `.project-hero` or `.project-hero-bg`; left column: real `<img>` and remove `.is-empty` when no longer a placeholder
 - [ ] Update `PROJECT_NAV_ORDER` in `js/project-detail-nav.js` (include new filename; circular prev/next wraps)
 - [ ] Verify mobile/tablet/desktop and check homepage card link
@@ -47,18 +51,21 @@ The sticky **top nav stays outside** the hero in the HTML (see `header.project-d
 
 ---
 
-## 4) Summary + Narrative (flat in `<main>`)
+## 4) Intro + Story sections (`<main>`)
 
-- [ ] Replace short summary (`p.project-summary`) — first body copy after the hero
+- [ ] Replace intro lede (`p.project-intro-lede`) — full-width copy after the hero
 
-For each story beat:
+For each story section (`section.project-story-grid`):
 
-1. `p.project-section-label` — short all-caps label (e.g. `01 - CHALLENGE`)
-2. `h2.project-content-heading` — section title (use a unique `id` per `h2` if you need in-page anchors)
-3. `p.project-content-body` — body copy
+1. `.project-story-grid-text` — inner text container
+2. `p.project-section-label` — short all-caps label (e.g. `01 - CHALLENGE`)
+3. `h2.project-content-heading` — section title (unique `id` per `h2` if you need in-page anchors)
+4. `p.project-content-body` — body copy
+5. Optional: `.project-story-grid-gallery` below the text block for images or custom gallery markup
 
-- [ ] Replace placeholder labels, headings, and body text for every block
+- [ ] Replace placeholder labels, headings, and body text for every section
 - [ ] Keep labels readable (caps + numbering are fine; use an em dash or hyphen consistently within the project)
+- [ ] Add project-specific CSS in `css/sections/project-detail.css` under `.project-<slug>` when layout needs differ from defaults
 
 ---
 
