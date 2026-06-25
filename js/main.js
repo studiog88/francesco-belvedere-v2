@@ -157,12 +157,7 @@ if (backToTopButton) {
     });
   }
 
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion ? "auto" : "smooth"
-    });
-  });
+  /* Scroll-to-top click is handled in js/smooth-scroll.js */
 }
 
 if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.length > 0) {

@@ -47,13 +47,20 @@
   --page-gutter-inline: var(--Scale-1000);
 }
 
+@media (max-width: 1200px) {
+  :root {
+    --Font-Body-Home-hero-text-size: 64px;
+    --Font-Body-Home-hero-line-height: 64px;
+  }
+}
+
 @media (max-width: 810px) {
   :root {
     --Font-Body-About-lede-text-size: 28px;
     --Font-Body-About-lede-line-height: 35px;
 
     --Font-Body-Home-hero-text-size: 48px;
-    --Font-Body-Home-hero-line-height: 58px;
+    --Font-Body-Home-hero-line-height: 48px;
 
     --Font-Body-Endorsement-text-size: 18px;
     --Font-Body-Endorsement-line-height: 27px;
@@ -65,6 +72,14 @@
     --Font-Body-Outro-line-height: 35px;
 
     --page-gutter-inline: var(--Scale-600);
+  }
+}
+
+/* Large phones (e.g. iPhone Plus / Pro Max ~430px) — between small mobile and tablet */
+@media (max-width: 480px) {
+  :root {
+    --Font-Body-Home-hero-text-size: 32px;
+    --Font-Body-Home-hero-line-height: 34px;
   }
 }
 

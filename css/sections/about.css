@@ -346,8 +346,18 @@
 
 @media (max-width: 810px) {
   .about-container {
-    --about-gap-bio-testimonials: var(--Scale-1500);
+    --about-gap-bio-testimonials: calc(var(--Scale-1500) * 2.1);
     --about-gap-testimonials-banners: var(--Scale-1500);
+  }
+
+  .about-pill-links {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .about-pill-link {
+    width: 100%;
   }
 
   .about-marquees {

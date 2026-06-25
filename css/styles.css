@@ -1,5 +1,6 @@
 html {
-  scroll-behavior: smooth;
+  /* In-page nav scroll is handled in js/smooth-scroll.js for cross-browser consistency */
+  scroll-behavior: auto;
 }
 
 /* Home ↔ project page fade (js/page-transition.js) */
@@ -591,7 +592,7 @@ a:focus-visible {
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 480px) {
   .hero-nav {
     margin-block: var(--Scale-600);
   }
@@ -602,12 +603,34 @@ a:focus-visible {
     font-weight: var(--font-weight-regular);
   }
 
+  #hero {
+    margin-bottom: var(--Scale-1100);
+  }
+}
+
+@media (max-width: 440px) {
   .hero-wordmark--wide {
     display: none;
   }
 
   .hero-wordmark--stacked {
     display: block;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-nav {
+    margin-block: var(--Scale-600);
+  }
+
+  .hero-heading {
+    font-size: var(--Font-Body-Home-hero-text-size);
+    line-height: var(--Font-Body-Home-hero-line-height);
+    font-weight: var(--font-weight-regular);
   }
 
   #work {

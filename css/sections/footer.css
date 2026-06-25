@@ -80,7 +80,7 @@
 .site-footer-bar {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: var(--Scale-700);
   width: 100%;
   border-top: 1px solid var(--Lime-400);
@@ -91,20 +91,22 @@
   width: var(--Scale-1000);
   height: var(--Scale-1000);
   display: block;
+  align-self: flex-start;
 }
 
 .site-footer-meta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: var(--Scale-300);
+  margin-left: auto;
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Caption-text-size);
   line-height: var(--Font-Body-Caption-line-height);
   font-weight: var(--font-weight-medium);
   color: var(--Warm-Grey-600);
-  text-align: center;
+  text-align: right;
 }
 
 .site-footer-meta-item {
@@ -123,25 +125,26 @@
   background-color: var(--Lime-500);
 }
 
-.site-footer-linkedin {
-  display: block;
-  line-height: 0;
-}
-
-.site-footer-linkedin-icon {
-  width: 32px;
-  height: 32px;
-  display: block;
-}
-
-.site-footer-meta-link:focus-visible,
-.site-footer-linkedin:focus-visible {
+.site-footer-meta-link:focus-visible {
   outline: 2px solid var(--Foundation-Black);
   outline-offset: 2px;
 }
 
+/* Project pages: shared bar only (no landscape / hawk / outro) */
+.site-footer--project {
+  padding: 0 0 var(--Scale-600);
+}
+
+.site-footer--project .site-footer-inner {
+  gap: 0;
+}
+
 @media (min-width: 811px) {
-  .site-footer {
+  .site-footer--project {
+    padding-bottom: var(--Scale-1000);
+  }
+
+  .site-footer:not(.site-footer--project) {
     padding-top: calc(var(--Scale-1800) / 2);
     padding-bottom: var(--Scale-1000);
   }
@@ -165,8 +168,6 @@
   }
 
   .site-footer-meta {
-    flex: 1 1 auto;
-    justify-content: center;
     gap: var(--Scale-600);
   }
 }
