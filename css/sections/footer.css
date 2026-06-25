@@ -80,7 +80,7 @@
 .site-footer-bar {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   gap: var(--Scale-700);
   width: 100%;
   border-top: 1px solid var(--Lime-400);
@@ -91,22 +91,21 @@
   width: var(--Scale-1000);
   height: var(--Scale-1000);
   display: block;
-  align-self: flex-start;
 }
 
 .site-footer-meta {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
   gap: var(--Scale-300);
-  margin-left: auto;
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Caption-text-size);
   line-height: var(--Font-Body-Caption-line-height);
   font-weight: var(--font-weight-medium);
   color: var(--Warm-Grey-600);
-  text-align: right;
+  text-align: center;
 }
 
 .site-footer-meta-item {
@@ -139,6 +138,46 @@
   gap: 0;
 }
 
+/* ≤950px: center sign-off, tighten gap to green rule */
+@media (max-width: 950px) {
+  .site-footer:not(.site-footer--project) .site-footer-outro {
+    text-align: center;
+  }
+
+  .site-footer:not(.site-footer--project) .site-footer-inner {
+    gap: calc(var(--Scale-1000) / 2);
+  }
+}
+
+/* 745–950px: logo centered, links in one row beneath (no wrap) */
+@media (min-width: 745px) and (max-width: 950px) {
+  .site-footer-meta {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+/* 951px+: logo left, links right in a single row */
+@media (min-width: 951px) {
+  .site-footer-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--Scale-600);
+    padding-top: var(--Scale-1000);
+  }
+
+  .site-footer-meta {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--Scale-600);
+    margin-left: auto;
+    text-align: right;
+  }
+}
+
 @media (min-width: 811px) {
   .site-footer--project {
     padding-bottom: var(--Scale-1000);
@@ -157,17 +196,5 @@
     margin-right: var(--Scale-1000);
     margin-bottom: var(--Scale-1800);
     width: 277px;
-  }
-
-  .site-footer-bar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--Scale-600);
-    padding-top: var(--Scale-1000);
-  }
-
-  .site-footer-meta {
-    gap: var(--Scale-600);
   }
 }
