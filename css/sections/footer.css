@@ -125,7 +125,7 @@
   background-color: var(--Lime-500);
 }
 
-.site-footer-meta-link:focus-visible {
+.site-footer-meta-link:not(.text-link):focus-visible {
   outline: 2px solid var(--Foundation-Black);
   outline-offset: 2px;
 }

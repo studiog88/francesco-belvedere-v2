@@ -204,6 +204,20 @@
   height: var(--Scale-1200);
 }
 
+.about-client-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-client-logo-link:focus-visible {
+  outline: 2px solid var(--Foundation-Black);
+  outline-offset: 2px;
+}
+
 .about-client-logo {
   display: block;
   object-fit: contain;
