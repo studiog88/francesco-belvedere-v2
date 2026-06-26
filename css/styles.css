@@ -245,6 +245,11 @@ a:focus-visible {
   margin-bottom: -0.25em;
 }
 
+/* Transform target for lead mask — keeps background-clip:text off the animated node (Chrome) */
+.hero-heading-line-reveal {
+  display: block;
+}
+
 /* Each line is its own block so long copy wraps naturally at smaller widths */
 .hero-heading-line {
   display: block;
@@ -267,7 +272,7 @@ a:focus-visible {
   margin-bottom: 0;
 }
 
-/* Figma hero text fill (node 393:18167): radial mint → teal → blue — on each line so transforms animate cleanly */
+/* Figma hero text fill (node 393:18167): radial mint → teal → blue — on each line (transform on .hero-heading-line-reveal) */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-heading-line {
     background-image: radial-gradient(

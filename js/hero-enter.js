@@ -6,6 +6,7 @@
 (function initHomeHeroEnter() {
   const lines = gsap.utils.toArray(".hero-heading-line");
   const leadLine = lines[0];
+  const leadReveal = document.querySelector(".hero-heading-line-reveal");
   const restLines = lines.slice(1);
   const navLinks = gsap.utils.toArray(".hero-nav-link");
 
@@ -23,6 +24,9 @@
 
   function revealTargetsFallback() {
     if (typeof gsap === "undefined") {
+      if (leadReveal) {
+        leadReveal.style.transform = "";
+      }
       lines.forEach((line) => {
         line.style.transform = "";
         line.style.opacity = "";
@@ -31,7 +35,7 @@
       return;
     }
 
-    gsap.set([...lines, ...navLinks], {
+    gsap.set([...(leadReveal ? [leadReveal] : []), ...lines, ...navLinks], {
       autoAlpha: 1,
       y: 0,
       yPercent: 0,
@@ -44,8 +48,8 @@
       return;
     }
 
-    if (leadLine) {
-      gsap.set(leadLine, { yPercent: 110 });
+    if (leadReveal) {
+      gsap.set(leadReveal, { yPercent: 110 });
     }
 
     if (restLines.length > 0) {
@@ -70,14 +74,15 @@
 
     const tl = gsap.timeline({ delay: HERO_DELAY });
 
-    if (leadLine) {
+    if (leadReveal) {
       tl.fromTo(
-        leadLine,
+        leadReveal,
         { yPercent: 110 },
         {
           yPercent: 0,
           duration: LEAD_MASK_DURATION,
           ease: "power3.out",
+          force3D: true,
         }
       );
     }
@@ -91,7 +96,7 @@
           duration: REST_FADE_DURATION,
           ease: "power2.out",
         },
-        leadLine ? ">" : 0
+        leadReveal || leadLine ? ">" : 0
       );
     }
 
@@ -104,7 +109,7 @@
           duration: 0.4,
           ease: "power2.out",
         },
-        restLines.length > 0 ? `-=${NAV_LEAD_IN}` : leadLine ? ">-0.2" : 0
+        restLines.length > 0 ? `-=${NAV_LEAD_IN}` : leadReveal || leadLine ? ">-0.2" : 0
       );
     }
   }
