@@ -234,22 +234,6 @@ a:focus-visible {
   color: var(--Foundation-Black);
 }
 
-/* Mask wrapper — overflow clip only on lead line (masked slide-in) */
-.hero-heading-line-mask {
-  display: block;
-}
-
-.hero-heading-line-mask:first-child {
-  overflow: hidden;
-  padding-bottom: 0.25em;
-  margin-bottom: -0.25em;
-}
-
-/* Transform target for lead mask — keeps background-clip:text off the animated node (Chrome) */
-.hero-heading-line-reveal {
-  display: block;
-}
-
 /* Each line is its own block so long copy wraps naturally at smaller widths */
 .hero-heading-line {
   display: block;
@@ -258,21 +242,20 @@ a:focus-visible {
 
 .hero-heading-line--lead {
   font-weight: var(--font-weight-semibold);
-  /* background-clip: text + mask — descender room on lead only */
   padding-bottom: 0.1em;
 }
 
-/* Fade lines: background-clip:text still clips y/g descenders — pad, then collapse rhythm */
+/* background-clip:text clips descenders — pad, then collapse rhythm */
 .hero-heading-line:not(.hero-heading-line--lead) {
   padding-bottom: 0.18em;
   margin-bottom: -0.18em;
 }
 
-.hero-heading-line-mask:last-child .hero-heading-line {
+.hero-heading-line:last-child {
   margin-bottom: 0;
 }
 
-/* Figma hero text fill (node 393:18167): radial mint → teal → blue — on each line (transform on .hero-heading-line-reveal) */
+/* Figma hero text fill (node 393:18167): radial mint → teal → blue — on each line */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-heading-line {
     background-image: radial-gradient(
