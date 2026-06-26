@@ -144,7 +144,7 @@
 .about-endorsement-meta {
   display: flex;
   flex-direction: column;
-  gap: var(--Scale-200);
+  gap: var(--Scale-100);
   margin-top: auto;
   padding-top: var(--Scale-1000);
 }
@@ -155,6 +155,7 @@
   width: var(--Scale-600);
   height: var(--Scale-600);
   object-fit: contain;
+  margin-bottom: var(--Scale-100);
 }
 
 .about-endorsement-name {
