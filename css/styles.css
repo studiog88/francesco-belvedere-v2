@@ -340,6 +340,19 @@ a:focus-visible {
   width: 100%;
 }
 
+/* Selected Projects: 1 → 2 @ 640px → 3 @ 1024px */
+@media (min-width: 640px) {
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .work-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .work-card {
   display: flex;
   flex-direction: column;
@@ -437,11 +450,6 @@ a:focus-visible {
 }
 
 @media (min-width: 811px) {
-  .work-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--Scale-600);
-  }
-
   .playground-row {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: var(--Scale-400);
@@ -595,11 +603,6 @@ a:focus-visible {
     line-height: var(--Font-Body-Home-hero-line-height);
   }
 
-  .work-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--Scale-600);
-  }
-
   .playground-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -640,10 +643,6 @@ a:focus-visible {
   .hero-wordmark--stacked {
     display: block;
   }
-
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 390px) {
@@ -675,7 +674,6 @@ a:focus-visible {
   }
 
   .work-grid {
-    grid-template-columns: 1fr;
     gap: var(--Scale-1000);
   }
 
