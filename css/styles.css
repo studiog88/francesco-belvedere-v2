@@ -313,7 +313,7 @@ a:focus-visible {
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
   font-size: var(--Font-Headings-Section-text-size);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   line-height: var(--Font-Headings-Section-line-height);
 }
 

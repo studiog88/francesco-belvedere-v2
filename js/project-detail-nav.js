@@ -1,13 +1,13 @@
 /**
  * Circular prev/next links for project detail pages (`work/*.html`).
  * Edit PROJECT_NAV_ORDER when you add/remove/reorder pages — basename only, same folder.
+ * Published projects only — omit project-template.html and unpublished stubs (e.g. radius).
  */
 (function () {
   const PROJECT_NAV_ORDER = [
     "lumosity.html",
     "figment.html",
     "lumosity-system-icons.html",
-    "radius.html",
   ];
 
   const prevAnchor = document.querySelector("[data-project-nav-prev]");
