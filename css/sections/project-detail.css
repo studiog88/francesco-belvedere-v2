@@ -6,14 +6,23 @@
   /*
    * Inner grid: story text inset from the viewport (Figma ~208px at 1728px wide).
    * Not used on .project-intro — intro uses symmetric page padding; lede spans full width inside that band.
-   * Fluid with vw, floored at page gutter, capped at 208px (5.2 × 40px gutter token).
-   * Overridden at tablet/phone breakpoints to match tighter shells.
+   * Above 960px: fluid with vw, floored at page gutter, capped at 208px (5.2 × 40px gutter token).
+   * At ≤960px: collapses to --page-gutter-inline (40px → 24px at tablet → 16px at mobile).
    */
   --project-inner-text-inset: clamp(
     var(--page-gutter-inline),
     12.037vw,
     calc(var(--page-gutter-inline) * 5.2)
   );
+  /* Story text column cap — matches Figma artboard width; centers on ultra-wide viewports */
+  --project-story-inner-max-width: 1728px;
+}
+
+/* Inner story column aligns with outer page margins on narrower viewports */
+@media (max-width: 960px) {
+  .project-detail-page {
+    --project-inner-text-inset: var(--page-gutter-inline);
+  }
 }
 
 /* In-page anchors (hero “view more” → #project-intro): sit below sticky project nav */
@@ -417,24 +426,8 @@
 }
 
 /*
- * Lumosity System Icons — story sections use inner column (--project-inner-text-inset).
- * Intro keeps global .project-intro padding (--Scale-1000 = 40px outer gutters) for offset vs story blocks.
+ * Lumosity System Icons — story galleries (padding + max-width via shared inner-column rule below).
  */
-.project-lumosity-system-icons .project-story-grid-text {
-  max-width: none;
-  padding-left: var(--project-inner-text-inset);
-  padding-right: var(--project-inner-text-inset);
-}
-
-.project-lumosity-system-icons .project-story-grid-gallery,
-.project-lumosity-system-icons .project-lumosity-icons-s01-gallery,
-.project-lumosity-system-icons .project-lumosity-icons-s02-gallery,
-.project-lumosity-system-icons .project-lumosity-icons-s03-gallery,
-.project-lumosity-system-icons .project-lumosity-icons-s04-media {
-  padding-left: var(--project-inner-text-inset);
-  padding-right: var(--project-inner-text-inset);
-}
-
 /* Lumosity System Icons — section 01: before/after rows (Figma 259:6959) */
 .project-lumosity-system-icons .project-lumosity-icons-s01-gallery {
   display: flex;
@@ -596,8 +589,6 @@
 .project-lumosity-system-icons .project-lumosity-icons-kicker-grid {
   box-sizing: border-box;
   width: 100%;
-  padding-left: var(--project-inner-text-inset);
-  padding-right: var(--project-inner-text-inset);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: var(--Scale-1500);
@@ -646,6 +637,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--Scale-400);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .project-lumosity-system-icons .project-lumosity-icons-s02-pair > img {
@@ -665,8 +658,6 @@
 
 .project-figment .project-story-grid-gallery:not(.project-figment-approach-gallery) {
   display: block;
-  padding-left: var(--project-inner-text-inset);
-  padding-right: var(--project-inner-text-inset);
 }
 
 .project-figment .project-story-grid-gallery:not(.project-figment-approach-gallery):not(.project-figment-s06-gallery) > img {
@@ -707,10 +698,6 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-end;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: var(--page-gutter-inline);
-  padding-right: var(--page-gutter-inline);
   gap: 0;
 }
 
@@ -925,7 +912,7 @@
 
 /*
  * Intro lede: equal horizontal gutters (--Scale-1000); lede spans full width between them
- * (no max-width cap — aligns with hero / prev-next band). Story grid copy still uses ~2/3 cap.
+ * (no max-width cap — aligns with hero / prev-next band). Story grid copy uses the same inner inset band.
  * padding-top (--Scale-1000 = 40px) is the gap under hero metadata — do not reduce that when tuning stack rhythm.
  */
 .project-intro {
@@ -1078,7 +1065,7 @@
 }
 
 /*
- * Story grid: inner-aligned text (~2/3 max-width) + gallery row (default 4 placeholders; Figment uses 7 real screens).
+ * Story grid: inner-aligned text + gallery row (default 4 placeholders; Figment uses 7 real screens).
  */
 .project-story-grid {
   box-sizing: border-box;
@@ -1090,20 +1077,29 @@
   margin-bottom: 0;
 }
 
-.project-story-grid-text {
+/*
+ * Inner story column: shared max-width + symmetric inset for text and media blocks.
+ * Full-bleed opt-outs: .project-figment-approach-gallery (horizontal strip), .project-story-split (50/50 bleed).
+ */
+.project-story-grid-text,
+.project-story-grid-gallery:not(.project-figment-approach-gallery),
+.project-lumosity-icons-kicker-grid,
+.project-figment-kicker-row {
   box-sizing: border-box;
-  max-width: 66.666%;
+  width: 100%;
+  max-width: var(--project-story-inner-max-width);
+  margin-inline: auto;
   padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
+}
+
+.project-story-grid-text {
   display: flex;
   flex-direction: column;
   gap: var(--Scale-600);
 }
 
 .project-story-grid-gallery {
-  box-sizing: border-box;
-  width: 100%;
-  padding-left: var(--page-gutter-inline);
-  padding-right: var(--page-gutter-inline);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--Scale-600);
@@ -1224,13 +1220,7 @@
     gap: calc(var(--Scale-1700) * 0.34);
   }
 
-  .project-story-grid-text {
-    padding-right: var(--project-inner-text-inset);
-  }
-
   .project-story-grid-gallery {
-    padding-left: var(--page-gutter-inline);
-    padding-right: var(--page-gutter-inline);
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1296,13 +1286,14 @@
     line-height: var(--Font-Body-Intro-line-height);
   }
 
-  .project-story-grid-text {
-    max-width: 100%;
+  .project-intro-lede {
+    font-size: 28px;
+    line-height: 34px;
   }
 
-  .project-intro-lede {
-    font-size: var(--Font-Body-Large-text-size);
-    line-height: var(--Font-Body-Large-line-height);
+  .project-content-heading {
+    font-size: 28px;
+    line-height: 34px;
   }
 
   .project-content-body {
@@ -1325,8 +1316,6 @@
   }
 
   .project-story-grid-gallery {
-    padding-left: var(--page-gutter-inline);
-    padding-right: var(--page-gutter-inline);
     grid-template-columns: 1fr;
   }
 
@@ -1359,9 +1348,14 @@
     line-height: var(--Font-Headings-Section-line-height);
   }
 
+  .project-content-heading {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
   .project-intro-lede {
-    font-size: var(--Font-Body-Paragraph-text-size);
-    line-height: var(--Font-Body-Paragraph-line-height);
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 
@@ -1377,10 +1371,6 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--Scale-600);
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
     box-sizing: border-box;
   }
 
@@ -1399,24 +1389,17 @@
     height: auto;
   }
 
-  /* Design max widths at 1× (@2x exports); shrink proportionally when row is narrower */
+  /* Design max widths at 1× (@2x exports); shrink within flex column when inner container is narrower */
   .project-lumosity-system-icons .project-lumosity-icons-s02-pair--side > img {
-    max-width: 16.375rem;
+    max-width: min(16.375rem, 100%);
   }
 
   .project-lumosity-system-icons .project-lumosity-icons-s02-pair--utility > img {
-    max-width: 20.125rem;
+    max-width: min(20.125rem, 100%);
   }
 }
 
 @media (max-width: 699px) {
-  .project-lumosity-system-icons .project-lumosity-icons-s02-gallery {
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   .project-lumosity-system-icons .project-lumosity-icons-s02-group {
     flex-direction: column;
     width: 100%;
