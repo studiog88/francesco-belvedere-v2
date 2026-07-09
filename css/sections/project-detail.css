@@ -210,27 +210,14 @@
 }
 
 /*
- * Lumosity System Icons — story grids: 80px copy-to-media gap; min-height sections
- * that grow when image blocks are tall (not global 256px gap + vertical centering).
+ * Lumosity System Icons — story grids: 80px copy-to-media gap.
+ * No viewport min-height — short icon rows leave empty space when forced to 80/100vh
+ * (e.g. Safari responsive ~1245px). Sections size to content at all breakpoints.
  */
 .project-lumosity-system-icons .project-story-grid {
   gap: var(--Scale-1500);
-}
-
-@media (min-width: 1200px) {
-  .project-lumosity-system-icons .project-story-grid {
-    min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: flex-start;
-    box-sizing: border-box;
-  }
-
-  /* Sections 01 & 02: shorter min-height tightens gaps to 02 and 03; other sections stay 100vh */
-  .project-lumosity-system-icons .project-story-grid[aria-labelledby="challenge-heading"],
-  .project-lumosity-system-icons .project-story-grid[aria-labelledby="process-heading"] {
-    min-height: 80vh;
-    min-height: 80dvh;
-  }
+  min-height: 0;
+  justify-content: flex-start;
 }
 
 /*
@@ -284,7 +271,22 @@
   flex-shrink: 0;
 }
 
-/* 8 icons per row (@2x PNGs displayed at 96px); even spacing via space-between */
+/*
+ * Section 01 icon size: desktop 96px → tablet/iPad 72px → mobile 48px.
+ * Token cascades so 810px wrap keeps the tablet size until 390px.
+ */
+.project-lumosity-system-icons {
+  --lumosity-s01-icon-size: var(--Scale-1600);
+}
+
+/* Below large-desktop (1200px): shrink so 8-across still has breathing room (iPad Pro, etc.) */
+@media (max-width: 1199px) {
+  .project-lumosity-system-icons {
+    --lumosity-s01-icon-size: var(--Scale-1400);
+  }
+}
+
+/* 8 icons per row (@2x PNGs); even spacing via space-between */
 .project-lumosity-system-icons .project-lumosity-icons-s01-images {
   display: flex;
   flex-direction: row;
@@ -296,8 +298,8 @@
 
 .project-lumosity-system-icons .project-lumosity-icons-s01-images > img {
   display: block;
-  width: var(--Scale-1600);
-  height: var(--Scale-1600);
+  width: var(--lumosity-s01-icon-size);
+  height: var(--lumosity-s01-icon-size);
   max-width: none;
   flex-shrink: 0;
   object-fit: contain;
@@ -375,12 +377,37 @@
   grid-template-columns: unset;
 }
 
-.project-lumosity-system-icons .project-lumosity-icons-s04-media > img {
+.project-lumosity-system-icons .project-lumosity-icons-s04-media picture {
+  display: block;
+  width: 100%;
+}
+
+.project-lumosity-system-icons .project-lumosity-icons-s04-media img {
   display: block;
   width: 100%;
   height: auto;
   max-width: none;
   object-fit: contain;
+}
+
+/* Mid widths using mobile composite: ~80% width, centered; full width again ≤524 */
+@media (max-width: 767px) and (min-width: 525px) {
+  .project-lumosity-system-icons .project-lumosity-icons-s04-media picture {
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-lumosity-system-icons .project-lumosity-icons-s04-media img {
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
+/* Asset B (≤767): more air between copy and grid */
+@media (max-width: 767px) {
+  .project-lumosity-system-icons .project-story-grid.project-lumosity-icons-s04 {
+    gap: calc(var(--Scale-1700) + var(--Scale-600));
+  }
 }
 
 /*
@@ -400,6 +427,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: var(--Scale-1500);
+  /* Desktop: wide middle gutter; tightens below so cards can grow */
   column-gap: clamp(var(--Scale-600), 11.2vw, 194px);
 }
 
@@ -415,20 +443,31 @@
   object-fit: contain;
 }
 
-@media (max-width: 810px) {
+/* Mid / tablet 2×2: pull columns closer (~40px) so assets scale up */
+@media (max-width: 1100px) {
   .project-lumosity-system-icons .project-lumosity-icons-kicker-grid {
-    grid-template-columns: 1fr;
-    column-gap: 0;
+    column-gap: var(--Scale-1000);
   }
 }
 
-/* Lumosity System Icons — section 02: side + utility nav pairs (Figma 262:3590); row layout at 700px+ see end of file */
+/* Single column only below ~400px — keep 2×2 through phone landscape / large phones */
+@media (max-width: 399px) {
+  .project-lumosity-system-icons .project-lumosity-icons-kicker-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    /* Half the 2×2 row gap so stacked cards sit closer */
+    row-gap: calc(var(--Scale-1500) / 2);
+  }
+}
+
+/* Lumosity System Icons — section 02: side + utility nav pairs (Figma 262:3590); desktop row at 1052px+ */
 .project-lumosity-system-icons .project-lumosity-icons-s02-gallery {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--Scale-1000);
   grid-template-columns: unset;
+  overflow-x: clip;
 }
 
 .project-lumosity-system-icons .project-lumosity-icons-s02-group {
@@ -436,7 +475,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-  gap: var(--Scale-1000);
+  justify-content: center;
+  gap: var(--Scale-600);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* 16px caption-to-image (Figma gap-[16px]); section 01 uses 24px on full icon row */
@@ -445,16 +488,26 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--Scale-400);
+  /* Allow shrink so @2x PNGs never force overflow */
+  flex: 1 1 0;
   min-width: 0;
   max-width: 100%;
 }
 
 .project-lumosity-system-icons .project-lumosity-icons-s02-pair > img {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
   object-fit: contain;
+}
+
+/* Design max widths at 1× (@2x exports) */
+.project-lumosity-system-icons .project-lumosity-icons-s02-pair--side {
+  max-width: 16.375rem;
+}
+
+.project-lumosity-system-icons .project-lumosity-icons-s02-pair--utility {
+  max-width: 20.125rem;
 }
 
 /*
@@ -1005,7 +1058,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Section 01: 4 over 4 (two rows); cells scale down on narrow viewports */
+  /* Section 01: 4 over 4 (two rows); keep tablet icon size (not fill-to-96) */
+  .project-lumosity-system-icons .project-lumosity-icons-s01-gallery {
+    gap: var(--Scale-1400);
+  }
+
   .project-lumosity-system-icons .project-lumosity-icons-s01-images {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1015,10 +1072,10 @@
   }
 
   .project-lumosity-system-icons .project-lumosity-icons-s01-images > img {
-    width: 100%;
-    height: auto;
+    width: var(--lumosity-s01-icon-size);
+    height: var(--lumosity-s01-icon-size);
     aspect-ratio: 1;
-    max-width: var(--Scale-1600);
+    max-width: var(--lumosity-s01-icon-size);
     justify-self: center;
   }
 
@@ -1079,6 +1136,11 @@
 }
 
 @media (max-width: 390px) {
+  /* Section 01: slightly smaller icons in the 4×2 grid */
+  .project-lumosity-system-icons {
+    --lumosity-s01-icon-size: var(--Scale-1100);
+  }
+
   .project-detail-page {
     --project-detail-nav-height: 64px;
     --project-hero-band-height: 320px;
@@ -1133,65 +1195,102 @@
 }
 
 /*
- * Lumosity s02 — four panels in one row; scale to fit gallery width (e.g. 1728px desktop).
- * Groups use display:contents so pairs share one flex row. Stacks below 700px.
+ * Lumosity s02 — desktop: two before/after couples in one row.
+ * Fixed gap inside each couple; leftover width sits between the two couples.
+ * Single row from 1052px up (avoids caption wrap at ~1051px).
  */
-@media (min-width: 700px) {
+@media (min-width: 1052px) {
   .project-lumosity-system-icons .project-lumosity-icons-s02-gallery {
-    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--Scale-600);
-    box-sizing: border-box;
+    overflow-x: visible;
   }
 
-  /* Flatten side + utility groups into a single four-column row */
   .project-lumosity-system-icons .project-lumosity-icons-s02-group {
-    display: contents;
+    width: auto;
+    flex: 0 1 auto;
+    justify-content: flex-start;
   }
 
   .project-lumosity-system-icons .project-lumosity-icons-s02-pair {
-    flex: 1 1 0;
-    min-width: 0;
-  }
-
-  .project-lumosity-system-icons .project-lumosity-icons-s02-pair > img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* Design max widths at 1× (@2x exports); shrink within flex column when inner container is narrower */
-  .project-lumosity-system-icons .project-lumosity-icons-s02-pair--side > img {
-    max-width: min(16.375rem, 100%);
-  }
-
-  .project-lumosity-system-icons .project-lumosity-icons-s02-pair--utility > img {
-    max-width: min(20.125rem, 100%);
+    flex: 0 1 auto;
   }
 }
 
+/* Stacked couples: more air between nav row and dropdown row */
+@media (max-width: 1051px) {
+  .project-lumosity-system-icons .project-lumosity-icons-s02-gallery {
+    gap: var(--Scale-1400);
+  }
+}
+
+/* Phone: stack s02 before/after within each couple */
 @media (max-width: 699px) {
   .project-lumosity-system-icons .project-lumosity-icons-s02-group {
     flex-direction: column;
-    width: 100%;
-    gap: var(--Scale-600);
+    align-items: center;
   }
 
-  .project-lumosity-system-icons .project-lumosity-icons-s02-pair > img {
+  .project-lumosity-system-icons .project-lumosity-icons-s02-pair {
     width: 100%;
+  }
+
+  .project-lumosity-system-icons .project-lumosity-icons-s02-pair--side,
+  .project-lumosity-system-icons .project-lumosity-icons-s02-pair--utility {
     max-width: 20.125rem;
   }
+}
 
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row {
-    flex-direction: column;
-    align-items: flex-start;
+/* Section 03 narrow: 1–2–2 (Image C) instead of stacking every tile */
+@media (max-width: 717px) {
+  .project-lumosity-system-icons .project-lumosity-icons-s03-gallery {
     gap: var(--Scale-600);
   }
 
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row > img {
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-items: stretch;
+    gap: var(--Scale-600);
+  }
+
+  /* First tile alone on top, centered; extra air before the 2×2 below */
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 70%;
+    max-width: 16rem;
+    margin-bottom: var(--Scale-800);
+  }
+
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:not(:first-child) {
     width: 100%;
-    max-width: 31rem;
+    max-width: none;
+  }
+
+  /* Bottom pair stays side-by-side (do not stack) */
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--two {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--Scale-600);
+  }
+
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--two > img {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+/* Narrow phones: shrink the top logo so it matches the 2×2 scale better */
+@media (max-width: 499px) {
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:first-child {
+    width: 52%;
+    max-width: 11rem;
   }
 }
