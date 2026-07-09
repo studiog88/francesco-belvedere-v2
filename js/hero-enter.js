@@ -1,12 +1,10 @@
 /**
- * Home page enter: wordmark → hero lines → nav → selected projects.
+ * Home page enter: wordmark → hero heading → nav → selected projects.
  * Home only — load on index.html. Skips prefers-reduced-motion and hash landing.
  */
 (function initHomeHeroEnter() {
   const wordmarks = gsap.utils.toArray(".hero-wordmark");
-  const lines = gsap.utils.toArray(".hero-heading-line");
-  const leadLine = lines[0];
-  const restLines = lines.slice(1);
+  const heroHeading = document.querySelector(".hero-heading");
   const navLinks = gsap.utils.toArray(".hero-nav-link");
   const selectedProjects = document
     .getElementById("selected-projects-heading")
@@ -14,7 +12,7 @@
 
   if (
     wordmarks.length === 0 &&
-    lines.length === 0 &&
+    !heroHeading &&
     navLinks.length === 0 &&
     !selectedProjects
   ) {
@@ -26,10 +24,7 @@
   const HERO_DELAY = 0.2;
   const WORDMARK_DURATION = 0.65;
   const LINE_Y = 20;
-  const LEAD_DURATION = 0.7;
-  const REST_DURATION = 0.6;
-  const REST_STAGGER = 0.06;
-  const REST_OVERLAP = 0.35;
+  const HEADING_DURATION = 0.7;
   const NAV_LEAD_IN = 0.8;
   const WORK_OVERLAP = 0.25;
   let didRun = false;
@@ -40,11 +35,11 @@
         mark.style.opacity = "";
         mark.style.visibility = "";
       });
-      lines.forEach((line) => {
-        line.style.transform = "";
-        line.style.opacity = "";
-        line.style.visibility = "";
-      });
+      if (heroHeading) {
+        heroHeading.style.transform = "";
+        heroHeading.style.opacity = "";
+        heroHeading.style.visibility = "";
+      }
       if (selectedProjects) {
         selectedProjects.style.transform = "";
         selectedProjects.style.opacity = "";
@@ -53,7 +48,7 @@
       return;
     }
 
-    gsap.set([...wordmarks, ...lines, ...navLinks, ...(selectedProjects ? [selectedProjects] : [])], {
+    gsap.set([...wordmarks, ...(heroHeading ? [heroHeading] : []), ...navLinks, ...(selectedProjects ? [selectedProjects] : [])], {
       autoAlpha: 1,
       y: 0,
       clearProps: "opacity,visibility,transform",
@@ -69,7 +64,9 @@
       gsap.set(wordmarks, { autoAlpha: 0 });
     }
 
-    gsap.set(lines, { autoAlpha: 0, y: LINE_Y });
+    if (heroHeading) {
+      gsap.set(heroHeading, { autoAlpha: 0, y: LINE_Y });
+    }
 
     if (selectedProjects) {
       gsap.set(selectedProjects, { autoAlpha: 0, y: LINE_Y });
@@ -102,27 +99,12 @@
       );
     }
 
-    if (leadLine) {
+    if (heroHeading) {
       tl.fromTo(
-        leadLine,
+        heroHeading,
         { autoAlpha: 0, y: LINE_Y },
-        { autoAlpha: 1, y: 0, duration: LEAD_DURATION, ease: lineEase },
+        { autoAlpha: 1, y: 0, duration: HEADING_DURATION, ease: lineEase },
         wordmarks.length > 0 ? ">" : 0
-      );
-    }
-
-    if (restLines.length > 0) {
-      tl.fromTo(
-        restLines,
-        { autoAlpha: 0, y: LINE_Y },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: REST_DURATION,
-          stagger: REST_STAGGER,
-          ease: lineEase,
-        },
-        leadLine ? `-=${REST_OVERLAP}` : wordmarks.length > 0 ? ">" : 0
       );
     }
 
@@ -130,7 +112,7 @@
       tl.from(
         navLinks,
         { autoAlpha: 0, y: 12, duration: 0.4, ease: lineEase },
-        restLines.length > 0 ? `-=${NAV_LEAD_IN}` : leadLine ? ">-0.2" : 0
+        heroHeading ? `-=${NAV_LEAD_IN}` : 0
       );
     }
 
@@ -138,16 +120,14 @@
       let workStart = 0;
       if (navLinks.length > 0) {
         workStart = `-=${WORK_OVERLAP}`;
-      } else if (restLines.length > 0) {
-        workStart = `-=${NAV_LEAD_IN - WORK_OVERLAP}`;
-      } else if (leadLine) {
+      } else if (heroHeading) {
         workStart = ">-0.2";
       }
 
       tl.fromTo(
         selectedProjects,
         { autoAlpha: 0, y: LINE_Y },
-        { autoAlpha: 1, y: 0, duration: REST_DURATION, ease: lineEase },
+        { autoAlpha: 1, y: 0, duration: HEADING_DURATION, ease: lineEase },
         workStart
       );
     }

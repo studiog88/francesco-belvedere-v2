@@ -39,8 +39,8 @@ body {
 }
 
 #hero {
-  padding: 0 var(--page-gutter-inline);
-  margin-bottom: var(--Scale-1500);
+  padding: var(--Scale-1500) var(--page-gutter-inline) 0;
+  margin-bottom: var(--Scale-1700);
   box-sizing: border-box;
 }
 
@@ -231,33 +231,17 @@ a:focus-visible {
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Home-hero-text-size);
   line-height: var(--Font-Body-Home-hero-line-height);
-  color: var(--Foundation-Black);
-}
-
-/* Each line is its own block so long copy wraps naturally at smaller widths */
-.hero-heading-line {
-  display: block;
   font-weight: var(--font-weight-light);
+  color: var(--Foundation-Black);
 }
 
 .hero-heading-line--lead {
   font-weight: var(--font-weight-semibold);
-  padding-bottom: 0.1em;
 }
 
-/* background-clip:text clips descenders — pad, then collapse rhythm */
-.hero-heading-line:not(.hero-heading-line--lead) {
-  padding-bottom: 0.18em;
-  margin-bottom: -0.18em;
-}
-
-.hero-heading-line:last-child {
-  margin-bottom: 0;
-}
-
-/* Figma hero text fill (node 393:18167): radial mint → teal → blue — on each line */
+/* Figma hero text fill (node 393:18167): radial mint → teal → blue */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .hero-heading-line {
+  .hero-heading {
     background-image: radial-gradient(
       120.41% 249.89% at 18.35% 85.32%,
       rgb(46 209 137) 0%,
@@ -386,6 +370,18 @@ a:focus-visible {
   transition: transform 220ms ease;
 }
 
+.work-card-image-fallback {
+  display: none;
+}
+
+.work-card-media.is-static-fallback video {
+  display: none;
+}
+
+.work-card-media.is-static-fallback .work-card-image-fallback {
+  display: block;
+}
+
 .work-card-title {
   margin: 0;
   color: var(--Foundation-Black);
@@ -465,6 +461,14 @@ a:focus-visible {
   .work-card-media,
   .work-card-image-large {
     transition: none;
+  }
+
+  .work-card-media:has(video[data-loop-pause-ms]) video {
+    display: none;
+  }
+
+  .work-card-media:has(video[data-loop-pause-ms]) .work-card-image-fallback {
+    display: block;
   }
 }
 
@@ -598,6 +602,10 @@ a:focus-visible {
     margin-block: var(--Scale-800);
   }
 
+  #hero {
+    padding-top: var(--Scale-1200);
+  }
+
   .hero-heading {
     font-size: var(--Font-Body-Home-hero-text-size);
     line-height: var(--Font-Body-Home-hero-line-height);
@@ -620,9 +628,6 @@ a:focus-visible {
   .hero-heading {
     font-size: var(--Font-Body-Home-hero-text-size);
     line-height: var(--Font-Body-Home-hero-line-height);
-  }
-
-  .hero-heading-line {
     font-weight: var(--font-weight-regular);
   }
 
@@ -631,7 +636,8 @@ a:focus-visible {
   }
 
   #hero {
-    margin-bottom: var(--Scale-1100);
+    padding-top: var(--Scale-1000);
+    margin-bottom: var(--Scale-1300);
   }
 }
 
@@ -653,9 +659,6 @@ a:focus-visible {
   .hero-heading {
     font-size: var(--Font-Body-Home-hero-text-size);
     line-height: var(--Font-Body-Home-hero-line-height);
-  }
-
-  .hero-heading-line {
     font-weight: var(--font-weight-regular);
   }
 

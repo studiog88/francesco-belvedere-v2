@@ -57,6 +57,7 @@
   <script src="js/hero-enter.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/about-marquee.js" defer></script>
+  <script src="js/work-card-video.js" defer></script>
 </head>
 <body class="site">
   <!-- Hero section -->
@@ -72,12 +73,7 @@
 
   <div id="hero">
     <p class="hero-heading">
-      <span class="hero-heading-line hero-heading-line--lead">LA based Product Designer.</span>
-      <span class="hero-heading-line">15+ years experience designing and shipping real products that humans interact with.</span>
-      <span class="hero-heading-line">Cross-functional.</span>
-      <span class="hero-heading-line">Multi-disciplinary.</span>
-      <span class="hero-heading-line">AI fluent.</span>
-      <span class="hero-heading-line">Forever curious.</span>
+      <span class="hero-heading-line--lead">LA based Product Designer.</span> 15+ years experience designing and shipping real products that humans interact with. Cross-functional. Multi-disciplinary. AI fluent. Forever curious.
     </p>
   </div>
 
@@ -89,7 +85,12 @@
         <div class="work-grid">
           <a class="work-card work-card-large" href="work/lumosity.html" aria-label="View Lumosity project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/projects/lumosity/feature-C.png" alt="Lumosity project preview">
+              <video class="work-card-image work-card-image-large" poster="assets/projects/lumosity/feature-C.png" data-loop-pause-ms="5000" autoplay muted playsinline aria-hidden="true">
+                <source src="assets/projects/lumosity/feature-E.webm" type="video/webm">
+                <source src="assets/projects/lumosity/feature-E.mp4" type="video/mp4">
+                <img class="work-card-image work-card-image-large" src="assets/projects/lumosity/feature-C.png" alt="Lumosity project preview">
+              </video>
+              <img class="work-card-image work-card-image-large work-card-image-fallback" src="assets/projects/lumosity/feature-C.png" alt="Lumosity project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">Product Design at Lumosity</h3>
@@ -109,7 +110,11 @@
 
           <a class="work-card work-card-large" href="work/lumosity-system-icons.html" aria-label="View Lumosity System Icons project page">
             <div class="work-card-media">
-              <img class="work-card-image work-card-image-large" src="assets/projects/lumosity-icons/feature.png" alt="Icons project preview">
+              <video class="work-card-image work-card-image-large" poster="assets/projects/lumosity-icons/feature.png" data-loop-pause-ms="5000" autoplay muted playsinline aria-hidden="true">
+                <source src="assets/projects/lumosity-icons/feature-B.webm" type="video/webm">
+                <img class="work-card-image work-card-image-large" src="assets/projects/lumosity-icons/feature.png" alt="Icons project preview">
+              </video>
+              <img class="work-card-image work-card-image-large work-card-image-fallback" src="assets/projects/lumosity-icons/feature.png" alt="Icons project preview">
             </div>
             <div class="work-card-text">
               <h3 class="work-card-title">System Icons</h3>

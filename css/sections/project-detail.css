@@ -200,7 +200,7 @@
 /* Figment: hero bg on .project-hero-content only (via .project-hero-bg), not metadata */
 .project-figment .project-hero-bg {
   background-color: transparent;
-  background-image: url("../../assets/projects/figment/hero-bg.png");
+  background-image: url("../../assets/projects/figment/hero-bg-B.png");
   background-repeat: no-repeat;
   background-position: center;
   /* Stretch to fill hero-content; texture tolerates distortion on narrow viewports */
@@ -211,13 +211,13 @@
   background-color: transparent;
 }
 
-/* Figma: ~480px wide, top-center — hangs from top of left column */
+/* Figma: ~720px wide, top-center — hangs from top of left column */
 .project-figment .project-hero-image-inner > img {
   inset: auto;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 480px;
+  width: 720px;
   max-width: 100%;
   height: auto;
   object-fit: contain;
@@ -349,6 +349,38 @@
   max-width: none;
   object-fit: contain;
   display: block;
+}
+
+/* Lumosity: hero bg fills .project-hero-content only (via .project-hero-bg), not metadata */
+.project-lumosity .project-hero-bg {
+  background-color: transparent;
+  background-image: url("../../assets/projects/lumosity/hero-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* Hero FG: centered in left column (bg shows through) */
+.project-lumosity .project-hero-image-inner {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-lumosity .project-hero-image-inner > img {
+  position: static;
+  inset: auto;
+  width: 75%;
+  height: auto;
+  max-height: 100%;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
+
+.project-lumosity .project-hero-tag {
+  background-color: var(--Orange-100);
 }
 
 /*
@@ -1141,6 +1173,11 @@
   /* Stack image above heading until you tune breakpoints in QA */
   .project-hero-content {
     flex-direction: column;
+  }
+
+  /* Scroll-down pill not needed once hero stacks — keeps layout clean on tablet/mobile */
+  .project-detail-page .project-hero-view-more {
+    display: none;
   }
 
   .project-hero-image-inner {
