@@ -166,10 +166,28 @@ if (backToTopButton && hasGsap && hasScrollTrigger) {
 }
 
 if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.length > 0) {
+  const contactForm = contactOverlay.querySelector(".contact-overlay-form");
+  const contactSendButton = contactOverlay.querySelector(".contact-overlay-send");
+  const contactStatus = contactOverlay.querySelector(".contact-overlay-status");
   let isContactAnimating = false;
+  let isContactSubmitting = false;
   const canAnimateContact = hasGsap && !prefersReducedMotion;
   contactOverlay.hidden = true;
   document.body.style.overflow = "";
+
+  const resetContactFormState = () => {
+    if (contactStatus) {
+      contactStatus.textContent = "";
+      contactStatus.classList.remove("is-success", "is-error");
+    }
+
+    if (contactSendButton) {
+      contactSendButton.disabled = false;
+      contactSendButton.textContent = "Send";
+    }
+
+    isContactSubmitting = false;
+  };
 
   const showContactOverlayPlain = () => {
     contactOverlay.hidden = false;
@@ -196,6 +214,7 @@ if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.len
       return;
     }
 
+    resetContactFormState();
     isContactAnimating = true;
 
     if (!canAnimateContact) {
@@ -280,4 +299,47 @@ if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.len
       }
     }
   });
+
+  if (contactForm && contactSendButton && contactStatus) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (isContactSubmitting) {
+        return;
+      }
+
+      isContactSubmitting = true;
+      contactSendButton.disabled = true;
+      contactSendButton.textContent = "Sending…";
+      contactStatus.textContent = "";
+      contactStatus.classList.remove("is-success", "is-error");
+
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          body: new FormData(contactForm)
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed");
+        }
+
+        contactForm.reset();
+        contactStatus.textContent = "Thanks — your message was sent.";
+        contactStatus.classList.add("is-success");
+
+        window.setTimeout(() => {
+          if (!contactOverlay.hidden) {
+            closeContactOverlay();
+          }
+        }, 2000);
+      } catch (error) {
+        contactStatus.textContent = "Something went wrong. Please try again or email info@francescobelvedere.com.";
+        contactStatus.classList.add("is-error");
+        contactSendButton.disabled = false;
+        contactSendButton.textContent = "Send";
+        isContactSubmitting = false;
+      }
+    });
+  }
 }
