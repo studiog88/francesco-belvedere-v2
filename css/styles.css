@@ -260,6 +260,27 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* Contact form: below 768px, ease outer + inner padding for narrower viewports */
+@media (max-width: 767px) {
+  .contact-overlay {
+    padding: var(--Scale-400);
+  }
+
+  .contact-overlay-dialog {
+    padding: var(--Scale-600);
+  }
+}
+
+@media (max-width: 390px) {
+  .contact-overlay-dialog {
+    padding: var(--Scale-500);
+  }
+
+  .contact-overlay-title {
+    margin-bottom: var(--Scale-500);
+  }
+}
+
 .hero-heading {
   margin: 0;
   font-family: var(--font-family-primary);
