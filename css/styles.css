@@ -139,12 +139,19 @@ a:focus-visible {
 
 .contact-overlay {
   position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 2000;
   display: grid;
   place-items: center;
   padding: var(--Scale-600);
+  /* rgba fallback for Safari 12 (no color-mix) */
+  background-color: rgba(0, 0, 0, 0.3);
   background-color: color-mix(in srgb, var(--Foundation-Black) 30%, transparent);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 

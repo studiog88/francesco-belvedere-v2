@@ -1,4 +1,9 @@
-gsap.registerPlugin(ScrollTrigger);
+const hasGsap = typeof gsap !== "undefined";
+const hasScrollTrigger = typeof ScrollTrigger !== "undefined";
+
+if (hasGsap && hasScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /**
  * index.html#work (Back to work): hide until we can jump to the hash, then show.
@@ -117,7 +122,7 @@ const contactOverlay = document.querySelector("#contact-overlay");
 const contactDialog = document.querySelector(".contact-overlay-dialog");
 const contactCloseButton = document.querySelector(".contact-overlay-close");
 const contactTriggers = Array.from(document.querySelectorAll("[data-contact-trigger]"));
-if (backToTopButton) {
+if (backToTopButton && hasGsap && hasScrollTrigger) {
   const showBackToTop = () => {
     backToTopButton.classList.add("is-visible");
     gsap.to(backToTopButton, {
@@ -162,8 +167,29 @@ if (backToTopButton) {
 
 if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.length > 0) {
   let isContactAnimating = false;
+  const canAnimateContact = hasGsap && !prefersReducedMotion;
   contactOverlay.hidden = true;
   document.body.style.overflow = "";
+
+  const showContactOverlayPlain = () => {
+    contactOverlay.hidden = false;
+    contactOverlay.style.opacity = "1";
+    contactOverlay.style.visibility = "visible";
+    contactDialog.style.opacity = "1";
+    contactDialog.style.visibility = "visible";
+    contactDialog.style.transform = "none";
+    document.body.style.overflow = "hidden";
+  };
+
+  const hideContactOverlayPlain = () => {
+    contactOverlay.hidden = true;
+    contactOverlay.style.opacity = "";
+    contactOverlay.style.visibility = "";
+    contactDialog.style.opacity = "";
+    contactDialog.style.visibility = "";
+    contactDialog.style.transform = "";
+    document.body.style.overflow = "";
+  };
 
   const openContactOverlay = () => {
     if (!contactOverlay.hidden || isContactAnimating) {
@@ -171,14 +197,16 @@ if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.len
     }
 
     isContactAnimating = true;
-    contactOverlay.hidden = false;
-    document.body.style.overflow = "hidden";
 
-    if (prefersReducedMotion) {
+    if (!canAnimateContact) {
+      showContactOverlayPlain();
       contactCloseButton.focus();
       isContactAnimating = false;
       return;
     }
+
+    contactOverlay.hidden = false;
+    document.body.style.overflow = "hidden";
 
     gsap.killTweensOf([contactOverlay, contactDialog]);
     gsap.set(contactOverlay, { autoAlpha: 0 });
@@ -202,9 +230,8 @@ if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.len
 
     isContactAnimating = true;
 
-    if (prefersReducedMotion) {
-      contactOverlay.hidden = true;
-      document.body.style.overflow = "";
+    if (!canAnimateContact) {
+      hideContactOverlayPlain();
       isContactAnimating = false;
       return;
     }
@@ -225,8 +252,7 @@ if (contactOverlay && contactDialog && contactCloseButton && contactTriggers.len
   };
 
   const instantCloseContactOverlay = () => {
-    contactOverlay.hidden = true;
-    document.body.style.overflow = "";
+    hideContactOverlayPlain();
     isContactAnimating = false;
   };
 
