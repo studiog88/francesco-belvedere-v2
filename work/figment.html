@@ -94,27 +94,44 @@
     <section class="project-story-grid" aria-labelledby="solution-heading">
       <div class="project-story-grid-text">
         <p class="project-section-label">03 — THE APPROACH</p>
-        <h2 id="solution-heading" class="project-content-heading">One shared frame with unique individual canvases</h2>
         <p class="project-content-body">
           I designed a consistent structural shell (navigation, entry/exit points, design system with UI patterns and components) and let each exercise own the creative space inside it. Users move between activities without ever feeling lost. The app was built entirely in Unity, which freed the UI from native constraints and let the interface itself feel more expressive of the brand.
         </p>
       </div>
-      <!-- Horizontal scroll strip: Tab into the strip, then ← → keys to nudge; mouse drag pans. Revert: plain `project-story-grid-gallery` + drop ../js/figment-approach-gallery.js for old seven-column grid -->
-      <div
-        class="project-story-grid-gallery project-figment-approach-gallery"
-        role="region"
-        aria-label="Figment screens — scroll horizontally to see more"
-        tabindex="0"
-      >
-        <!-- Inner row: GSAP animates translateX for edge rubber-band; outer div owns scrollLeft -->
-        <div class="project-figment-approach-track">
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-A.png" alt="Figment app screen 1 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-B.png" alt="Figment app screen 2 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-C.png" alt="Figment app screen 3 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-D.png" alt="Figment app screen 4 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-E.png" alt="Figment app screen 5 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-F.png" alt="Figment app screen 6 of 7 in the shared product frame"></div></div>
-          <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner"><img draggable="false" src="../assets/projects/figment/section-03-G.png" alt="Figment app screen 7 of 7 in the shared product frame"></div></div>
+
+      <div class="project-figment-approach-carousel">
+        <div class="project-figment-approach-header">
+          <h2 id="solution-heading" class="project-content-heading project-figment-approach-heading">Carousel Heading</h2>
+          <div class="project-figment-approach-controls">
+            <button class="project-figment-approach-nav" type="button" data-approach-prev aria-label="Previous slide" disabled>
+              <img class="project-figment-approach-nav-icon project-figment-approach-nav-icon--prev" src="../assets/icons/cta-arrow-up.svg" alt="" aria-hidden="true">
+            </button>
+            <button class="project-figment-approach-nav" type="button" data-approach-next aria-label="Next slide">
+              <img class="project-figment-approach-nav-icon project-figment-approach-nav-icon--next" src="../assets/icons/cta-arrow-up.svg" alt="" aria-hidden="true">
+            </button>
+          </div>
+        </div>
+
+        <!-- Horizontal scroll strip: arrows, keyboard, drag, or touch -->
+        <div
+          class="project-story-grid-gallery project-figment-approach-gallery"
+          role="region"
+          aria-label="Figment screens — scroll horizontally to see more"
+          tabindex="0"
+        >
+          <div class="project-figment-approach-track">
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-A.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-D.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-G.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-B.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-F.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-C.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-E.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-A.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-E.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-B.png" alt=""></div></div>
+            <div class="project-story-grid-cell"><div class="project-story-grid-cell-inner project-figment-approach-slide" aria-hidden="true"><img draggable="false" src="../assets/projects/figment/section-03-G.png" alt=""></div></div>
+          </div>
         </div>
       </div>
     </section>

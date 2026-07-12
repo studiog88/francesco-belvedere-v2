@@ -1,13 +1,14 @@
 /**
- * Figment section 03 — horizontal gallery
+ * Figment section 03 — horizontal carousel
  *
+ * - Prev/next buttons: one slide per click; disabled at scroll ends.
  * - Mouse: 1:1 drag on scrollLeft; past edges, inner track shifts (rubber) — release: elastic bounce to x:0.
  * - Mouse in-bounds release: GSAP momentum on scrollLeft (power3.out).
- * - Keyboard: ArrowLeft / ArrowRight + scrollTo({ behavior: smooth }).
+ * - Keyboard: ArrowLeft / ArrowRight steps one slide.
  * - Touch: native horizontal scroll (CSS touch-action: pan-x).
  * - prefers-reduced-motion: no rubber / no momentum / no elastic — direct scroll only.
  *
- * HTML: .project-figment-approach-gallery > .project-figment-approach-track > cells
+ * HTML: .project-figment-approach-carousel > header + .project-figment-approach-gallery > .project-figment-approach-track > cells
  * Uses global gsap from figment.html (core only).
  */
 (function () {
@@ -69,8 +70,88 @@
     }
   }
 
+  function getCells(track) {
+    if (!track) {
+      return [];
+    }
+    return Array.prototype.slice.call(
+      track.querySelectorAll(".project-story-grid-cell")
+    );
+  }
+
+  function getTrackPadding(track) {
+    var cs = window.getComputedStyle(track);
+    return {
+      left: parseFloat(cs.paddingLeft) || 0,
+      right: parseFloat(cs.paddingRight) || 0,
+    };
+  }
+
+  function getScrollTargetForCell(el, track, cellIndex) {
+    var cells = getCells(track);
+    var cell = cells[cellIndex];
+    if (!cell) {
+      return 0;
+    }
+
+    var max = Math.max(0, el.scrollWidth - el.clientWidth);
+    if (cellIndex === cells.length - 1) {
+      return max;
+    }
+
+    var pad = getTrackPadding(track);
+    var target = cell.offsetLeft - pad.left;
+    return Math.min(Math.max(0, target), max);
+  }
+
+  function getActiveCellIndex(el, track) {
+    var cells = getCells(track);
+    var pad = getTrackPadding(track);
+    var pos = el.scrollLeft + pad.left + 2;
+    var active = 0;
+
+    for (var i = 0; i < cells.length; i++) {
+      if (cells[i].offsetLeft <= pos) {
+        active = i;
+      }
+    }
+
+    return active;
+  }
+
+  function updateNavButtons(el, prevBtn, nextBtn) {
+    if (!prevBtn || !nextBtn) {
+      return;
+    }
+
+    var max = Math.max(0, el.scrollWidth - el.clientWidth);
+    prevBtn.disabled = el.scrollLeft <= 1;
+    nextBtn.disabled = el.scrollLeft >= max - 1;
+  }
+
+  function scrollToCell(el, track, index) {
+    var cells = getCells(track);
+    if (index < 0 || index >= cells.length) {
+      return;
+    }
+
+    killGalleryTweens(el, track);
+    setTrackX(track, 0);
+
+    var target = getScrollTargetForCell(el, track, index);
+    el.scrollTo({
+      left: target,
+      behavior: reduced ? "auto" : "smooth",
+    });
+  }
+
   function setup(el) {
     var track = el.querySelector(".project-figment-approach-track");
+    var carousel = el.closest(".project-figment-approach-carousel");
+    var prevBtn =
+      carousel && carousel.querySelector("[data-approach-prev]");
+    var nextBtn =
+      carousel && carousel.querySelector("[data-approach-next]");
 
     el.querySelectorAll("img").forEach(function (img) {
       img.addEventListener("dragstart", function (ev) {
@@ -78,18 +159,41 @@
       });
     });
 
+    function refreshNav() {
+      updateNavButtons(el, prevBtn, nextBtn);
+    }
+
+    el.addEventListener("scroll", refreshNav, { passive: true });
+    window.addEventListener("resize", refreshNav);
+    refreshNav();
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        var index = getActiveCellIndex(el, track);
+        scrollToCell(el, track, Math.max(0, index - 1));
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        var cells = getCells(track);
+        var index = getActiveCellIndex(el, track);
+        scrollToCell(el, track, Math.min(cells.length - 1, index + 1));
+      });
+    }
+
     el.addEventListener("keydown", function (e) {
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") {
         return;
       }
       e.preventDefault();
-      var delta = Math.round(el.clientWidth * 0.35);
-      var dir = e.key === "ArrowRight" ? 1 : -1;
-      var next = clampScroll(el, el.scrollLeft + dir * delta);
-      el.scrollTo({
-        left: next,
-        behavior: reduced ? "auto" : "smooth",
-      });
+      var cells = getCells(track);
+      var index = getActiveCellIndex(el, track);
+      var nextIndex =
+        e.key === "ArrowRight"
+          ? Math.min(cells.length - 1, index + 1)
+          : Math.max(0, index - 1);
+      scrollToCell(el, track, nextIndex);
     });
 
     var fine = window.matchMedia("(pointer: fine)");
@@ -178,6 +282,8 @@
           /* ignore */
         }
 
+        refreshNav();
+
         if (reduced || !hasGsap) {
           if (track) {
             setTrackX(track, 0);
@@ -223,6 +329,8 @@
           duration: dur,
           ease: "power3.out",
           overwrite: "auto",
+          onUpdate: refreshNav,
+          onComplete: refreshNav,
         });
       }
 

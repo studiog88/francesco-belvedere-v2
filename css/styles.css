@@ -155,7 +155,7 @@ a:focus-visible {
 .contact-overlay-dialog {
   position: relative;
   width: min(100%, 640px);
-  background-color: var(--Foundation-White);
+  background: linear-gradient(180deg, var(--Foundation-White) 0%, var(--Lime-50) 100%);
   border: 1px solid var(--Warm-Grey-200);
   border-radius: var(--Scale-400);
   padding: var(--Scale-1000);
@@ -165,21 +165,37 @@ a:focus-visible {
   position: absolute;
   top: var(--Scale-400);
   right: var(--Scale-400);
-  width: 36px;
-  height: 36px;
-  border: 0;
-  border-radius: 999px;
-  background-color: var(--Warm-Grey-100);
-  color: var(--Foundation-Black);
+  box-sizing: border-box;
+  width: var(--Scale-1000);
+  height: var(--Scale-1000);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--Lime-500);
+  border-radius: var(--Scale-1900);
+  background-color: var(--Foundation-White);
+  padding: 0;
   cursor: pointer;
+  transition: background-color 400ms ease-in-out;
+}
+
+.contact-overlay-close:hover {
+  background-color: var(--Lime-500);
+}
+
+.contact-overlay-close-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .contact-overlay-title {
   margin: 0 0 var(--Scale-700);
+  padding-right: var(--Scale-1200);
   font-family: var(--font-family-primary);
-  font-size: var(--Font-Headings-Section-text-size);
-  line-height: var(--Font-Headings-Section-line-height);
+  font-size: var(--Font-Headings-Contact-title-text-size);
+  line-height: var(--Font-Headings-Contact-title-line-height);
   font-weight: var(--font-weight-regular);
+  color: var(--Foundation-Black);
 }
 
 .contact-overlay-form {
@@ -187,11 +203,16 @@ a:focus-visible {
   gap: var(--Scale-400);
 }
 
+.contact-overlay-field {
+  display: grid;
+  gap: var(--Scale-100);
+}
+
 .contact-overlay-label {
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Paragraph-text-size);
   line-height: var(--Font-Body-Paragraph-line-height);
-  color: var(--Warm-Grey-700);
+  color: var(--Foundation-Black);
 }
 
 .contact-overlay-input,
@@ -214,11 +235,24 @@ a:focus-visible {
 .contact-overlay-send {
   margin-top: var(--Scale-300);
   justify-self: start;
-  padding: var(--Scale-300) var(--Scale-700);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--Scale-200) var(--Scale-400);
   cursor: pointer;
 }
 
-.contact-overlay-close:focus-visible,
+.contact-overlay-close:focus-visible {
+  outline: 2px solid var(--Foundation-Black);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-overlay-close {
+    transition: none;
+  }
+}
+
 .contact-overlay-send:focus-visible,
 .contact-overlay-input:focus-visible,
 .contact-overlay-textarea:focus-visible {

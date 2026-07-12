@@ -524,6 +524,26 @@
   max-width: 100%;
 }
 
+/* Figment S01 — center the brief image within the gallery row */
+.project-figment [aria-labelledby="challenge-heading"] .project-story-grid-gallery > img {
+  margin-inline: auto;
+}
+
+/* Figment S02 — center the challenge image within the gallery row */
+.project-figment [aria-labelledby="process-heading"] .project-story-grid-gallery > img {
+  margin-inline: auto;
+}
+
+/* Figment S04 — center the system image within the gallery row */
+.project-figment [aria-labelledby="figment-s04-heading"] .project-story-grid-gallery > img {
+  margin-inline: auto;
+}
+
+/* Figment S05 — center the experience image within the gallery row */
+.project-figment [aria-labelledby="figment-s05-heading"] .project-story-grid-gallery > img {
+  margin-inline: auto;
+}
+
 /* Figment S06 — horizontal flex row; temporary height for GIF / multi-image preview */
 .project-figment .project-story-grid-gallery.project-figment-s06-gallery {
   display: flex;
@@ -567,14 +587,90 @@
 }
 
 /*
- * Figment — 03 Approach: full-bleed horizontal strip (no side gutters — peek at viewport edges).
- * Revert: remove class project-figment-approach-gallery + ../js/figment-approach-gallery.js from figment.html and restore kicker-only selector above if needed.
+ * Figment — 03 Approach: margin-aligned horizontal carousel (Ramp-style).
+ * Track side padding aligns first/last slides with page content margins.
  */
+.project-figment-approach-carousel {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1000);
+}
+
+.project-figment-approach-header {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--project-story-inner-max-width);
+  margin-inline: auto;
+  padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--Scale-600);
+}
+
+.project-figment-approach-heading {
+  /* Typography from .project-content-heading; hook for carousel-specific overrides */
+  margin: 0;
+}
+
+.project-figment-approach-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--Scale-300);
+  flex-shrink: 0;
+}
+
+/* 56px circle nav — same fill/border as .back-to-top */
+.project-figment-approach-nav {
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--Lime-500);
+  border-radius: var(--Scale-1900);
+  background-color: var(--Foundation-White);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 400ms ease-in-out;
+}
+
+.project-figment-approach-nav:hover:not(:disabled) {
+  background-color: var(--Lime-500);
+}
+
+.project-figment-approach-nav:focus-visible {
+  outline: 2px solid var(--Foundation-Black);
+  outline-offset: 2px;
+}
+
+.project-figment-approach-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.project-figment-approach-nav-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.project-figment-approach-nav-icon--prev {
+  transform: rotate(-90deg);
+}
+
+.project-figment-approach-nav-icon--next {
+  transform: rotate(90deg);
+}
+
 .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   box-sizing: border-box;
   padding-left: 0;
   padding-right: 0;
@@ -595,11 +691,14 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: stretch;
-  gap: var(--Scale-0);
+  gap: var(--Scale-400);
   width: max-content;
   box-sizing: border-box;
   min-height: 0;
   will-change: transform;
+  /* First/last slide align with story text margins at scroll ends */
+  padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
 }
 
 .project-figment .project-story-grid-gallery.project-figment-approach-gallery::-webkit-scrollbar {
@@ -635,28 +734,42 @@
   min-width: min-content;
 }
 
-/* Desktop: ~720px tall slides (Figma @ 1728px → ~4.5 visible); width follows asset aspect ratio */
-@media (min-width: 811px) {
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
-    height: 720px;
-    width: auto;
-  }
+/* Slide + image scale together — 340×640 desktop, proportional 276×520 below 1025px */
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner.project-figment-approach-slide {
+  box-sizing: border-box;
+  width: 276px;
+  height: 520px;
+  background-color: var(--Warm-Grey-200);
+  border-radius: var(--Scale-200);
+  overflow: hidden;
+}
 
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
-    width: auto;
-    height: 100%;
-    max-width: none;
-    object-fit: contain;
-    display: block;
-    /* Prevent browser “drag image” ghost — lets pointer-drag scroll work */
-    -webkit-user-drag: none;
-    user-select: none;
+/* Test assets always fit proportionally inside the current slide dimensions. */
+.project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner.project-figment-approach-slide > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Large desktop: full 340×640 slide */
+@media (min-width: 1025px) {
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner.project-figment-approach-slide {
+    width: 340px;
+    height: 640px;
   }
 }
 
 /* Figment — 03 Approach: less air between lede block and gallery (~66% reduction vs default gap) */
 .project-figment .project-story-grid {
   gap: calc(var(--Scale-1800) * 0.34);
+}
+
+/* Figment S03 — gap between body copy and carousel block (80px at all viewports) */
+.project-figment .project-story-grid[aria-labelledby="solution-heading"] {
+  gap: var(--Scale-1500);
 }
 
 .project-figment .project-story-grid-cell-inner:has(> img) {
@@ -1079,35 +1192,28 @@
     justify-self: center;
   }
 
-  /* Figment 03 — Approach carousel: ~3.6 slides visible; shorter than desktop 720px */
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
-    scroll-snap-type: x proximity;
-    gap: var(--Scale-200);
+  /* Figment 03 — Approach carousel: stacked header + smaller nav on tablet/mobile */
+  .project-figment-approach-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Scale-400);
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
   }
 
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
-    flex: 0 0 calc(100vw / 3.65);
-    scroll-snap-align: start;
+  .project-figment-approach-nav {
+    width: 40px;
+    height: 40px;
   }
 
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
-    height: 520px;
-    width: 100%;
-    box-sizing: border-box;
+  .project-figment-approach-nav-icon {
+    width: 18px;
+    height: 18px;
   }
 
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: contain;
-    display: block;
-    -webkit-user-drag: none;
-    user-select: none;
-  }
-
-  .project-figment .project-story-grid-cell-inner:has(> img) {
-    height: auto;
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-figment-approach-track {
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
   }
 
   .project-story-grid-cell-inner {
@@ -1159,28 +1265,15 @@
     grid-template-columns: 1fr;
   }
 
-  /* Figment 03 — Approach carousel: one full slide centered with ~half-slide peek each side */
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery {
-    scroll-snap-type: x mandatory;
+  /* Figment 03 — Approach carousel: mobile gutters */
+  .project-figment-approach-header {
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
   }
 
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell {
-    flex: 0 0 calc((100vw - var(--page-gutter-inline)) / 3);
-    scroll-snap-align: center;
-  }
-
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner {
-    height: 420px;
-    width: 100%;
-  }
-
-  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-story-grid-cell-inner > img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    -webkit-user-drag: none;
-    user-select: none;
+  .project-figment .project-story-grid-gallery.project-figment-approach-gallery .project-figment-approach-track {
+    padding-left: var(--page-gutter-inline);
+    padding-right: var(--page-gutter-inline);
   }
 
   .project-content-heading {

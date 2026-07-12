@@ -13,6 +13,9 @@
   --Font-Headings-Card-title-text-size: 24px;
   --Font-Headings-Card-title-line-height: 29px;
 
+  --Font-Headings-Contact-title-text-size: 28px;
+  --Font-Headings-Contact-title-line-height: 34px;
+
   /* Body roles */
   --Font-Body-Intro-text-size: 40px;
   --Font-Body-Intro-line-height: 48px;
@@ -82,6 +85,9 @@
     --Font-Body-Outro-text-size: 20px;
     --Font-Body-Outro-line-height: 25px;
 
+    --Font-Headings-Contact-title-text-size: 24px;
+    --Font-Headings-Contact-title-line-height: 29px;
+
     --page-gutter-inline: var(--Scale-600);
   }
 }
@@ -110,6 +116,9 @@
 
     --Font-Body-Outro-text-size: 18px;
     --Font-Body-Outro-line-height: 23px;
+
+    --Font-Headings-Contact-title-text-size: 20px;
+    --Font-Headings-Contact-title-line-height: 24px;
 
     --page-gutter-inline: var(--Scale-400);
   }
