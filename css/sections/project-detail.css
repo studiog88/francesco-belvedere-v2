@@ -119,7 +119,7 @@
 }
 
 /*
- * Project hero: fixed-height image band (bg + FG). No title — lede in .project-intro is the h1.
+ * Project hero: fixed-height image band (bg + FG). Title lives in .project-intro (v2 title bar or legacy lede).
  * Per-project: set background-image on .project-hero-bg; tune FG via .project-hero-image > img overrides.
  */
 .project-hero {
@@ -187,6 +187,24 @@
   max-height: 100%;
 }
 
+/*
+ * Intro feature row: four phone mockups, space-between so outer edges
+ * flush with the intro container. Display width 240px — tweak later.
+ */
+.project-lumosity-system-icons .project-intro-feature {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-lumosity-system-icons .project-intro-feature > img {
+  display: block;
+  width: 240px;
+  height: auto;
+  flex-shrink: 0;
+}
+
 /* Lumosity: warm gradient bg */
 .project-lumosity .project-hero-bg {
   background-color: transparent;
@@ -203,21 +221,328 @@
 }
 
 /*
- * Lumosity — stacked text-first story sections (galleries slot in below copy later).
+ * Lumosity intro feature — Blue-100 fade plate (content width) + device FG that hangs left.
+ * Tune --lumosity-intro-fg-shift / --lumosity-intro-fg-width to match Figma overhang.
+ * Parents stay overflow:visible so the left overhang can paint into the page gutter.
+ */
+.project-lumosity .project-intro--v2 .project-intro-inner,
+.project-lumosity .project-intro-feature {
+  overflow: visible;
+}
+
+.project-lumosity {
+  --lumosity-intro-fg-shift: -12%;
+  --lumosity-intro-fg-width: 118%;
+  /* Blue plate above the devices — bump to match Figma headroom */
+  --lumosity-intro-headroom: var(--Scale-1500);
+}
+
+.project-lumosity .project-lumosity-intro-feature {
+  overflow: visible;
+}
+
+.project-lumosity .project-lumosity-intro-feature-stage {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  /* Extra plate height above the FG; gradient fills this via absolute inset */
+  padding-top: var(--lumosity-intro-headroom);
+  box-sizing: border-box;
+}
+
+/* Plate: #DAF5FF (Blue-100) 100% → 0% opacity, top to bottom */
+.project-lumosity .project-lumosity-intro-feature-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    var(--Blue-100) 0%,
+    color-mix(in srgb, var(--Blue-100) 0%, transparent) 100%
+  );
+}
+
+/* In-flow so the stage height follows the asset; negative margin hangs left */
+.project-lumosity .project-lumosity-intro-feature-fg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--lumosity-intro-fg-width);
+  max-width: none;
+  height: auto;
+  margin-left: var(--lumosity-intro-fg-shift);
+  pointer-events: none;
+}
+
+.project-figment .project-hero-tag {
+  background-color: var(--Orange-100);
+}
+
+/*
+ * Lumosity — story grids: copy-to-media gap (galleries add the second child).
  */
 .project-lumosity .project-story-grid {
-  gap: 0;
+  gap: var(--Scale-1500);
+}
+
+/*
+ * Lumosity section 01 — before/after screens at 600px, flush to container edges.
+ * Captions reuse .project-lumosity-icons-s01-caption (+ before/after color).
+ */
+.project-lumosity .project-lumosity-s01-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--Scale-1000);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s01-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Scale-600);
+  box-sizing: border-box;
+  width: 600px;
+  max-width: calc((100% - var(--Scale-1000)) / 2);
+  flex-shrink: 0;
+}
+
+.project-lumosity .project-lumosity-s01-pair > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s01-gallery {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-lumosity .project-lumosity-s01-pair {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/*
+ * Lumosity section 01b — logo evolution (~1000px, centered) + type GIF below.
+ */
+.project-lumosity .project-lumosity-s01-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Extra space after the second paragraph (stacks with story-grid gap) */
+  margin-top: var(--Scale-1500);
+  /* Breathing room between logo row and type GIF */
+  gap: calc(var(--Scale-1700) + var(--Scale-1500));
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s01-brand-logos {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+}
+
+.project-lumosity .project-lumosity-s01-brand-type {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+/*
+ * Lumosity section 02 — two-column challenge bullets (fills in reading order: left col, then right).
+ */
+.project-lumosity .project-lumosity-s02-challenges {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: var(--Scale-1500);
+  color: var(--Warm-Grey-800);
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.project-lumosity .project-lumosity-s02-challenges li {
+  margin: 0;
+  padding: 0;
+  break-inside: avoid;
+}
+
+.project-lumosity .project-lumosity-s02-challenges li::before {
+  content: "•";
+  margin-right: var(--Scale-200);
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s02-challenges {
+    columns: 1;
+  }
+}
+
+/*
+ * Lumosity section 02 — two game screens in a row, flush to container edges (same rhythm as s01).
+ */
+.project-lumosity .project-lumosity-s02-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--Scale-1000);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s02-gallery > img {
+  display: block;
+  box-sizing: border-box;
+  width: calc((100% - var(--Scale-1000)) / 2);
+  max-width: 664px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s02-gallery {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-lumosity .project-lumosity-s02-gallery > img {
+    width: 100%;
+    max-width: 664px;
+  }
+}
+
+/* Lumosity section 02 — centered collage under the Unity paragraph (~800px) */
+.project-lumosity .project-lumosity-s02-collage {
+  display: flex;
+  justify-content: center;
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s02-collage > img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+/*
+ * Lumosity section 03 — three research/persona assets in a row.
+ * Equal columns; left/right flush to the content container edges.
+ */
+.project-lumosity .project-lumosity-s03-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--Scale-1700);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s03-gallery > img {
+  display: block;
+  box-sizing: border-box;
+  /* Slightly under a third so the gutters read more clearly */
+  width: calc((100% - (var(--Scale-1700) * 2)) / 3);
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s03-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-lumosity .project-lumosity-s03-gallery > img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/*
+ * Lumosity section 03 — beta screens under the mid-way paragraph.
+ * Flush to container edges; extra center gutter via space-between.
+ */
+.project-lumosity .project-lumosity-s03-screens {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--Scale-1500);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s03-screens > img {
+  display: block;
+  box-sizing: border-box;
+  width: calc((100% - var(--Scale-1500)) / 2);
+  max-width: none;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s03-screens {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-lumosity .project-lumosity-s03-screens > img {
+    width: 100%;
+  }
+}
+
+/*
+ * Lumosity section 03 — product UI 2×2 (600px), flush left/right so the center gutter opens up.
+ */
+.project-lumosity .project-lumosity-s03-ui-grid {
+  display: grid;
+  grid-template-columns: repeat(2, min(600px, calc((100% - var(--Scale-1500)) / 2)));
+  justify-content: space-between;
+  align-items: start;
+  row-gap: var(--Scale-1000);
+  column-gap: 0;
+}
+
+.project-lumosity .project-lumosity-s03-ui-grid > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s03-ui-grid {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .project-lumosity .project-lumosity-s03-ui-grid > img {
+    max-width: 600px;
+  }
 }
 
 /*
  * Lumosity System Icons — story grids: 80px copy-to-media gap.
- * No viewport min-height — short icon rows leave empty space when forced to 80/100vh
- * (e.g. Safari responsive ~1245px). Sections size to content at all breakpoints.
+ * Sections size to content; media/image sizing controls viewport presence.
  */
 .project-lumosity-system-icons .project-story-grid {
   gap: var(--Scale-1500);
-  min-height: 0;
-  justify-content: flex-start;
 }
 
 /*
@@ -242,7 +567,8 @@
   gap: var(--Scale-600);
 }
 
-.project-lumosity-system-icons .project-lumosity-icons-s01-caption {
+.project-lumosity-system-icons .project-lumosity-icons-s01-caption,
+.project-lumosity .project-lumosity-icons-s01-caption {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -255,16 +581,19 @@
   text-transform: uppercase;
 }
 
-.project-lumosity-system-icons .project-lumosity-icons-s01-caption--before {
+.project-lumosity-system-icons .project-lumosity-icons-s01-caption--before,
+.project-lumosity .project-lumosity-icons-s01-caption--before {
   color: var(--Rosso-Corsa-500);
 }
 
-.project-lumosity-system-icons .project-lumosity-icons-s01-caption--after {
+.project-lumosity-system-icons .project-lumosity-icons-s01-caption--after,
+.project-lumosity .project-lumosity-icons-s01-caption--after {
   color: var(--Lime-600);
 }
 
 /* Inline SVGs from x-circle.svg / checkmark.svg; stroke/fill use currentColor for caption tint */
-.project-lumosity-system-icons .project-lumosity-icons-s01-caption-icon {
+.project-lumosity-system-icons .project-lumosity-icons-s01-caption-icon,
+.project-lumosity .project-lumosity-icons-s01-caption-icon {
   display: block;
   width: var(--Scale-400);
   height: var(--Scale-400);
@@ -310,7 +639,7 @@
   gap: calc(var(--Scale-1500) * 1.8);
 }
 
-/* Lumosity System Icons — section 03: brand grid rows (Figma 262:3741) */
+/* Lumosity System Icons — section 03: brand grid rows (2 then 3, all 320px) */
 .project-lumosity-system-icons .project-lumosity-icons-s03-gallery {
   display: flex;
   flex-direction: column;
@@ -324,28 +653,28 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   gap: var(--Scale-600);
 }
 
+/* Row 1: two tiles centered with 200px gap (Figma) */
+.project-lumosity-system-icons .project-lumosity-icons-s03-row--two {
+  gap: 200px;
+}
+
+/* Row 2: three tiles — outer edges flush with container */
+.project-lumosity-system-icons .project-lumosity-icons-s03-row--three {
+  justify-content: space-between;
+  gap: 0;
+}
+
 .project-lumosity-system-icons .project-lumosity-icons-s03-row > img {
   display: block;
-  width: auto;
-  height: auto;
+  width: 320px;
+  height: 320px;
   object-fit: contain;
-  flex-shrink: 1;
-  min-width: 0;
-}
-
-/* Row 1: three 320px tiles (@2x exports shown at 1×) */
-.project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img {
-  max-width: 20rem;
-}
-
-/* Row 2: two 496px tiles — outer edges align with row above via space-between */
-.project-lumosity-system-icons .project-lumosity-icons-s03-row--two > img {
-  max-width: 31rem;
+  flex-shrink: 0;
 }
 
 /*
@@ -411,12 +740,16 @@
 }
 
 /*
- * Lumosity System Icons — page-end kicker: 2×2 grid (Figma 261:4517).
+ * Lumosity System Icons — page-end kicker: lede + 2×2 grid (Figma 261:4517).
  * Four @2x exports (592×336 display); inner-guide padding; single column on phone.
  */
 .project-lumosity-system-icons .project-lumosity-icons-kicker {
   box-sizing: border-box;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Space between proof-of-concept lede and tile grid */
+  gap: var(--Scale-1500);
   padding-top: var(--Scale-1500);
   margin-bottom: var(--Scale-1700);
 }
@@ -823,7 +1156,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--Scale-100);
+  gap: var(--Scale-200);
 }
 
 .project-hero-tag {
@@ -831,7 +1164,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--Scale-100) var(--Scale-200);
-  border-radius: var(--Scale-100);
+  /* Fully rounded pill — matches Figma story tags */
+  border-radius: 999px;
   background-color: var(--Blue-100);
   color: var(--Foundation-Black);
   font-family: var(--font-family-primary);
@@ -857,7 +1191,8 @@
 }
 
 /*
- * Intro: lede (h1) + metadata directly under hero image band. Divider under tags before story.
+ * Intro (legacy): lede (h1) + metadata under hero. Still used by Figment / Lumosity / template.
+ * Divider under tags before story.
  */
 .project-intro {
   box-sizing: border-box;
@@ -901,6 +1236,174 @@
   height: 1px;
   background-color: var(--Warm-Grey-100);
   pointer-events: none;
+}
+
+/*
+ * Intro v2 (story pages): title bar + body + topline + feature image.
+ * Same horizontal inset as .project-story-grid-text. Hero band stays full-bleed above.
+ * First used on lumosity-system-icons; other stories migrate later.
+ */
+.project-intro--v2 {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.project-intro--v2 .project-intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--Scale-1000);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--project-story-inner-max-width);
+  margin-inline: auto;
+  padding-top: var(--Scale-1000);
+  padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
+}
+
+/* Title row: icon + h1 (visually same as section h2) | tags */
+.project-intro-title-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--Scale-400);
+  width: 100%;
+}
+
+.project-intro-name {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--Scale-400);
+  min-width: 0;
+}
+
+.project-intro-title-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 28px;
+  height: auto;
+}
+
+/* h1 reuses .project-content-heading type; keep block spacing tight in the title bar */
+.project-intro-title {
+  margin: 0;
+}
+
+.project-intro-title-bar .project-hero-tags {
+  flex: 0 1 auto;
+}
+
+/* Intro paragraph under title — Outro token ≈ Figma 24px body */
+.project-intro-body {
+  margin: 0;
+  width: 100%;
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Body-Outro-text-size);
+  line-height: var(--Font-Body-Outro-line-height);
+}
+
+/* Topline: My Role / Deliverables / Team — divider under block */
+.project-intro-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--Scale-1500);
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: var(--Scale-600);
+  padding-bottom: var(--Scale-1500);
+  border-bottom: 1px solid var(--Warm-Grey-100);
+}
+
+.project-intro-overview-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Scale-600);
+}
+
+.project-intro-overview-label {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Caption-text-size);
+  line-height: var(--Font-Body-Caption-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--Warm-Grey-600);
+}
+
+.project-intro-overview-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-400);
+  color: var(--Foundation-Black);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--Font-Body-Large-text-size);
+  line-height: var(--Font-Body-Large-line-height);
+}
+
+.project-intro-overview-list li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Bullet via ::before so spacing matches Figma without list indent quirks */
+.project-intro-overview-list li::before {
+  content: "•";
+  margin-right: var(--Scale-200);
+}
+
+/* Temporary placeholder bullets — solid magenta until real topline copy lands */
+.project-intro-overview-list--todo {
+  color: #ff00ff;
+}
+
+/*
+ * Feature image slot under topline. Magenta placeholder is temporary (Figma agnostic fill);
+ * replace with <img> or a row of assets later.
+ * Divider lives on .project-story-grid (not here) so every story section shares one rule.
+ */
+.project-intro-feature {
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--Scale-1000);
+  /* Space before the first story-section divider */
+  padding-bottom: var(--Scale-1500);
+}
+
+.project-intro-feature-placeholder {
+  display: block;
+  width: 100%;
+  /* 480px — matches Figma placeholder height until real media lands */
+  height: calc(var(--Scale-1000) * 12);
+  /* Temporary non-token magenta — design placeholder only */
+  background-color: color-mix(in srgb, #ff00ff 10%, transparent);
+}
+
+@media (max-width: 810px) {
+  .project-intro-overview {
+    flex-direction: column;
+    gap: var(--Scale-1000);
+  }
+
+  .project-intro-overview-col {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 }
 
 .project-section-label {
@@ -1014,33 +1517,39 @@
   }
 }
 
-/* Large desktop only: full-viewport story rows (excludes iPad portrait ~1032px and below) */
-@media (min-width: 1200px) {
-  .project-story-grid {
-    min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: center;
-  }
-
-  /* Figment stacked sections: no 100vh rows (S03 approach keeps default story-grid min-height) */
-  .project-figment .project-story-grid:not([aria-labelledby="solution-heading"]) {
-    min-height: 0;
-    justify-content: flex-start;
-  }
-}
-
 /*
  * Story grid: inner-aligned text + gallery row (default 4 placeholders; Figment uses 7 real screens).
+ * Height follows content (no forced 100vh). Top rule: Warm-Grey-100 divider, then 40px to section content.
  */
 .project-story-grid {
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* Section-to-section rhythm; inner text-to-gallery gap below */
-  padding-block: var(--Scale-1500);
+  /* 40px below the top divider; 200px bottom for section-to-section air */
+  padding-top: var(--Scale-1000);
+  padding-bottom: 200px;
   gap: var(--Scale-1800);
   margin-bottom: 0;
+}
+
+/* Content-width divider — same inset as .project-story-grid-text */
+.project-story-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--project-story-inner-max-width);
+  height: 1px;
+  padding-left: var(--project-inner-text-inset);
+  padding-right: var(--project-inner-text-inset);
+  background-color: var(--Warm-Grey-100);
+  background-clip: content-box;
+  pointer-events: none;
 }
 
 /*
@@ -1063,6 +1572,20 @@
   display: flex;
   flex-direction: column;
   gap: var(--Scale-600);
+}
+
+/*
+ * Above tablet: cap story copy line length for readability on large screens.
+ * Cap sits on the text children so the shell stays full inner-column width
+ * and left edges still align with galleries. Intro (.project-intro) is untouched.
+ */
+@media (min-width: 811px) {
+  .project-story-grid-text > .project-section-label,
+  .project-story-grid-text > .project-content-heading,
+  .project-story-grid-text > .project-content-body,
+  .project-story-grid-text > .project-lumosity-s02-challenges {
+    max-width: 800px;
+  }
 }
 
 .project-story-grid-gallery {
@@ -1151,15 +1674,11 @@
   }
 
   .project-story-grid {
-    min-height: 0;
-    justify-content: flex-start;
     gap: var(--Scale-1700);
   }
 
   .project-lumosity-system-icons .project-story-grid {
     gap: var(--Scale-1500);
-    min-height: 0;
-    justify-content: flex-start;
   }
 
   /* Figment: same ~66% reduction on tablet story-grid (base here is --Scale-1700) */
@@ -1336,54 +1855,38 @@
   }
 }
 
-/* Section 03 narrow: 1–2–2 (Image C) instead of stacking every tile */
+/* Section 03 narrow: keep rows; let tiles shrink to fit */
 @media (max-width: 717px) {
   .project-lumosity-system-icons .project-lumosity-icons-s03-gallery {
     gap: var(--Scale-600);
   }
 
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    justify-items: stretch;
-    gap: var(--Scale-600);
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row {
+    justify-content: center;
+    gap: var(--Scale-400);
   }
 
-  /* First tile alone on top, centered; extra air before the 2×2 below */
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:first-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: 70%;
-    max-width: 16rem;
-    margin-bottom: var(--Scale-800);
-  }
-
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:not(:first-child) {
-    width: 100%;
-    max-width: none;
-  }
-
-  /* Bottom pair stays side-by-side (do not stack) */
   .project-lumosity-system-icons .project-lumosity-icons-s03-row--two {
-    flex-direction: row;
-    align-items: flex-start;
+    gap: var(--Scale-400);
+  }
+
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three {
     justify-content: space-between;
-    gap: var(--Scale-600);
+    gap: 0;
   }
 
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row--two > img {
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row > img {
+    width: auto;
+    height: auto;
+    max-width: calc((100% - var(--Scale-400)) / 2);
     flex: 1 1 0;
-    width: 100%;
     min-width: 0;
-    max-width: none;
+    aspect-ratio: 1;
+    object-fit: contain;
   }
-}
 
-/* Narrow phones: shrink the top logo so it matches the 2×2 scale better */
-@media (max-width: 499px) {
-  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img:first-child {
-    width: 52%;
-    max-width: 11rem;
+  /* Three-up: fit three tiles across */
+  .project-lumosity-system-icons .project-lumosity-icons-s03-row--three > img {
+    max-width: calc((100% - (var(--Scale-400) * 2)) / 3);
   }
 }

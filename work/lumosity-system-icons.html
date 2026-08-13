@@ -55,14 +55,62 @@
       </div>
     </section>
 
-    <section class="project-intro" id="project-intro" aria-label="Project overview">
+    <!-- Intro v2: title bar + body + topline + feature placeholder (hero unchanged) -->
+    <section class="project-intro project-intro--v2" id="project-intro" aria-label="Project overview">
       <div class="project-intro-inner">
-        <h1 class="project-intro-lede" id="project-title"><a class="text-link" href="lumosity.html">Lumosity</a> is a brain-training platform with tens of millions of subscribers and a product library spanning over 40 games across web, iOS, and Android. At some point during our initiative to redesign the platform, the design team had to reckon with the fact that no existing icon set was ever going to fit a product this specific.</h1>
-        <div class="project-intro-metadata" aria-label="Project metadata">
-          <div class="project-hero-tags">
-            <span class="project-hero-tag">Design System</span>
-            <span class="project-hero-tag">Web + Mobile</span>
+        <div class="project-intro-title-bar">
+          <div class="project-intro-name">
+            <img
+              class="project-intro-title-icon"
+              src="../assets/icons/viewmore-icon-a.svg"
+              alt=""
+              width="28"
+              height="20"
+              aria-hidden="true"
+            >
+            <h1 class="project-intro-title project-content-heading" id="project-title">System Icons for Lumosity</h1>
           </div>
+          <div class="project-hero-tags" aria-label="Project metadata">
+            <span class="project-hero-tag">Health &amp; Wellness</span>
+            <span class="project-hero-tag">B2C</span>
+            <span class="project-hero-tag">Web + Mobile</span>
+            <span class="project-hero-tag">~5 months</span>
+          </div>
+        </div>
+
+        <p class="project-intro-body">
+          <a class="text-link" href="lumosity.html">Lumosity</a> is a brain-training platform with tens of millions of subscribers and a product library spanning over 40 games across web, iOS, and Android. At some point during our initiative to redesign the platform, the design team had to reckon with the fact that no existing icon set was ever going to fit a product this specific.
+        </p>
+
+        <div class="project-intro-overview" aria-label="Project topline">
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">my role</p>
+            <ul class="project-intro-overview-list">
+              <li>Design Lead</li>
+              <li>Icon Designer</li>
+            </ul>
+          </div>
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">deliverables</p>
+            <ul class="project-intro-overview-list">
+              <li>80+ Icons, Outline Style</li>
+              <li>32px Icon Grid &amp; Style Guide</li>
+            </ul>
+          </div>
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">team</p>
+            <ul class="project-intro-overview-list">
+              <li>Solo Initiative &amp; Execution</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Feature row: four phone mockups, space-between flush to intro edges -->
+        <div class="project-intro-feature" aria-label="Product screens with system icons">
+          <img src="../assets/projects/lumosity-icons/lumosity-icons-01.png" alt="" width="240" height="457" decoding="async">
+          <img src="../assets/projects/lumosity-icons/lumosity-icons-02.png" alt="" width="240" height="457" decoding="async">
+          <img src="../assets/projects/lumosity-icons/lumosity-icons-03.png" alt="" width="240" height="457" decoding="async">
+          <img src="../assets/projects/lumosity-icons/lumosity-icons-04.png" alt="" width="240" height="457" decoding="async">
         </div>
       </div>
     </section>
@@ -189,16 +237,16 @@
           I studied the Lumosity wordmark and typeface before committing to any parameters. The grid I landed on used a consistent stroke weight with a deliberate mix of rounded and capped stroke endings, a detail invisible at a glance but felt across the whole set. I also extracted a specific diagonal angle from the Lumosity logo mark and built it into the grid. Icons live on the grid when the form allows it. When a slanted element appears, that same angle shows up again, a quiet thread connecting the icon system back to the brand it belongs to.
         </p>
       </div>
-      <!-- Section 03: brand grid — 3 across, then 2 across (Figma 262:3741) -->
+      <!-- Section 03: brand grid — 2 across, then 3 across (all 320px) -->
       <div class="project-story-grid-gallery project-lumosity-icons-s03-gallery">
-        <div class="project-lumosity-icons-s03-row project-lumosity-icons-s03-row--three">
-          <img src="../assets/projects/lumosity-icons/section-03-A.png" alt="" width="320" height="322" decoding="async">
-          <img src="../assets/projects/lumosity-icons/section-03-B.png" alt="" width="320" height="320" decoding="async">
-          <img src="../assets/projects/lumosity-icons/section-03-C.png" alt="" width="320" height="320" decoding="async">
-        </div>
         <div class="project-lumosity-icons-s03-row project-lumosity-icons-s03-row--two">
-          <img src="../assets/projects/lumosity-icons/section-03-D.png" alt="" width="496" height="496" decoding="async">
-          <img src="../assets/projects/lumosity-icons/section-03-E.png" alt="" width="496" height="496" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-A.png" alt="" width="320" height="320" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-B.png" alt="" width="320" height="320" decoding="async">
+        </div>
+        <div class="project-lumosity-icons-s03-row project-lumosity-icons-s03-row--three">
+          <img src="../assets/projects/lumosity-icons/section-03-F.png" alt="" width="320" height="320" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-G.png" alt="" width="320" height="320" decoding="async">
+          <img src="../assets/projects/lumosity-icons/section-03-H.png" alt="" width="320" height="320" decoding="async">
         </div>
       </div>
     </section>
@@ -209,7 +257,7 @@
         <p class="project-section-label">04 — OUTPUT</p>
         <h2 id="lumosity-system-icons-s04-heading" class="project-content-heading">More than 80 icons with one visual voice</h2>
         <p class="project-content-body">
-          The first iteration was the delivery of over 80 icons, all in one outlined style, sized at 32px in SVG format, with back-up PNGs if needed. Fill variants were added selectively as use cases required them. As a proof of concept I Included four unique game glyphs that were simplified, single-color symbols that could be paired with their respective game, distinct from the game's full-color illustration assets. This gave the set a character and whimsy that no off-the-shelf library could replicate. The set was adopted immediately by both design and engineering and can be seen being used in the most recent updates to the platform.
+          The first iteration was the delivery of over 80 icons, all in one outlined style, sized at 32px in SVG format, with back-up PNGs if needed. Fill variants were added selectively as use cases required them. The set was adopted immediately by both design and engineering and can be seen being used in the most recent updates to the platform.
         </p>
       </div>
       <!-- Desktop composite ≥768; mobile 4-across composite ≤767 (section-4-B @2x 780×4384) -->
@@ -221,8 +269,13 @@
       </div>
     </section>
 
-    <!-- Kicker: 2×2 game tile + glyph pairs (Figma 261:4517); stacks on phone -->
+    <!-- Kicker: lede + 2×2 game tile / glyph pairs (Figma 261:4517); stacks on phone -->
     <section class="project-lumosity-icons-kicker" aria-label="Game artwork and matching glyph pairs">
+      <div class="project-story-grid-text">
+        <p class="project-content-body">
+          As a proof of concept I included four unique game glyphs that were simplified, single-color symbols that could be paired with their respective game, distinct from the game's full-color illustration assets. This gave the set a character and whimsy that no off-the-shelf library could replicate.
+        </p>
+      </div>
       <div class="project-lumosity-icons-kicker-grid">
         <div class="project-lumosity-icons-kicker-cell">
           <img src="../assets/projects/lumosity-icons/kicker-01.png" alt="" width="592" height="336" decoding="async">

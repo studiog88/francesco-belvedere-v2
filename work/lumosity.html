@@ -22,7 +22,10 @@
   <link rel="stylesheet" href="../css/sections/footer.css">
   <script src="../js/page-transition.js" defer></script>
   <script src="../js/smooth-scroll.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="../js/project-detail-nav.js" defer></script>
+  <script src="../js/lumosity-intro-parallax.js" defer></script>
 </head>
 <body class="site project-detail-page project-lumosity" data-project-slug="lumosity">
   <header class="project-detail-top-nav">
@@ -47,58 +50,293 @@
       </div>
     </section>
 
-    <section class="project-intro" id="project-intro" aria-label="Project overview">
+    <!-- Intro v2: title bar + body + topline + feature placeholder (hero unchanged) -->
+    <section class="project-intro project-intro--v2" id="project-intro" aria-label="Project overview">
       <div class="project-intro-inner">
-        <h1 class="project-intro-lede" id="project-title">I was one of three on the <a class="text-link" href="https://app.lumosity.com/" target="_blank" rel="noopener noreferrer">Lumosity</a> design team leading the initiative to redesign the entire end-to-end experience for the company’s flagship product. Over a period of about 18 months, I worked on and delivered prototypes, UX flows and production UI for every surface of the web product. The new app successfully launched in 2025 to a global user base of 100+ million subscribers.</h1>
-        <div class="project-intro-metadata" aria-label="Project metadata">
-          <div class="project-hero-tags">
-            <span class="project-hero-tag">Product Design</span>
-            <span class="project-hero-tag">D2C</span>
+        <div class="project-intro-title-bar">
+          <div class="project-intro-name">
+            <img
+              class="project-intro-title-icon"
+              src="../assets/icons/viewmore-icon-a.svg"
+              alt=""
+              width="28"
+              height="20"
+              aria-hidden="true"
+            >
+            <h1 class="project-intro-title project-content-heading" id="project-title">Product Design at Lumosity</h1>
+          </div>
+          <div class="project-hero-tags" aria-label="Project metadata">
+            <span class="project-hero-tag">Health &amp; Wellness</span>
+            <span class="project-hero-tag">B2C</span>
             <span class="project-hero-tag">Web + Mobile</span>
+            <span class="project-hero-tag">~18 months</span>
+          </div>
+        </div>
+
+        <p class="project-intro-body">
+          I was one of three on the <a class="text-link" href="https://app.lumosity.com/" target="_blank" rel="noopener noreferrer">Lumosity</a> design team leading the initiative to redesign the entire end-to-end experience for the company’s flagship product. Over a period of about 18 months, I delivered prototypes, UX flows and production UI for every surface of the web product.
+        </p>
+
+        <div class="project-intro-overview" aria-label="Project topline">
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">my role</p>
+            <ul class="project-intro-overview-list">
+              <li>Product Design Lead</li>
+              <li>UX Strategy</li>
+              <li>QA, User Research &amp; Testing</li>
+              <li>Brand &amp; Marketing</li>
+            </ul>
+          </div>
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">deliverables</p>
+            <ul class="project-intro-overview-list">
+              <li>Prototypes</li>
+              <li>UX Flows</li>
+              <li>Production UI</li>
+              <li>Design System</li>
+            </ul>
+          </div>
+          <div class="project-intro-overview-col">
+            <p class="project-intro-overview-label">team</p>
+            <ul class="project-intro-overview-list">
+              <li>2 Designers (ICs) + 1 Manager</li>
+              <li>10+ Software Developers</li>
+              <li>Games Team</li>
+              <li>2 Product Managers + 1 Product Lead</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Intro feature: CSS blue fade plate + device composite (hangs left past content) -->
+        <div class="project-intro-feature project-lumosity-intro-feature">
+          <div class="project-lumosity-intro-feature-stage">
+            <div class="project-lumosity-intro-feature-bg" aria-hidden="true"></div>
+            <img
+              class="project-lumosity-intro-feature-fg"
+              src="../assets/projects/lumosity/intro-feature-fg.png"
+              srcset="../assets/projects/lumosity/intro-feature-fg.png 1x, ../assets/projects/lumosity/intro-feature-fg@2x.png 2x"
+              alt=""
+              width="1547"
+              height="722"
+              decoding="async"
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <section class="project-story-grid" aria-labelledby="challenge-heading">
+    <section class="project-story-grid project-lumosity-s01" aria-labelledby="challenge-heading">
       <div class="project-story-grid-text">
         <p class="project-section-label">01 — BACKGROUND</p>
         <h2 id="challenge-heading" class="project-content-heading">A decade-old product with a brand new experience</h2>
         <p class="project-content-body">
           Lumosity had spent years building one of the most recognizable brain training platforms in the world, with millions of subscribers and a library of over 40 cognitive games backed by real science. When this initiative launched, the product had outgrown its visual language, user experience and technical architecture.  
         </p>
+      </div>
+      <!-- Section 01a: before/after product screens (600px each, flush to container edges) -->
+      <div class="project-story-grid-gallery project-lumosity-s01-gallery">
+        <div class="project-lumosity-s01-pair">
+          <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--before">
+            <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+              <path d="M6 6L10 10" stroke="currentColor" stroke-linecap="round"/>
+              <path d="M6 10L10 5.99999" stroke="currentColor" stroke-linecap="square"/>
+            </svg>
+            <span class="project-lumosity-icons-s01-caption-text">Before Refactor</span>
+          </div>
+          <img
+            src="../assets/projects/lumosity/section-01-A.png"
+            alt=""
+            width="600"
+            height="515"
+            decoding="async"
+          >
+        </div>
+        <div class="project-lumosity-s01-pair">
+          <div class="project-lumosity-icons-s01-caption project-lumosity-icons-s01-caption--after">
+            <svg class="project-lumosity-icons-s01-caption-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="8" r="5.5" stroke="currentColor"/>
+              <path d="M5.64046 7.68763C5.46796 7.472 5.15331 7.43704 4.93768 7.60954C4.72205 7.78204 4.68708 8.09669 4.85959 8.31232L5.25002 7.99998L5.64046 7.68763ZM11.1447 6.30697L11.4516 5.91229L10.6623 5.29835L10.3553 5.69303L10.75 6L11.1447 6.30697ZM7.05203 10.2525L6.66159 10.5649L7.05203 10.2525ZM5.25002 7.99998L4.85959 8.31232L6.66159 10.5649L7.05203 10.2525L7.44246 9.94017L5.64046 7.68763L5.25002 7.99998ZM7.44458 10.2498L7.83926 10.5568L11.1447 6.30697L10.75 6L10.3553 5.69303L7.04991 9.94286L7.44458 10.2498ZM7.05203 10.2525L6.66159 10.5649C6.96447 10.9435 7.54159 10.9395 7.83926 10.5568L7.44458 10.2498L7.04991 9.94286C7.14913 9.81529 7.3415 9.81397 7.44246 9.94017L7.05203 10.2525Z" fill="currentColor"/>
+            </svg>
+            <span class="project-lumosity-icons-s01-caption-text">After Refactor</span>
+          </div>
+          <img
+            src="../assets/projects/lumosity/section-01-B.png"
+            alt=""
+            width="600"
+            height="515"
+            decoding="async"
+          >
+        </div>
+      </div>
+      <div class="project-story-grid-text">
         <p class="project-content-body">
           I had been at <a class="text-link" href="https://www.lumoslabs.com/" target="_blank" rel="noopener noreferrer">Lumos Labs</a> for a couple of years at this point, growing from a Senior Designer into a Lead Product Designer, earning increasing responsibility across several teams. Two years before this initiative started, I was part of the marketing and brand teams where we refined the brand architecture and identity as part of the initial product refresh that would set the visual tone for the new product.  
         </p>
       </div>
-    </section>
-
-    <section class="project-story-grid" aria-labelledby="process-heading">
-      <div class="project-story-grid-text">
-        <p class="project-section-label">02 — THE STAKES</p>
-        <h2 id="process-heading" class="project-content-heading">Redesigning a product that people are actively using every day</h2>
-        <p class="project-content-body">
-          The initiative was full of risk. The original codebase was complex and showing its age. The product was live with active subscriptions, and retention was a constant business priority. A misstep in our decisions could translate directly into churn at a scale the company could not afford. 
-        </p>
-        <p class="project-content-body">
-          An added layer of complexity was that the games were built in Unity while the UI wrapper was native web and mobile. Making those two technologies feel like a single, coherent product required close cross-functional collaboration with engineering and the games team throughout all phases of design, production, and post-launch. In practice, that meant working directly alongside developers year-round, testing designs on a staging server, pairing on feature builds, and fixing bugs in production. 
-        </p>
+      <!-- Section 01b: logo evolution row + type detail GIF -->
+      <div class="project-story-grid-gallery project-lumosity-s01-brand" aria-label="Brand refresh visuals">
+        <img
+          class="project-lumosity-s01-brand-logos"
+          src="../assets/projects/lumosity/section-01-C.png"
+          alt=""
+          width="978"
+          height="87"
+          decoding="async"
+        >
+        <img
+          class="project-lumosity-s01-brand-type"
+          src="../assets/projects/lumosity/section-01-D.gif"
+          alt=""
+          width="1200"
+          height="450"
+          decoding="async"
+        >
       </div>
     </section>
 
-    <section class="project-story-grid" aria-labelledby="solution-heading">
+    <section class="project-story-grid project-lumosity-s02" aria-labelledby="process-heading">
       <div class="project-story-grid-text">
-        <p class="project-section-label">03 — DECISIONS</p>
+        <p class="project-section-label">02 — THE STAKES</p>
+        <h2 id="process-heading" class="project-content-heading">Tackling an initiative of this scope on a live product was risky</h2>
+        <p class="project-content-body">
+          We had a user base of over 100 million subscribers, and a misstep in our decisions could translate directly into churn at a scale the company could not afford.
+        </p>
+        <p class="project-content-body">Some of the challenges we were up against included:</p>
+        <ul class="project-lumosity-s02-challenges">
+          <li>fragile, decade-old codebase</li>
+          <li>legacy game engines</li>
+          <li>outdated interaction patterns</li>
+          <li>broken UX scenarios</li>
+          <li>subscriptions in decline</li>
+          <li>increasingly competitive market</li>
+        </ul>
+      </div>
+      <!-- Section 02: game UI pair between challenges and Unity paragraph -->
+      <div class="project-story-grid-gallery project-lumosity-s02-gallery">
+        <img
+          src="../assets/projects/lumosity/section-02-A.png"
+          alt=""
+          width="664"
+          height="547"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-02-B.png"
+          alt=""
+          width="664"
+          height="547"
+          decoding="async"
+        >
+      </div>
+      <div class="project-story-grid-text">
+        <p class="project-content-body">
+          An added layer of complexity was that the games were built in Unity while the UI wrapper was native web and mobile. Making those two technologies feel like a single, coherent product required close cross-functional collaboration with engineering and the games team throughout all phases of design, production, and post-launch. In practice, that meant working directly alongside developers year-round, testing designs on a staging server, pairing on feature builds, and fixing bugs in production.
+        </p>
+      </div>
+      <!-- Section 02: centered game collage under Unity paragraph -->
+      <div class="project-story-grid-gallery project-lumosity-s02-collage">
+        <img
+          src="../assets/projects/lumosity/section-02-C.png"
+          alt=""
+          width="800"
+          height="629"
+          decoding="async"
+        >
+      </div>
+    </section>
+
+    <section class="project-story-grid project-lumosity-s03" aria-labelledby="solution-heading">
+      <div class="project-story-grid-text">
+        <p class="project-section-label">03 — DESIGN DECISIONS</p>
         <h2 id="solution-heading" class="project-content-heading">An entire application, rebuilt as one coherent system for web and mobile customers</h2>
         <p class="project-content-body">
           We kept users at the center of every decision, starting from a well-defined foundation: established personas, documented pain points, and a clear set of user needs built up over years of customer research. We leveraged app store reviews, surveys and conversations with our CX team as a continuous signal. All three designers collaborated on the UX, ensuring decisions were shared and reviewed.
         </p>
+      </div>
+      <!-- Section 03: research / persona / prioritization — equal spacing, flush to container edges -->
+      <div class="project-story-grid-gallery project-lumosity-s03-gallery" aria-label="Research materials, personas, and prioritization">
+        <img
+          src="../assets/projects/lumosity/section-03-A.png"
+          alt=""
+          width="322"
+          height="303"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-B.png"
+          alt=""
+          width="368"
+          height="320"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-C.png"
+          alt=""
+          width="369"
+          height="319"
+          decoding="async"
+        >
+      </div>
+      <div class="project-story-grid-text">
         <p class="project-content-body">
-          Mid-way during the redesign we launched a stripped-down beta version of the web app that had our most ambitious changes. Current users were invited to join the beta and participate in weekly live usability testing sessions. This feedback was used to confirm our design decisions.
+          Mid-way during the redesign we launched a stripped-down beta version of the web app that had our most ambitious changes. Current users were invited to join the beta and participate in weekly live usability testing sessions. This feedback was used to confirm or counter our design decisions and come up with solutions based on informed assumptions.
         </p>
+      </div>
+      <!-- Section 03: beta product screens — centered pair -->
+      <div class="project-story-grid-gallery project-lumosity-s03-screens">
+        <img
+          src="../assets/projects/lumosity/section-03-D.png"
+          alt=""
+          width="576"
+          height="412"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-E.png"
+          alt=""
+          width="576"
+          height="412"
+          decoding="async"
+        >
+      </div>
+      <div class="project-story-grid-text">
         <p class="project-content-body">
-          I owned the web UI end to end, working alongside my counterpart who led the mobile UI. Together we covered onboarding, the daily workout, game browsing, game detail pages, performance insights, the core game flow experience, stats pages, and more. 
+          I owned the web UI end to end, working alongside my counterpart who led the mobile UI. Together we covered onboarding, the daily workout, game browsing, game detail pages, performance insights, the core game flow experience, stats pages, and more.
         </p>
+      </div>
+      <!-- Section 03: product UI 2×2 — 600px each, flush to container edges -->
+      <div class="project-story-grid-gallery project-lumosity-s03-ui-grid" aria-label="Product UI surfaces">
+        <img
+          src="../assets/projects/lumosity/section-03-F.png"
+          alt=""
+          width="600"
+          height="441"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-G.png"
+          alt=""
+          width="600"
+          height="440"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-H.png"
+          alt=""
+          width="600"
+          height="498"
+          decoding="async"
+        >
+        <img
+          src="../assets/projects/lumosity/section-03-I.png"
+          alt=""
+          width="600"
+          height="499"
+          decoding="async"
+        >
+      </div>
+      <div class="project-story-grid-text">
         <p class="project-content-body">
           I co-led the design system with my counterpart, establishing design tokens, components, and patterns early. A two-tier token system, covering scores of primitives mapping into component-level tokens with full light and dark mode support, gave us a shared foundation that could scale across web and mobile. In addition, I took the initiative to <a class="text-link" href="lumosity-system-icons.html">design a custom icon set of 80+ icons</a>, each named, gridded, and componentized in Figma.
         </p>
