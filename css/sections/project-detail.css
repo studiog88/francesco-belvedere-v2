@@ -188,21 +188,39 @@
 }
 
 /*
- * Intro feature row: four phone mockups, space-between so outer edges
- * flush with the intro container. Display width 240px — tweak later.
+ * Intro feature row: three 360px in-situ crops.
+ * Flush to inner-column edges; leftover width is the middle gutters.
  */
+.project-lumosity-system-icons .project-intro-overview {
+  border-bottom: none;
+  /* Drop the old divider padding so overview → images is 120px (gap 40 + feature pad-top 80) */
+  padding-bottom: 0;
+}
+
 .project-lumosity-system-icons .project-intro-feature {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 360px));
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: start;
+  column-gap: var(--Scale-600);
+  row-gap: var(--Scale-600);
+  padding-top: var(--Scale-1500);
+  padding-bottom: var(--Scale-1700);
 }
 
 .project-lumosity-system-icons .project-intro-feature > img {
   display: block;
-  width: 240px;
+  width: 100%;
+  max-width: 360px;
   height: auto;
-  flex-shrink: 0;
+  object-fit: contain;
+}
+
+@media (max-width: 390px) {
+  .project-lumosity-system-icons .project-intro-feature {
+    grid-template-columns: minmax(0, 360px);
+    justify-content: start;
+  }
 }
 
 /* Lumosity: warm gradient bg */
@@ -680,17 +698,21 @@
 /*
  * Lumosity System Icons — section 04: gradient band + full icon grid (Figma 262:3854).
  * CSS-only gradient (no hero-bg.png — that asset includes patterns we omit here).
- * Stops: #ECFAFF → #FFEDE8 (not tokenized).
+ * Stops: #EBFAFF → #E5FFF4 (standalone, not tokenized).
  */
 .project-lumosity-system-icons .project-lumosity-icons-s04 {
   background-image: radial-gradient(
     120% 100% at 0% 50%,
-    #ecfaff 0%,
-    #ffede8 100%
+    #ebfaff 0%,
+    #e5fff4 100%
   );
   /* Vertical breathing room so gradient extends past copy + grid */
   padding-block: var(--Scale-1500) var(--Scale-1700);
   gap: var(--Scale-1700);
+}
+
+.project-lumosity-system-icons .project-lumosity-icons-s04::before {
+  content: none;
 }
 
 @media (min-width: 811px) {
@@ -790,6 +812,39 @@
     column-gap: 0;
     /* Half the 2×2 row gap so stacked cards sit closer */
     row-gap: calc(var(--Scale-1500) / 2);
+  }
+}
+
+/*
+ * Lumosity System Icons — section 05: 2×2 variant strips.
+ * Desktop: 500px tiles, flush to inner-column edges, leftover width as the middle gutter.
+ * 120px copy-to-grid and row gap (--Scale-1700). 200px below via .project-story-grid padding-bottom.
+ */
+.project-lumosity-system-icons .project-story-grid.project-lumosity-icons-s05 {
+  gap: var(--Scale-1700);
+}
+
+.project-lumosity-system-icons .project-lumosity-icons-s05-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 500px));
+  justify-content: space-between;
+  align-items: start;
+  column-gap: var(--Scale-600);
+  row-gap: var(--Scale-1700);
+}
+
+.project-lumosity-system-icons .project-lumosity-icons-s05-gallery > img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 399px) {
+  .project-lumosity-system-icons .project-lumosity-icons-s05-gallery {
+    grid-template-columns: minmax(0, 500px);
+    justify-content: start;
   }
 }
 
