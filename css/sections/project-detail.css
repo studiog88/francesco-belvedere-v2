@@ -229,9 +229,91 @@
   background-image: url("../../assets/projects/lumosity/hero-bg.png");
 }
 
-.project-lumosity .project-hero-image > img {
-  width: min(480px, 75%);
-  max-height: 100%;
+.project-lumosity .project-hero-image {
+  /* Keep glows inside the band: inset so overflow:hidden never shears the PNGs */
+  padding: var(--Scale-600) var(--page-gutter-inline);
+}
+
+/*
+ * Five separate icon PNGs (glow baked in), laid out to match the old hero-fg composite.
+ * Stage uses that export's aspect (1618×1116) so it still fills the 560px band.
+ */
+.project-lumosity-hero-cluster {
+  position: relative;
+  width: min(
+    100%,
+    calc((var(--project-hero-band-height) - (var(--Scale-600) * 2)) * 1618 / 1116)
+  );
+  aspect-ratio: 1618 / 1116;
+}
+
+.project-lumosity-hero-icon {
+  position: absolute;
+  display: block;
+  height: auto;
+  pointer-events: none;
+  animation: lumosity-hero-bob 4.6s ease-in-out infinite;
+}
+
+.project-lumosity-hero-icon--tomato {
+  left: -6%;
+  top: 0;
+  width: 34.5%;
+  z-index: 2;
+  animation-duration: 4.8s;
+  animation-delay: 0s;
+}
+
+.project-lumosity-hero-icon--bear {
+  left: 12%;
+  top: 16%;
+  width: 43%;
+  z-index: 4;
+  animation-duration: 5.2s;
+  animation-delay: -1.2s;
+}
+
+.project-lumosity-hero-icon--highlighter {
+  left: 40%;
+  top: 1%;
+  width: 41%;
+  z-index: 3;
+  animation-duration: 4.4s;
+  animation-delay: -0.6s;
+}
+
+.project-lumosity-hero-icon--cake {
+  left: 28%;
+  top: 57%;
+  width: 33.5%;
+  z-index: 6;
+  animation-duration: 5s;
+  animation-delay: -2s;
+}
+
+.project-lumosity-hero-icon--ship {
+  left: 44%;
+  top: 33%;
+  width: 54%;
+  z-index: 5;
+  animation-duration: 5.4s;
+  animation-delay: -0.3s;
+}
+
+@keyframes lumosity-hero-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-lumosity-hero-icon {
+    animation: none;
+  }
 }
 
 .project-lumosity .project-hero-tag {
