@@ -524,17 +524,36 @@
   }
 }
 
-/* Lumosity section 02 — centered collage under the Unity paragraph (~800px) */
+/* Lumosity section 02 — collage under the Unity paragraph (~800px, centered) */
 .project-lumosity .project-lumosity-s02-collage {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--Scale-600);
   grid-template-columns: unset;
 }
 
-.project-lumosity .project-lumosity-s02-collage > img {
-  display: block;
+.project-lumosity .project-lumosity-s02-collage-stack {
+  align-self: center;
   width: 100%;
   max-width: 800px;
+}
+
+/* Same type as s01 captions (weight, uppercase, tracking); Warm Grey 600, no icon */
+.project-lumosity .project-lumosity-media-caption {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--Font-Body-Caption-text-size);
+  line-height: var(--Font-Body-Caption-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--Warm-Grey-600);
+}
+
+.project-lumosity .project-lumosity-s02-collage-stack > img {
+  display: block;
+  width: 100%;
   height: auto;
 }
 
@@ -576,35 +595,31 @@
 
 /*
  * Lumosity section 03 — beta screens under the mid-way paragraph.
- * Flush to container edges; extra center gutter via space-between.
+ * Caption flush left; screens flush to container edges.
+ * 80px above caption comes from .project-story-grid gap (--Scale-1500).
  */
 .project-lumosity .project-lumosity-s03-screens {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--Scale-1500);
-  grid-template-columns: unset;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--Scale-1500);
+  /* 40px between caption and screens */
+  row-gap: var(--Scale-1000);
+}
+
+.project-lumosity .project-lumosity-s03-screens .project-lumosity-media-caption {
+  grid-column: 1 / -1;
 }
 
 .project-lumosity .project-lumosity-s03-screens > img {
   display: block;
   box-sizing: border-box;
-  width: calc((100% - var(--Scale-1500)) / 2);
-  max-width: none;
+  width: 100%;
   height: auto;
-  flex-shrink: 0;
 }
 
 @media (max-width: 810px) {
   .project-lumosity .project-lumosity-s03-screens {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .project-lumosity .project-lumosity-s03-screens > img {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -618,6 +633,10 @@
   align-items: start;
   row-gap: var(--Scale-1000);
   column-gap: 0;
+}
+
+.project-lumosity .project-lumosity-s03-ui-grid .project-lumosity-media-caption {
+  grid-column: 1 / -1;
 }
 
 .project-lumosity .project-lumosity-s03-ui-grid > img {
@@ -634,6 +653,104 @@
 
   .project-lumosity .project-lumosity-s03-ui-grid > img {
     max-width: 600px;
+  }
+}
+
+/*
+ * Lumosity section 04 — color tokens diagram.
+ * Caption flush left; image fills the inner container.
+ * 80px above caption comes from .project-story-grid gap (--Scale-1500).
+ */
+.project-lumosity .project-lumosity-s04-tokens {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--Scale-1000);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s04-tokens > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+ * Lumosity section 04 — 548px columns, 120px gutter, left-aligned (rag on the right).
+ * 80px between galleries comes from .project-story-grid gap (--Scale-1500).
+ */
+.project-lumosity .project-lumosity-s04-pair {
+  display: grid;
+  grid-template-columns: 548px 548px;
+  justify-content: start;
+  align-items: start;
+  column-gap: var(--Scale-1700);
+  row-gap: var(--Scale-1000);
+}
+
+.project-lumosity .project-lumosity-s04-buttons .project-lumosity-media-caption,
+.project-lumosity .project-lumosity-s04-cards .project-lumosity-media-caption {
+  grid-column: 1 / -1;
+}
+
+.project-lumosity .project-lumosity-s04-pair-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Scale-1000);
+}
+
+.project-lumosity .project-lumosity-s04-pair > img,
+.project-lumosity .project-lumosity-s04-pair-col > img {
+  display: block;
+  width: 548px;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-lumosity .project-lumosity-s04-pair > img.project-lumosity-s04-img-narrow {
+  width: 364px;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s04-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .project-lumosity .project-lumosity-s04-pair > img,
+  .project-lumosity .project-lumosity-s04-pair-col > img {
+    width: 100%;
+  }
+}
+
+/*
+ * Lumosity section 04 — custom icon set, 6 per row.
+ * 100px tiles; space-between spans the inner container. Caption 40px above (--Scale-1000).
+ */
+.project-lumosity .project-lumosity-s04-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--Scale-1000);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s04-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  justify-content: space-between;
+  row-gap: var(--Scale-1700);
+}
+
+.project-lumosity .project-lumosity-s04-icons-grid > img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s04-icons-grid {
+    grid-template-columns: repeat(3, 100px);
   }
 }
 
@@ -1569,6 +1686,10 @@
   font-family: var(--font-family-primary);
   font-size: var(--Font-Body-Large-text-size);
   line-height: var(--Font-Body-Large-line-height);
+}
+
+.project-content-body--medium {
+  font-weight: var(--font-weight-medium);
 }
 
 /*
