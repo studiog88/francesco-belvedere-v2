@@ -386,6 +386,11 @@
   gap: var(--Scale-1500);
 }
 
+.project-lumosity .project-lumosity-s05 {
+  overflow-x: clip;
+  padding-bottom: 120px;
+}
+
 /*
  * Lumosity section 01 — before/after screens at 600px, flush to container edges.
  * Captions reuse .project-lumosity-icons-s01-caption (+ before/after color).
@@ -752,6 +757,154 @@
   .project-lumosity .project-lumosity-s04-icons-grid {
     grid-template-columns: repeat(3, 100px);
   }
+}
+
+/*
+ * Lumosity section 05 — launch stat cards.
+ * Large: 40px pad, 16px stack gap, 56px bold value (Figma 599:26060).
+ * Small: 16px/40px pad, 8px stack gap, 24px semibold value (Figma 599:26063).
+ * Rows fill the inner container; 24px gutters in and between rows.
+ */
+.project-lumosity .project-lumosity-s05-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-600);
+  grid-template-columns: unset;
+}
+
+.project-lumosity .project-lumosity-s05-stats-row {
+  display: grid;
+  gap: var(--Scale-600);
+}
+
+.project-lumosity .project-lumosity-s05-stats-row--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.project-lumosity .project-lumosity-s05-stats-row--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-lumosity .project-lumosity-stat-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  border: 1px solid var(--Warm-Grey-100);
+  border-radius: var(--Scale-200);
+  color: var(--Foundation-Black);
+}
+
+.project-lumosity .project-lumosity-stat-card--large {
+  gap: var(--Scale-400);
+  padding: var(--Scale-1000);
+}
+
+.project-lumosity .project-lumosity-stat-card--small {
+  gap: var(--Scale-200);
+  padding: var(--Scale-400) var(--Scale-1000);
+}
+
+.project-lumosity .project-lumosity-stat-card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--Scale-100);
+}
+
+.project-lumosity .project-lumosity-stat-card-value,
+.project-lumosity .project-lumosity-stat-card-label {
+  margin: 0;
+  font-family: var(--font-family-primary);
+}
+
+.project-lumosity .project-lumosity-stat-card--large .project-lumosity-stat-card-value {
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+}
+
+.project-lumosity .project-lumosity-stat-card--large .project-lumosity-stat-card-label {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: var(--font-weight-regular);
+}
+
+.project-lumosity .project-lumosity-stat-card--small .project-lumosity-stat-card-value {
+  font-size: var(--Font-Headings-Card-title-text-size);
+  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+}
+
+.project-lumosity .project-lumosity-stat-card--small .project-lumosity-stat-card-label {
+  font-size: var(--Font-Body-Paragraph-text-size);
+  line-height: 1.2;
+  font-weight: var(--font-weight-regular);
+}
+
+.project-lumosity .project-lumosity-stat-card-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 810px) {
+  .project-lumosity .project-lumosity-s05-stats-row--4,
+  .project-lumosity .project-lumosity-s05-stats-row--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * Lumosity section 05 — game-icon kicker.
+ * 88px tiles; horizontal gaps come from space-between across a strip
+ * slightly wider than the page so ends clip. 80px between rows.
+ * Overflow is clipped here so the bleed does not create page scroll.
+ */
+.project-lumosity .project-lumosity-kicker {
+  --kicker-icon-size: 88px;
+  --kicker-bleed: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--Scale-1500);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  /* Story-grid already adds 80px; this makes the total space above 200px */
+  margin-top: calc(200px - var(--Scale-1500));
+}
+
+.project-lumosity .project-lumosity-kicker-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: calc(100% + var(--kicker-bleed));
+  flex-shrink: 0;
+}
+
+/* Stagger which edge clips: top mild, middle more left, bottom more right */
+.project-lumosity .project-lumosity-kicker-row--a {
+  margin-left: calc(var(--kicker-bleed) * -0.35);
+}
+
+.project-lumosity .project-lumosity-kicker-row--b {
+  margin-left: calc(var(--kicker-bleed) * -1);
+}
+
+.project-lumosity .project-lumosity-kicker-row--c {
+  margin-left: calc(var(--kicker-bleed) * -0.25);
+}
+
+.project-lumosity .project-lumosity-kicker-row > img {
+  display: block;
+  flex-shrink: 0;
+  width: var(--kicker-icon-size);
+  height: var(--kicker-icon-size);
+  object-fit: cover;
 }
 
 /*
