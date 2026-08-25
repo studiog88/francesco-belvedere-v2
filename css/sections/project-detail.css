@@ -168,7 +168,7 @@
 /* Figment: hero bg texture */
 .project-figment .project-hero-bg {
   background-color: transparent;
-  background-image: url("../../assets/projects/figment/hero-bg.png");
+  background-image: url("../../assets/projects/figment/hero-bg.webp");
 }
 
 .project-figment .project-hero-image > img {
@@ -179,7 +179,7 @@
 /* Lumosity System Icons: grid texture bg */
 .project-lumosity-system-icons .project-hero-bg {
   background-color: transparent;
-  background-image: url("../../assets/projects/lumosity-icons/hero-bg.png");
+  background-image: url("../../assets/projects/lumosity-icons/hero-bg.webp");
 }
 
 .project-lumosity-system-icons .project-hero-image > img {
@@ -226,7 +226,7 @@
 /* Lumosity: warm gradient bg */
 .project-lumosity .project-hero-bg {
   background-color: transparent;
-  background-image: url("../../assets/projects/lumosity/hero-bg.png");
+  background-image: url("../../assets/projects/lumosity/hero-bg.webp");
 }
 
 .project-lumosity .project-hero-image {
