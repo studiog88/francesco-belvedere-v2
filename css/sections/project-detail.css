@@ -168,7 +168,7 @@
 /* Figment: hero bg texture */
 .project-figment .project-hero-bg {
   background-color: transparent;
-  background-image: url("../../assets/projects/figment/hero-bg-B.png");
+  background-image: url("../../assets/projects/figment/hero-bg.png");
 }
 
 .project-figment .project-hero-image > img {
@@ -1264,8 +1264,10 @@
   max-width: 100%;
 }
 
-/* Figment S01 — center the brief image within the gallery row */
-.project-figment [aria-labelledby="challenge-heading"] .project-story-grid-gallery > img {
+/* Figment S01 — three-iPad shot fills the inner column */
+.project-figment [aria-labelledby="challenge-heading"] .project-story-grid-gallery:not(.project-figment-approach-gallery):not(.project-figment-s06-gallery) > img {
+  width: 100%;
+  max-width: 100%;
   margin-inline: auto;
 }
 
@@ -1479,7 +1481,7 @@
   box-sizing: border-box;
   width: 276px;
   height: 520px;
-  background-color: var(--Warm-Grey-200);
+  background-color: transparent;
   border-radius: var(--Scale-200);
   overflow: hidden;
 }
@@ -1792,13 +1794,10 @@
   padding-bottom: var(--Scale-1500);
 }
 
-.project-intro-feature-placeholder {
+.project-intro-feature > img {
   display: block;
   width: 100%;
-  /* 480px — matches Figma placeholder height until real media lands */
-  height: calc(var(--Scale-1000) * 12);
-  /* Temporary non-token magenta — design placeholder only */
-  background-color: color-mix(in srgb, #ff00ff 10%, transparent);
+  height: auto;
 }
 
 @media (max-width: 810px) {
