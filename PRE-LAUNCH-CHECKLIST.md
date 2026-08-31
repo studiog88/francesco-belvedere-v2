@@ -15,7 +15,7 @@ Site-wide pass before shipping francescobelvedere.com.
 - [ ] **Radius** — build out or hide from nav / homepage until ready
 - [ ] **Project template** — update `work/project-template.html` to stacked `.project-story-grid` pattern (still uses `.project-story-split`)
 - [ ] **`PROJECT_NAV_ORDER`** in `js/project-detail-nav.js` matches published pages only
-- [ ] **Resume PDF** — path and date current (`assets/resume/FB-Resume-260829.pdf`)
+- [ ] **Resume PDF** — path and date current (`assets/resume/FB-Resume-260831.pdf`)
 
 ---
 
